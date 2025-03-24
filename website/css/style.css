@@ -6,6 +6,7 @@ body {
 }
 
 .top-nav {
+    margin-top: 50px;
     display: flex;
     flex-direction: row;
     line-height: 200%;
@@ -80,4 +81,11 @@ img {
     height: auto; /* 비율 유지 */
     display: block;
     margin: 0 auto; /* 가운데 정렬 */
+}
+
+main img {
+    max-width: 900px;  /* 최대 너비 */
+    min-width: 300px; /* 최대 높이 */
+    width: 100%;  /* 부모 요소에 맞춰 크기 조절 */
+    height: auto; /* 가로세로 비율 유지 */
 }
