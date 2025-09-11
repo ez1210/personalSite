@@ -5,78 +5,31 @@ body {
     padding: 0;
 }
 
-.top-nav {
-    color: black;
-    font-size: 14px;
-
+.top-nav ul {
     display: flex;
-    flex-direction: row;
-    margin-top: 50px;
-    justify-content: space-around;
-  }
-
-a {
-    color: black;
-    text-decoration: none;
-    padding: 0.8em;
-    padding-top: 0.8em;
+    justify-content: space-between;
+    margin: 10px;
+    padding: 0px;
+    list-style: none;
 }
 
-a:hover {
-    color: rgb(0, 132, 255);
-}
 
 .gallery {
     display: flex;
-    flex-wrap: wrap; /*여러줄로 배치*/
-    gap: 5px;        /* 간격 조정 */
-    padding: 5px;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 100px;
+}
+
+.work {
+    min-width: 250px;
+    max-width: 1fr;
+    flex-grow: 1;
 }
 
 .work img {
-    min-width: 200px;
+    width: 100%;
     max-width: 300px;
-    width: 100%;
-    /*height: auto;*/
+    height: auto;
     display: block;
-    /*transition: 0.3s;*/
-}
-
-.workName {
-    text-align: left;
-    margin-top: 10px;
-    font-size: 20px;
-    text-decoration: none;
-    color: black;
-}
-
-img {
-    max-width: 90%; /* 화면 너비를 넘지 않도록 제한 */
-    height: auto; /* 비율 유지 */
-    display: block;
-    margin: 0 auto; /* 가운데 정렬 */
-}
-
-main img {
-    max-width: 900px;  /* 최대 너비 */
-    min-width: 300px; /* 최대 높이 */
-    width: 100%;  /* 부모 요소에 맞춰 크기 조절 */
-    height: auto; /* 가로세로 비율 유지 */
-}
-
-.work-title {
-    margin: 30px;
-}
-
-.work-description {
-
-    max-width: 800px;
-    min-width: 100px;
-    width: 100%;
-    margin-top: 30px;
-}
-
-.project-img {
-    margin: 100px;
 }
