@@ -1,35 +1,48 @@
 body {
     font-family: Helvetica;
-    background-color: #dde2e1;
+    background-color: #ebefeee2;
     margin: 0;
     padding: 0;
+}
+
+a {
+    text-decoration: none;
 }
 
 .top-nav ul {
     display: flex;
     justify-content: space-between;
     margin: 10px;
-    padding: 0px;
+    padding: 10px;
     list-style: none;
 }
 
+.top-nav a {
+    font-size: smaller;
+    color: black;
+}
 
 .gallery {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
-    padding: 100px;
+    column-gap: 40px;
+    padding: 200px 40px 100px;
 }
 
 .work {
-    min-width: 250px;
-    max-width: 1fr;
-    flex-grow: 1;
+   flex: 1 1 250px;
+   max-width: 300px;
 }
 
 .work img {
     width: 100%;
-    max-width: 300px;
     height: auto;
     display: block;
+}
+
+.workName {
+    text-align: left;
+    margin-top: 6px;
+    font-size: 12px;
+    color: #666;
 }
