@@ -23,37 +23,26 @@ a {
 }
 
 .gallery {
-    display: flex;
-    flex-wrap: wrap;
-    column-gap: 40px;
-    padding: 300px 40px 100px;
+    column-count: 3;     /* 한 줄에 3열 */
+    column-gap: 20px;    /* 열 사이 간격 */
+    padding: 20px;
 }
 
-.work {
-    position: relative;
-    overflow: hidden;
-    flex: 1 1 250px;
-    max-width: 300px;
-}
-
-.work img {
+.gallery img {
     width: 100%;
-    height: auto;
+    margin-bottom: 20px;
     display: block;
+    border-radius: 6px;
 }
 
-.workName {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding-left: 10px;
-    text-align: left;
-    color: #ebefeee2;
-    opacity: 0;
-    transition: opacity 0.1s ease; 
+/* 반응형 */
+@media (max-width: 600px) {
+    .gallery {
+        column-count: 2;
+    }
 }
-
-.work:hover .workName {
-    opacity: 1;
+@media (max-width: 400px) {
+    .gallery {
+        column-count: 1;
+    }
 }
