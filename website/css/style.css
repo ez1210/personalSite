@@ -3,7 +3,7 @@ body {
     background-color: #ffffffe2;
     margin: 0;
     padding: 0;
-    font-size: smaller;
+    font-size: 14px;
 }
 
 a {
@@ -13,8 +13,9 @@ a {
 .top-nav ul {
     display: flex;
     justify-content: space-between;
-    margin: 10px;
-    padding: 10px;
+    padding-top: 10px;
+    padding-left: 80px;
+    padding-right: 80px;
     margin-bottom: 250px;
     list-style: none;
 }
@@ -39,6 +40,18 @@ a {
     width: 90%;
     height: auto;
     display: block;
-    padding-bottom: 100px;
 }
 
+.workName {
+    text-align: start;
+    font-size: 11px;
+    margin-top: 5px;
+    color: #000;
+}
+
+.workType {
+    text-align: start;
+    font-size: 11px;
+    color: #000;
+    padding-bottom: 100px;
+}
