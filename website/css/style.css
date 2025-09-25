@@ -25,33 +25,55 @@ a {
 }
 
 .work {
-  display: flex;
+  display: inline-block;
+  text-align: right;
   flex-direction: column;
 }
 
 .gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 50px;
+    margin-right: 70px;
+    margin-left: 70px;
     padding: 20px;
 }
 
 .gallery img {
-    width: 90%;
+    width: 100%;
     height: auto;
     display: block;
 }
 
+.workText {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    margin-top: 5px;    
+}
+
 .workName {
     text-align: start;
-    font-size: 11px;
-    margin-top: 5px;
+    font-size: 10px;
     color: #000;
 }
 
+.additional {
+    display: flex;
+    flex-direction: column;
+}
+
 .workType {
-    text-align: start;
-    font-size: 11px;
+    width: 50%;
+    font-size: 10px;
+    color: #000;
+    margin-bottom: 2px;
+}
+
+.workDate {
+    font-size: 10px;
     color: #000;
     padding-bottom: 100px;
+    margin-top: 0;
 }
