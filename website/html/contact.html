@@ -7,12 +7,24 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-    <header class="top-nav">
-        <ul>
-            <li><a href="index.html">Projects</a></li>
-            <li><a href="contact.html">Contact</a></li>
-       </ul>
-    </header>
+     <div class="container">
+            <header class="side-nav">
+                <nav>
+                    <ul>
+                        <li><a href="index.html" data-filter="all">Projects</a>
+                            <ul class="sub-menu">
+                                <li><a href="#" class="filter-btn" data-filter="branding">Brand Identity</a></li>
+                                <li><a href="#" class="filter-btn" data-filter="typography">Typography</a></li>
+                                <li><a href="#" class="filter-btn" data-filter="editorial">Editorial</a></li>
+                                <li><a href="#" class="filter-btn" data-filter="coding">Coding</a></li>
+                                <li><a href="#" class="filter-btn" data-filter="motion">Motion</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html" class="filter-btn active">Contact</a></li>
+                    </ul>
+                </nav>
+            </header>
     <main>
         <p>
             Eugene is currently a junior at the School of Visual Arts, a renowned art college based in New York City, majoring in Graphic Design. As they approach their senior year, Eugene has been honing their skills with a strong focus on typography, editorial design, and creative coding.
@@ -27,5 +39,6 @@
             <br>
         </form>
     </main>
+    </div>
 </body>
 </html>

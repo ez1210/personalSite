@@ -5,37 +5,61 @@
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>Eugene Ahn Portfolio</title>
             <link href="../css/style.css" rel="stylesheet">
+            <script>
+            if (history.scrollRestoration) {
+                history.scrollRestoration = "manual";
+            }
+            window.scrollTo(0, 0);
+    </script>
         </head>
 
     <body>
-        <script src="../scripts/script.js"></script>
-        <div class="container">
+        <section id="intro">
+                <div class="intro-content">
+                    <h1>Eugene Ahn</h1>
+                    <p>Graphic Design & Art Direction</p>
+                    
+                    <a href="#top-nav" class="scroll-down-btn">
+                        ↓ Enter
+                    </a>
+                </div>
+        </section>
 
-            <header class="side-nav">
-                <nav>
+        <header id="top-nav">
+            <a href="contact.html">Eugene</a>
+        </header>
+
+        <section id="main" class="container">
+            <nav class="side-nav">
                     <ul>
-                        <li><a href="index.html" class="filter-btn active" data-filter="all">Projects</a>
-                            <ul class="sub-menu">
-                                <li><a href="#" class="filter-btn" data-filter="branding">Brand Identity</a></li>
-                                <li><a href="#" class="filter-btn" data-filter="typography">Typography</a></li>
-                                <li><a href="#" class="filter-btn" data-filter="editorial">Editorial</a></li>
-                                <li><a href="#" class="filter-btn" data-filter="coding">Coding</a></li>
-                                <li><a href="#" class="filter-btn" data-filter="motion">Motion</a></li>
-                            </ul>
+                        <li><a href="#" class="main-link active" data-filter="all">Works</a>
+                        
+                        <ul class="subMenu">
+                            <li class="menu-label">type</li>
+                            <li><a href="#" data-filter="editorial">Editorial</a></li>
+                            <li><a href="#" data-filter="branding">Branding</a></li>
+                            <li><a href="#" data-filter="digital">Digital</a></li>
+                            <li><a href="#" data-filter="photography">Photography</a></li>
+                            
+                            <li class="menu-label">Year</li>
+                            <li><a href="#" data-filter="2026">2026</a></li>
+                            <li><a href="#" data-filter="2025">2025</a></li>
+                            <li><a href="#" data-filter="2024">2024</a></li>
+                            <li><a href="#" data-filter="2023">2023</a></li>
+                            <li><a href="#" data-filter="2022">2022</a></li>
+                            <li><a href="#" data-filter="2021">2021</a></li>
+                            
+                        </ul>
                         </li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="contact.html">Contact</a></li>
                     </ul>
-                </nav>
-            </header>
+            </nav>
 
             <main class="gallery">
-                
-                <article class="work" data-category="editorial">
+                <article class="work" data-category="editorial" data-year="2021">
                     <a href="vitra_Catalog.html">
-                        <img src="../images/vitra/vitra_web_upload-01.png" alt="Vitra Catalog Cover">
+                        <img src="../images/vitra/vitra_web_upload-01.png">
                         <div class="workText">
-                            <h2 class="workName">Vitra Catalog</h2>
+                            <p class="workName">Vitra Catalog</p>
                             <div class="additional">
                                 <span class="workType">Editorial</span>
                                 <span class="workDate">2021</span>
@@ -44,24 +68,24 @@
                     </a>
                 </article>
 
-                <article class="work" data-category="branding">
+                <article class="work" data-category="branding" data-year="2022">
                     <a href="project2.html">
-                        <img src="../images/ex.jpg" alt="Branding">
+                        <img src="../images/ex.jpg">
                         <div class="workText">
-                            <h2 class="workName">Branding</h2>
+                            <p class="workName">Branding</p>
                             <div class="additional">
-                                <span class="workType">Branding</span>
+                                <span class="workType">Branding</span>  
                                 <span class="workDate">2022</span>
                             </div>
                         </div>
                     </a>
                 </article>
 
-                <article class="work" data-category="typography">
+                <article class="work" data-category="digital" data-year="2023">
                     <a href="project3.html">
-                        <img src="../images/project1.png" alt="Typography Poster">
+                        <img src="../images/project1.png">
                         <div class="workText">
-                            <h2 class="workName">Typography Series</h2>
+                            <p class="workName">Typography Series</p>
                             <div class="additional">
                                 <span class="workType">Graphic Art</span>
                                 <span class="workDate">2023</span>
@@ -70,11 +94,11 @@
                     </a>
                 </article>
 
-                <article class="work">
+                <article class="work" data-category="editorial" data-year="2024">
                     <a href="project4.html">
-                        <img src="../images/project1.png" alt="Web Design">
+                        <img src="../images/project1.png">
                         <div class="workText">
-                            <h2 class="workName">Web Experiment</h2>
+                            <p class="workName">Web Experiment</p>
                             <div class="additional">
                                 <span class="workType">Digital</span>
                                 <span class="workDate">2023</span>
@@ -83,11 +107,11 @@
                     </a>
                 </article>
 
-                <article class="work">
+                <article class="work" data-category="editorial" data-year="2025">
                     <a href="project2.html">
-                        <img src="../images/project1.png" alt="Photography">
+                        <img src="../images/project1.png">
                         <div class="workText">
-                            <h2 class="workName">Photography</h2>
+                            <p class="workName">Photography</p>
                             <div class="additional">
                                 <span class="workType">Photo</span>
                                 <span class="workDate">2024</span>
@@ -95,9 +119,8 @@
                         </div>
                     </a>
                 </article>
-                
             </main>
-        </div> 
-
+        </section> 
+        <script src="../scripts/script.js"></script>
     </body>
 </html>
