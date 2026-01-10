@@ -1,3 +1,6 @@
+const header = document.getElementById('info-header');
+const intro = document.getElementById('intro');
+
 if (window.location.hash) {
     window.history.replaceState(null, null, ' ');
 }
@@ -29,11 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-
-
-
-const header = document.getElementById('top-nav');
-const intro = document.getElementById('intro');
 
 window.addEventListener('scroll', () => {
     if (!intro || intro.style.display === 'none') return;

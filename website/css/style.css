@@ -7,9 +7,9 @@
 
 body {
     font-family: 'helvetica', sans-serif;
-    letter-spacing: -0.015em;
+    letter-spacing: -0.02em;
     color: black;
-    background-color: #e8e8e8e2;
+    background-color: #e8e8e8;
     overflow-x: hidden;
 
 }
@@ -33,83 +33,148 @@ img { width: 100%; display: block; height: auto; }
 }
 
 .container {
-    display: flex;
-    align-items: flex-start;
-    padding-top: 80px;      
-    padding-left: 10vw;
-    padding-right: 10vw;
+    display: grid;
+    
+    /* [핵심] 왼쪽 기둥(220px) | 오른쪽 기둥(나머지) */
+    /* 옛날 프레임셋(Frameset) 같은 칼 같은 분할 */
+    grid-template-columns: 220px 1fr; 
+    
+    /* 기둥 사이의 간격 */
+    column-gap: 60px;
+    
+    /* 나머지 여백 설정 */
+    padding-top: 0;      /* 헤더 바로 아래 붙음 */
+    padding-left: 5vw;
+    padding-right: 5vw;
     padding-bottom: 100px;
     min-height: 100vh;
+    
+    /* [중요] 그리드 안에서 sticky가 작동하려면 정렬 기준이 필요함 */
+    align-items: start;
 }
 
-#top-nav {
-    position: sticky;
-    background-color: #e8e8e8;
+#info-header {
+    position: relative; 
     width: 100%;
-    height: 30px;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    top: auto;
-    padding: 0;
-    z-index: 100;
+
+    padding: 60px 5vw 80px 5vw; 
+    
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 40px;
+    align-items: start;
+
+    background-color: #e8e8e8;
 }
 
-#top-nav a {
-    gap: 20px;
-    font-size: 18px;
+.header-left {
+    max-width: 600px;
+    margin: 0;
+}
+
+.header-right {
+    text-align: left;
+    padding-left: 0;
+}
+
+.my-name {
+    font-size: 20px;
+    font-weight: 600;
+    color: #0000ee;
+    margin-bottom: 15px;
+    display: block;
+
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+.my-name:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    font-style: italic;
+}
+
+.bio-text {
+    font-size: 20px;
+    line-height: 1.1;
     color: black;
-    font-weight: 500;
+    font-weight: 400;
 }
 
-#top-nav a:hover {
+.contact-row {
+    display: flex;
+    justify-content: flex-start; /* 왼쪽 정렬 */
+    margin-bottom: 5px;
+    font-size: 20px;
+    color: black;
+}
+
+.contact-row .label {
+    width: 120px; /* 라벨 너비 고정 */
+    flex-shrink: 0;
+}
+
+.contact-row a {
+    color: black;
+    text-decoration: none;
+}
+
+.contact-row a:hover {
     color: #0000ee;
     text-decoration: underline;
 }
 
+.container {
+    padding-top: 0;
+}
+
 .side-nav {
+    /* 너비는 그리드가 정해주므로 auto로 둬도 되지만 명시해도 됨 */
+    width: 100%; 
+    
+    /* 스티키 설정 유지 */
     position: sticky;
-    width: 200px;
-    flex-shrink: 0;
-    margin-right: 40px;
+    top: 60px;
+    
+    /* [삭제] flex-shrink: 0; (그리드에선 불필요) */
+    /* [삭제] margin-right: 40px; (그리드 gap이 대신함) */
 }
 
 .side-nav li { margin-bottom: 2.5px; }
 
 .side-nav a {
     font-size: 20px;
-    font-weight: 500;
+    font-weight: 700;
     color: #000000;
 }
 
 .side-nav a:hover {
     color: #0000ee;
     text-decoration: underline;
-    text-decoration-thickness: 2px;
+    text-decoration-thickness: 3px;
     font-style: italic;
 }
 
-.subMenu {
+.sub-menu {
     margin-top: 6px;  /* 이 숫자를 늘리면 Projects와 type 사이가 멀어집니다 */
- /* 들여쓰기 유지 */
 }
 
-.subMenu a {
+.sub-menu a {
     margin-left: 14px;
     font-size: 20px;
     font-weight: 500;
     color: black;
-    line-height: 1.2;
+    line-height: 1.15;
 }
 
-.subMenu a:hover {
+.sub-menu a:hover {
     color: #0000ee;
     text-decoration: underline;
     text-decoration-thickness: 2px;
     font-style: italic;
 }
 
-.subMenu .menu-label {/*year*/
+.sub-menu .menu-label {/*year*/
     margin-bottom: 6px !important;
     margin-left: -19px;
     font-size: 17px;
@@ -120,10 +185,11 @@ img { width: 100%; display: block; height: auto; }
 }
 
 .gallery {
+    /* 갤러리 자체도 그리드 유지 */
     display: grid;
-    width: 100%;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
+    width: 100%
 }
 
 .work {
@@ -154,7 +220,7 @@ img { width: 100%; display: block; height: auto; }
     font-weight: normal;
 }
 
-.subMenu {
+.sub-menu {
     margin-left: 20px;
 }
 
@@ -174,33 +240,71 @@ img { width: 100%; display: block; height: auto; }
 
 /* 모바일 */
 @media (max-width: 768px) {
-    
+    #info-header {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 20px
+    }
+
+    .header-left, .header-right {
+        width: 100%;
+        max-width: 100%;
+        padding: 0;
+    }
+
+    .bio-text {
+        font-size: 20px; /* PC(20px)보다 살짝 작게 */
+    }
+
+
+    .contact-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 5px;
+    }
 
     .container {
-        flex-direction: row;
-        padding: 40px 30px;
+        grid-template-columns: 150px 1fr; 
+        column-gap: 30px; 
+        
+        padding: 20px;
     }
+
     .side-nav {
-        width: auto;
-        margin-right: 30px;
-        top: 40px;
-        position: sticky;
+        width: 100%;
+        
+        position: sticky; 
+        top: 20px;
     }
 
-    .side-nav a { 
-        font-size: 18px;
-    } 
-
-    .subMenu a { 
-        font-size: 17px;
-
-    }
-
-    .subMenu .menu-label {
-        font-size: 15px;
+    .side-nav .main-link {
+        font-size: 20px;
+        margin-bottom: 20px;
     }
     
+    .sub-menu::before { /* type 라벨 */
+        font-size: 13px;
+    }
+    
+    .sub-menu li a {    /* 메뉴 항목들 */
+        font-size: 20px;
+        margin-bottom: 4px;
+        font-weight: 400;
+
+    }
+    
+    .menu-label { /* year 라벨 */
+        font-size: 14px;
+    }
+
     .gallery {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; 
+        gap: 20px;
+    }
+    
+    .workText {
+        font-size: 14px;
     }
 }
