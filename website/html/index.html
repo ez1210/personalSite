@@ -1,148 +1,183 @@
-<!DOCTYPE html>
-    <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Eugene Ahn Portfolio</title>
-            <link href="../css/style.css" rel="stylesheet">
-            <script>
-            if (history.scrollRestoration) {
-                history.scrollRestoration = "manual";
-            }
-            window.scrollTo(0, 0);
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>egolesign</title> 
+    <link href="../css/style.css" rel="stylesheet"> 
+    <script> 
+        if (history.scrollRestoration) { 
+            history.scrollRestoration = "manual"; 
+        } 
+        window.scrollTo(0, 0); 
+    </script> 
+
+    <script>
+        if (window.location.hash.includes("info-header")) {
+            document.write('<style>#intro { display: none !important; }</style>');
+        }
     </script>
-        </head>
+</head> 
 
-    <body>
-        <section id="intro">
-                <div class="intro-content">
-                    <h1>Eugene Ahn</h1>
-                    <p>Graphic Design & Art Direction</p>
-                    
-                    <a href="#info-header" class="scroll-down-btn">
-                        ↓ Enter
-                    </a>
-                </div>
-        </section>
+<body> 
+    <section id="intro"> 
+        <img src="../images/elements/happy.png" class="intro-img">
+        <h1><span class="blue">egolesign</span> can be reached!</h1> 
+        <p class="intro-info">egolesign.com is open to connecting.</p> 
+        <p class="intro-info">Try:</p>
+        <li class="intro-info-list">Check out the portfolio</li>
+        <p class="intro-warning">NO ERROR FOUND!</p>
+        <a href="#info-header" class="scroll-down-btn">Enter</a> 
+    </section> 
 
-        <header id="info-header">
-            <div class="header-left">
-                <h1 class="my-name">Eugene Ahn</h1>
-                <p class="bio-text">
-                    Eugene Ahn is a senior art school student studying design. 
-                    Rather than focusing on a single field, Eugene explores design across multiple areas, 
-                    seeking to understand how ideas translate between different forms and contexts.
-                </p>
+    <header id="info-header"> 
+        <div class="header-left"> 
+            <a href="../html/index.html#info-header" class="logo-link">
+                <img src="../images/elements/logo.png" class="site-logo">
+            </a>
+            <a href="about.html">
+                <p class="my-name">→Eugene Ahn</p> 
+            </a>
+            <p class="bio-text"> 
+                Eugene Ahn is a senior art school student studying <span class="blue">graphic design</span>, based in New York and Seoul. Eugene works across different areas of design, 
+                focusing on clear <span class="blue">ideas</span> and thoughtful <span class="blue">visual decisions</span> while remaining open to learning and <span class="blue">experimentation</span>.
+            </p> 
+        </div> 
+
+        <div class="header-right"> 
+            <div class="contact">Contact</div> 
+            
+            <div class="contact-row"> 
+                <span class="label">mail</span> 
+                <a href="mailto:eugeneak1210@gmail.com" class="label-info">→eugeneak1210@gmail.com</a> 
+            </div> 
+            <div class="contact-row"> 
+                <span class="label">instagram</span> 
+                <a href="#" target="_blank" class="label-info">→@egolesign</a> 
+            </div> 
+            <div class="contact-row"> 
+                <span class="label">linkedin</span> 
+                <a href="#" target="_blank" class="label-info">→Eugene Ahn</a> 
+            </div> 
+        </div> 
+    </header> 
+
+    <section id="main" class="container"> 
+        <nav class="side-nav">
+            <div>
+                <a href="#" class="main-link active" data-filter="all">→Works</a>
             </div>
 
-            <div class="header-right">
-                <div class="contact-row">
-                    <span class="label">Mail:</span>
-                    <a href="mailto:your-email@gmail.com" class="label-info">your-email@gmail.com</a>
-                </div>
-                <div class="contact-row">
-                    <span class="label">Instagram:</span>
-                    <a href="#" target="_blank" class="label-info">@your_id</a>
-                </div>
-                <div class="contact-row">
-                    <span class="label">Linkedin:</span>
-                    <a href="#" target="_blank" class="label-info">Eugene Ahn</a>
-                </div>
-            </div>
-        </header>
+            <ul class="sub-menu">
+                <li class="menu-label">type</li>
+                <li><a href="#" data-filter="branding">→Branding</a></li>
+                <li><a href="#" data-filter="editorial">→Editorial</a></li>
+                <li><a href="#" data-filter="computational">→Coding</a></li>
+                <li><a href="#" data-filter="typography">→Typography</a></li>
+                <li><a href="#" data-filter="other">→Other</a></li>
+        
+                <li class="menu-label">year</li>
+                <li><a href="#" data-filter="2026">→2026</a></li>
+                <li><a href="#" data-filter="2025">→2025</a></li>
+                <li><a href="#" data-filter="2024">→2024</a></li>
+                <li><a href="#" data-filter="2023">→2023</a></li>
+                <li><a href="#" data-filter="2022">→2022</a></li>
+                <li><a href="#" data-filter="2021">→2021</a></li>
 
-        <section id="main" class="container">
-            <nav class="side-nav">
-                    <ul>
-                        <li><a href="#" class="main-link active" data-filter="all">Works</a>
+                <li class="menu-label">name</li>
+                <li><a href="../html/vitra_Catalog.html">→vitra catalog</a></li>
+            </ul>
+        </nav> 
+
+        <main class="gallery"> 
+            <article class="work" data-category="editorial" data-year="2021"> 
+                <a href="vitra_Catalog.html"> 
+                    <div class="image-box"> 
+                        <img src="../images/vitra/vitra_web_upload-01.png" alt="Vitra Catalog"> 
+                    </div> 
+                    <div class="workText"> 
+                        <p class="workName blue">Vitra Catalog</p> 
+                        <div class="workInfo"> 
+                            <span class="workType workDate">2021 editorial</span> 
+                        </div> 
+                    </div> 
+                    <div class="workDescription"> 
+                        A student project exploring Vitra furniture catalog with typography and layout. 
+                    </div> 
+                </a> 
+            </article> 
+
+            <article class="work" data-category="branding" data-year="2022">
+                <a href="project2.html">
+                    <div class="image-box">
+                        <img src="../images/ex.jpg" alt="Branding Work">
+                    </div>
+                    <div class="workText">
+                        <p class="workName blue">Branding</p>
+                        <div class="workInfo">
+                            <span class="workType workDate">2022 branding</span>
+                        </div>
+                    </div>
+                    <div class="workDescription">
+                        Student project making Vitra furniture Catalog with typography and layout.
+                    </div>
+                </a>
+            </article>
+
+            <article class="work" data-category="digital" data-year="2023">
+                <a href="project3.html">
+                    <div class="image-box">
+                        <img src="../images/project1.png" alt="Typography Series Work">
+                    </div>
+                    <div class="workText">
+                        <p class="workName blue">Typography Series</p>
+                        <div class="workInfo">2023 graphic art</div>
+                            <span class="workType workDate"></span>
                         
-                        <ul class="sub-menu">
-                            <li class="menu-label">type</li>
-                            <li><a href="#" data-filter="editorial">Editorial</a></li>
-                            <li><a href="#" data-filter="branding">Branding</a></li>
-                            <li><a href="#" data-filter="digital">Digital</a></li>
-                            <li><a href="#" data-filter="photography">Photography</a></li>
-                            
-                            <li class="menu-label">Year</li>
-                            <li><a href="#" data-filter="2026">2026</a></li>
-                            <li><a href="#" data-filter="2025">2025</a></li>
-                            <li><a href="#" data-filter="2024">2024</a></li>
-                            <li><a href="#" data-filter="2023">2023</a></li>
-                            <li><a href="#" data-filter="2022">2022</a></li>
-                            <li><a href="#" data-filter="2021">2021</a></li>
-                            
-                        </ul>
-                        </li>
-                    </ul>
-            </nav>
+                    </div>
+                    <div class="workDescription">
+                        A student project exploring Vitra furniture with typography and layout.
+                    </div>
+                </a>
+            </article>
 
-            <main class="gallery">
-                <article class="work" data-category="editorial" data-year="2021">
-                    <a href="vitra_Catalog.html">
-                        <img src="../images/vitra/vitra_web_upload-01.png">
-                        <div class="workText">
-                            <p class="workName">Vitra Catalog</p>
-                            <div class="additional">
-                                <span class="workType">Editorial</span>
-                                <span class="workDate">2021</span>
-                            </div>
+            <article class="work" data-category="editorial" data-year="2024">
+                <a href="project4.html">
+                    <div class="image-box">
+                        <img src="../images/project1.png" alt="Web Experiment Work">
+                    </div>
+                    <div class="workText">
+                        <p class="workName blue">Web Experiment</p>
+                        <div class="workInfo">
+                            <span class="workType workDate">2023 digital</span>
+                            <span class="workDate"></span>
                         </div>
-                    </a>
-                </article>
+                    </div>
+                    <div class="workDescription">
+                        A student project exploring Vitra furniture with typography and layout.
+                    </div>
+                </a>
+            </article>
 
-                <article class="work" data-category="branding" data-year="2022">
-                    <a href="project2.html">
-                        <img src="../images/ex.jpg">
-                        <div class="workText">
-                            <p class="workName">Branding</p>
-                            <div class="additional">
-                                <span class="workType">Branding</span>  
-                                <span class="workDate">2022</span>
-                            </div>
+            <article class="work" data-category="editorial" data-year="2025">
+                <a href="project2.html">
+                    <div class="image-box">
+                        <img src="../images/project1.png" alt="Photography Work">
+                    </div>
+                    <div class="workText">
+                        <p class="workName blue">Photography</p>
+                        <div class="workInfo">
+                            <span class="workTypeworkDate">2024 photo</span>
+                            <span class="workDate"></span>
                         </div>
-                    </a>
-                </article>
-
-                <article class="work" data-category="digital" data-year="2023">
-                    <a href="project3.html">
-                        <img src="../images/project1.png">
-                        <div class="workText">
-                            <p class="workName">Typography Series</p>
-                            <div class="additional">
-                                <span class="workType">Graphic Art</span>
-                                <span class="workDate">2023</span>
-                            </div>
-                        </div>
-                    </a>
-                </article>
-
-                <article class="work" data-category="editorial" data-year="2024">
-                    <a href="project4.html">
-                        <img src="../images/project1.png">
-                        <div class="workText">
-                            <p class="workName">Web Experiment</p>
-                            <div class="additional">
-                                <span class="workType">Digital</span>
-                                <span class="workDate">2023</span>
-                            </div>
-                        </div>
-                    </a>
-                </article>
-
-                <article class="work" data-category="editorial" data-year="2025">
-                    <a href="project2.html">
-                        <img src="../images/project1.png">
-                        <div class="workText">
-                            <p class="workName">Photography</p>
-                            <div class="additional">
-                                <span class="workType">Photo</span>
-                                <span class="workDate">2024</span>
-                            </div>
-                        </div>
-                    </a>
-                </article>
-            </main>
-        </section> 
-        <script src="../scripts/script.js"></script>
-    </body>
+                    </div>
+                    <div class="workDescription">
+                        A student project exploring Vitra furniture with typography and layout.
+                    </div>
+                </a>
+            </article>
+        </main> 
+    </section> 
+    <script src="../scripts/script.js"></script> 
+</body> 
 </html>

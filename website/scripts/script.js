@@ -68,3 +68,20 @@ if (enterBtn) {
         }, 1000);
     });
 }
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const worksBtn = document.querySelector('.side-nav .main-link');
+    const subMenu = document.querySelector('.sub-menu');
+
+    if (worksBtn && subMenu) {
+        worksBtn.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768) {
+                e.preventDefault(); 
+                e.stopPropagation();
+
+                subMenu.classList.toggle('open');
+            }
+        });
+    }
+});

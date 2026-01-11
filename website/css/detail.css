@@ -1,0 +1,44 @@
+/* css/detail.css */
+
+/* 헤더가 사라진 자리만큼 여백을 줘서 로고와 겹치지 않게 함 */
+.detail-container {
+    padding-top: 140px !important; /* 로고(top:40px) 아래로 충분히 내림 */
+    padding-bottom: 100px;
+}
+
+/* 오른쪽 작품 설명 영역 스타일 */
+.work-detail-content {
+    width: 100%;
+}
+
+.work-title {
+    font-size: 32px;
+    font-weight: 400;
+    margin-bottom: 20px;
+    line-height: 1.1;
+    margin-top: -6px; /* 왼쪽 메뉴 'Works'와 시각적 높이 맞춤 */
+}
+
+.work-description {
+    font-size: 23px;  /* 메인 본문과 동일한 크기 */
+    line-height: 1.2;
+    text-align: justify;
+    max-width: 800px;
+    margin-bottom: 60px;
+}
+
+.project-images img {
+    width: 100%;
+    margin-bottom: 20px;
+    display: block;
+}
+
+/* 모바일 대응 */
+@media (max-width: 768px) {
+    .detail-container {
+        padding-top: 80px !important;
+    }
+    .side-nav {
+        margin-bottom: 40px; /* 메뉴와 본문 사이 간격 */
+    }
+}
