@@ -181,7 +181,7 @@ img {
     color: #0000ee;
 }
 
-.bio-text {
+.bio-text, .bio-long {
     margin-top: 4px;
     line-height: 1.05;
     text-align: justify;
@@ -332,7 +332,7 @@ a.label-info:hover {
 }
 
 .image-box { background-color: #0000ee; }
-.image-box:hover img { opacity: 0.5; }
+.image-box:hover img { opacity: 0; }
 
 .work img {
     width: 100%;
