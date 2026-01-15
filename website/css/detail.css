@@ -1,27 +1,46 @@
-/* css/detail.css */
+body {
+    font-size: 23px; 
+    
+    font-family: 'Helvetica', sans-serif;
+    font-weight: 400;
+    letter-spacing: -0.05em;
+    color: black;
+    background-color: rgb(238, 238, 238);
+}
 
-/* 헤더가 사라진 자리만큼 여백을 줘서 로고와 겹치지 않게 함 */
+h1, h2, h3, h4, h5, h6, p, a, li, span, div {
+    font-size: inherit; 
+    font-weight: inherit;
+}
+
+.site-logo {
+    position: absolute;
+    margin-left: 40px;
+    width: 20px;
+    height: auto;
+    z-index: 100;
+}
+
 .detail-container {
-    padding-top: 140px !important; /* 로고(top:40px) 아래로 충분히 내림 */
+    padding-top: 100px;
     padding-bottom: 100px;
 }
 
-/* 오른쪽 작품 설명 영역 스타일 */
 .work-detail-content {
     width: 100%;
 }
 
 .work-title {
-    font-size: 32px;
+    font-size: 23px;
     font-weight: 400;
     margin-bottom: 20px;
-    line-height: 1.1;
-    margin-top: -6px; /* 왼쪽 메뉴 'Works'와 시각적 높이 맞춤 */
+    line-height: 1.05;
+    margin-top: -6px;
 }
 
 .work-description {
-    font-size: 23px;  /* 메인 본문과 동일한 크기 */
-    line-height: 1.2;
+    font-size: 23px;
+    line-height: 1.05;
     text-align: justify;
     max-width: 800px;
     margin-bottom: 60px;
@@ -33,12 +52,51 @@
     display: block;
 }
 
-/* 모바일 대응 */
+.side-nav .sub-menu li {
+    margin-left: 20px;
+    line-height: 1.05;
+    cursor: default;
+}
+
+.active-type {
+    color: #0000ee !important;
+}
+
+.side-nav h3 a {
+    color: #0000ee;
+    cursor: pointer;
+}
+
+/* detail.css 맨 아래 @media (max-width: 768px) 블록 내부 내용을 아래처럼 수정/추가하세요 */
+
 @media (max-width: 768px) {
     .detail-container {
         padding-top: 80px !important;
     }
+    
     .side-nav {
-        margin-bottom: 40px; /* 메뉴와 본문 사이 간격 */
+        margin-bottom: 50px; 
+        margin-top: -10px;
+        /* 모바일에서는 스티키 해제 */
+        position: static !important;
+        top: auto;
+    }
+
+    /* 모바일 2단 그리드 메뉴 */
+    .side-nav .sub-menu {
+        display: grid !important;       
+        grid-template-columns: 1fr 1fr; 
+        column-gap: 10px;               
+        line-height: 1.05;
+    }
+
+    .side-nav .sub-menu .menu-label {
+        grid-column: 1 / -1;            
+        margin-top: 15px;               
+        width: 100%;
+    }
+
+    .side-nav .sub-menu li {
+        margin-left: 20px;              
     }
 }

@@ -1,3 +1,5 @@
+/*Global Gap: 20px*/
+
 * {
     margin: 0;
     padding: 0;
@@ -7,14 +9,16 @@
 body {
     font-family: 'Helvetica', sans-serif;
     font-weight: 400;
-    letter-spacing: -0.05em;
+    letter-spacing: -0.03em;
     color: black;
     background-color: rgb(238, 238, 238);
+    font-size: 23px;
 }
 
 a {
     text-decoration: none;
     color: inherit;
+    display: inline-block;
 }
 
 ul {
@@ -28,114 +32,93 @@ img {
 }
 
 .blue {
-    background-color:#0000ee;
+    background-color: #0000ee;
     color: rgb(238, 238, 238);
-    padding-left: 2px;
-    padding-right: 2px;
+    padding: 0 3px;
+    display: inline;
+
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
 }
 
+/*ANIMATIONS*/
 @keyframes float-up-down {
-    0% {
-        /* 시작: 원래 위치 */
-        transform: translateY(0px);
-    }
-    50% {
-        /* 중간: 위로 10px 올라감 (숫자를 키우면 더 높이 올라갑니다) */
-        transform: translateY(-10px);
-    }
-    100% {
-        /* 끝: 다시 원래 위치로 돌아옴 */
-        transform: translateY(0px);
-    }
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
 }
 
-/* Intro Section */
+/*INTRO SECTION*/
 #intro {
     height: 105vh;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-
     max-width: 600px;
     margin: 0 auto;
     padding: 20px;
-
     background-color: rgb(238, 238, 238);
-    z-index: 1000; 
+    z-index: 1000;
 }
 
 .intro-img {
     width: 60px;
     height: auto;
     margin-bottom: 24px;
-    margin-left: -8px;
+    margin-left: -8px; 
 }
 
 #intro h1 {
     font-size: 38px;
     font-weight: 500;
-    margin-bottom: 5px;
-    line-height: 1.2;
+    margin-bottom: 3px;
+    line-height: 1.05;
 }
 
 .intro-info {
-    font-size: 23px;
-    color: #000000;          /* 설명글은 연한 회색 */
-    margin-bottom: 5px;
-    line-height: 1.6;
-    margin-top: 0;
+    margin-bottom: 3px;
+    line-height: 1.05;
 }
 
 .intro-info-list {
-    font-size: 23px;
-    color: #000000;
-    margin-left: 60px;
+    padding-left: 20px; 
+    margin-left: 10px;
     margin-bottom: 5px;
-    list-style-type: disc;   /* 점(bullet) 표시 */
+    list-style-position: inside;
 }
 
 .intro-warning {
-    font-size: 23px;         /* 아주 작게 */
-    color: #000000;
-    margin-top: 15px;
-    margin-bottom: 60px;     /* 버튼과의 간격 */
-    text-transform: uppercase; /* 대문자로 변환 안 돼있으면 강제 변환 */
+    margin-top: 10px;
+    margin-bottom: 60px;
+    text-transform: uppercase;
 }
 
 .scroll-down-btn {
-    display: inline-block;
-    background-color: black; /* 크롬 버튼 파란색 */
+    background-color: black;
     color: rgb(238, 238, 238);
-    font-size: 23px;
     font-weight: 500;
     padding: 8px 24px;
-    border-radius:20px;
-    text-decoration: none;
     cursor: pointer;
-
     animation: float-up-down 1s ease-in-out infinite;
-    position: relative;
 }
 
-.scroll-down-btn:hover {
-    background-color: #0000ee;
-}
-
-@media (max-width: 768px) {
-    #intro {
-        padding-left: 24px;
-        padding-right: 24px;
-    }
-}
+.scroll-down-btn:hover { background-color: #0000ee; }
 
 
-/* Header Section */
+
+
+
+
+/* HEADER SECTION (Strict 8-Column Grid)*/
+
 .site-logo {
     position: absolute;
     top: 40px;
     width: 23px;
-    height: auto;
+    height: 23px;
+    background-color: #0000ee;
+    border-radius: 100%;
     z-index: 100;
 }
 
@@ -143,27 +126,55 @@ img {
     position: relative;
     padding: 50px;
     padding-top: 100px;
+    
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 100px;
+    grid-template-columns: repeat(8, 1fr);
+    column-gap: 20px; /* GLOBAL GAP */
     align-items: start;
     background-color: rgb(238, 238, 238);
+    height: 300px;
 }
 
 .header-left {
-    max-width: 800px;
+    grid-column: 1 / 5;
+    margin-bottom: 0; 
+    height: auto;
 }
 
-.header-right {
-    text-align: left;
+.description-wrapper {
+    grid-column: 1 / 9; 
+    
+    column-count: 2;
+    column-gap: 40px;
+    height: 130px; 
+
+    column-fill: auto; 
 }
 
-.my-name {
-    font-size: 23px;
-    color: #000000;
-    margin-bottom: 3px;
+.detail-work-description {
+    line-height: 1.05;
+    text-align: justify;
+    margin: 0;
+} 
+
+.my-name, .detail-work-name {
     display: block;
     cursor: pointer;
+    line-height: 1.05;
+    margin-bottom: 5px;
+    margin-top: 0;
+}
+
+.detail-work-description {
+    line-height: 1.05;
+    text-align: justify;
+
+    orphans: 1; 
+    widows: 1;
+}
+
+.detail-work-name {
+    cursor: default;
 }
 
 .my-name:hover {
@@ -174,43 +185,33 @@ img {
 }
 
 .bio-text {
-    font-size: 23px;
     line-height: 1.05;
     text-align: justify;
 }
 
-.bio-text .serif {
-    font-size: 13pt;
+.header-right {
+    grid-column: 5/9;
+    text-align: left;
 }
 
-.contact {
-    font-size: 23px;
-    margin-bottom: 3px;
-}
+.contact { margin-bottom: 3px; }
 
-.contact-row {
-    display: flex;
+/* [수정] Contact Row: 내부도 그리드 비율(1:3)로 강제 정렬 */
+.contact-row { 
+    display: grid;
+    /* Label(1칸) : Info(3칸) -> 전체 그리드 라인과 일치 */
+    grid-template-columns: 1fr 3fr; 
+    column-gap: 20px; /* 부모 그리드 Gap 상속 */
     align-items: baseline;
-}
+    margin-bottom: 5px;
+} 
 
 .contact-row .label {
-    width: 320px;
+    width: auto; /* 고정 너비 제거 -> 그리드에 맡김 */
     color: #0000ee;
-    flex-shrink: 0;
-    font-size: 23px;
-    margin-bottom: 0;
 }
 
-.contact-row a {
-    font-size: 23px;
-    color: #000000;
-}
-
-a.label-info {
-    position: relative;
-    display: inline-block;
-}
-
+a.label-info { position: relative; }
 a.label-info:hover {
     color: #0000ee;
     text-decoration: underline;
@@ -218,37 +219,36 @@ a.label-info:hover {
     font-style: italic;
 }
 
-/* Main Content (Sidebar + Gallery) */
+
+
+/* -----------------------------------------------------------
+   MAIN CONTENT (Sidebar + Gallery)
+----------------------------------------------------------- */
 .container {
+    /* [GRID SETTING] 8 Columns (Header와 동일하게 유지) */
     display: grid;
-    grid-template-columns: 220px 1fr;
-    column-gap: 60px;
+    grid-template-columns: repeat(8, 1fr);
+    column-gap: 20px;
     padding: 50px;
     min-height: 100vh;
     align-items: start;
 }
 
-/* Sidebar Navigation */
-.side-nav {
+/* SIDEBAR: 2 Columns (1-3) */
+.main-link {
+    display: block;
+    cursor: pointer;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+.side-nav, .detail-side-nav {
+    grid-column: 1 / 3;
     width: 100%;
+    
     position: sticky;
     top: 50px;
-}
-
-.side-nav h3 {
-    font-size: 23px;
-
-    margin-bottom: 2.7px; /* 기존 li 간격과 동일하게 */
-}
-
-.side-nav li {
-    margin-bottom: 2.7px;
-}
-
-.side-nav a {
-    font-size: 23px;
-    color: #000000;
-    display: block;
+    z-index: 50;
 }
 
 .side-nav a:hover {
@@ -258,15 +258,33 @@ a.label-info:hover {
     font-style: italic;
 }
 
-/* Sub Menu */
 .sub-menu {
-    margin-left: 20px;
+    padding-left: 0; 
+    margin-top: 0px;
 }
 
-.sub-menu a {
-    margin-left: 20px;
-    font-size: 23px;
-    line-height: 1.03;
+.sub-menu li {
+    /* 리스트 아이템 간격 */
+    margin-bottom: 2.7px;
+}
+
+.sub-menu a, .sub-menu span {
+    display: block;
+    
+    /* 들여쓰기 20px로 통일 (Index와 Detail이 똑같이 보임) */
+    padding-left: 20px; 
+    
+    line-height: 1.05;
+    color: black;
+    text-decoration: none;
+}
+
+.sub-menu a {/*index*/
+    cursor: pointer;
+}
+
+.sub-menu span { /*detail*/
+    cursor: default; 
 }
 
 .sub-menu a:hover {
@@ -276,56 +294,60 @@ a.label-info:hover {
     font-style: italic;
 }
 
+.sub-menu .active {
+    color: #0000ee;
+    margin-left: 22px;
+}
+
+.sub-menu .inactive {
+    color: black;
+    margin-left: 22px;
+}
+
+/* 메뉴 라벨 (type, year 등) */
 .sub-menu .menu-label {
-    margin-bottom: 3px !important;
-    margin-left: -19px;
-    font-size: 23px;
+    padding-left: 0; /* 라벨은 들여쓰기 없음 */
+    margin-top: 15px; 
+    margin-bottom: 3px;
     color: #0000ee;
     text-transform: lowercase;
     pointer-events: none;
 }
 
-/* Gallery Grid */
+/* GALLERY: 6 Columns (3-9) */
 .gallery {
+    grid-column: 3 / 9;
     display: block; 
-    column-count: 3;
-    column-gap: 10px;
+    column-count: 3; /* Masonry Layout */
+    column-gap: 20px; /* Global Gap 유지 */
     width: 100%;
 }
 
 .work {
     width: 100%;
-    display: inline-block; /* 컬럼 안에서 덩어리로 인식되게 함 */
-    margin-bottom: 20px;   /* [중요] 위아래 작품 사이 간격 조절 */
+    display: inline-block;
+    margin-bottom: 20px; 
     break-inside: avoid;
 }
 
-.image-box {
-    background-color: #0000ee;
-}
+.image-box { background-color: #0000ee; }
+.image-box:hover img { opacity: 0.5; }
 
 .work img {
-    width: 100%;        /* 가로폭은 칸에 꽉 차게 */
-    height: auto;       /* 높이는 이미지 원본 비율대로 알아서 늘어나게 */
-    aspect-ratio: auto; /* [중요] 기존 4/3 강제 비율 해제 */
+    width: 100%;
+    height: auto;
     object-fit: contain;
 }
 
-.image-box:hover img {
-    opacity: 50%;
-}
-
-.workName {
-    font-size: 23px;
-    padding: 3px;
-}
+.workName { padding: 3px 0; } /* 좌우 패딩 제거하여 라인 맞춤 */
+.workName.blue { color: rgb(238, 238, 238); padding: 1px 4px; display: inline-block;}
 
 .workText {
     margin-top: 10px;
-    display: flex;
+    display: flex; /* 내부 요소 양끝 정렬 */
     justify-content: space-between;
     align-items: flex-start;
-    line-height: 1.03;
+    line-height: 1.05;
 }
 
 .workInfo {
@@ -334,79 +356,80 @@ a.label-info:hover {
     flex-direction: column;
     color: #0000ee;
     flex-shrink: 0;
-    font-size: 23px;
 }
 
-.workDescription {
-    font-size: 23px;
-    text-align: justify;
-}
+.workDescription { text-align:left; margin-top: 5px; }
 
-
-/* Media Queries 
-*/
-
-/* [추가] 노트북/작은 PC 화면용 (1024px ~ 1300px 사이) */
-@media (max-width: 1300px) {
-    /* 1. 전체 컨테이너 여백을 좀 줄여서 공간 확보 */
-    #info-header {
-        column-gap: 40px; /* 좌우 단 간격 좁힘 */
-        padding-left: 30px;
-        padding-right: 30px;
-    }
+.project-images {
+    /* [핵심] 사이드바(1~3)가 끝나는 지점인 '3번'부터 시작해서 끝('9번')까지 채움 */
+    grid-column: 3 / 9; 
     
-    /* 2. 설명글(Bio) 글자 크기를 살짝 줄임 */
-    .bio-text {
-        font-size: 23px; 
+    width: 100%;
+    display: block;
+}
+
+/* [2] 이미지 스타일 (꽉 차게) */
+.project-images img {
+    width: 100%;       /* 할당된 칸(3~9열)을 가득 채웁니다 */
+    height: auto;      /* 비율 유지 */
+    display: block;    /* 이미지 하단 미세한 공백 제거 */
+    margin-bottom: 20px; /* 사진 사이 간격 */
+}
+/* -----------------------------------------------------------
+   MEDIA QUERIES
+----------------------------------------------------------- */
+
+/* [Laptop]*/
+@media (max-width: 1100px) {
+    #info-header {height: 350px;}
+
+
+    body { font-size: 23px; }
+
+    .gallery {
+        column-count: 2;
     }
 
     .side-nav {
-        margin-left: -20px !important;
-    }
-    
-    /* 3. Works 사이드바 너비를 살짝 줄임 */
-    .container {
-        grid-template-columns: 180px 1fr; /* 220px -> 180px */
-        column-gap: 20px;
+        top: 30px; /* 전체 여백이 줄어드니 여기도 30px로 조정 */
     }
 }
 
-/* 모바일 (max-width: 768px) */
+/* [Mobile]*/
 @media (max-width: 768px) {
     .site-logo {
-        width: 20px;   
-        margin-top: -25px;  /* 모바일에서 로고 살짝 작게 */
+        position: absolute;
+        top: 40px;
+        width: 20px;
+        height: 20px;
+        margin-top: -25px;
         margin-bottom: 15px;
     }
 
     #info-header {
         display: flex;
         flex-direction: column;
-        gap: 40px;
+
         padding: 20px;
         padding-top: 50px;
         height: auto;
     }
-
-    .header-left, 
-    .header-right {
-        width: 100%;
-        max-width: 100%;
-        padding: 0;
-    }
-
-    .contact-row {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        margin-bottom: 5px;
-        align-items: baseline;
-    }
     
-    .contact-row .label {
-        width: auto;
-        margin-right: 0;
+    .description-wrapper {
+        column-count: 1;
+        height: auto;
+        grid-column: auto;
     }
+
+    /* 모바일: Flex로 전환 (줄바꿈 허용) */
+    .contact-row { 
+        display: flex; 
+        flex-wrap: wrap; 
+        gap: 10px; 
+        margin-bottom: 5px; 
+    }
+    /* 모바일에서는 라벨 너비 자동 */
+    .contact-row .label { width: auto; margin-right: 0; }
 
     .container {
         display: block;
@@ -415,56 +438,50 @@ a.label-info:hover {
     }
 
     .side-nav {
-    margin-left: 0px !important;
-    width: 100%;
-    position: sticky; 
-    top: 0;
-    z-index: 100;
-    background-color: rgb(238, 238, 238);
-    padding-bottom: 10px; /* 아래쪽 여백 */
+        grid-column: auto;
+        width: 100%;
+        position: sticky; 
+        top: 0;
+        z-index: 100;
+        background-color: rgb(238, 238, 238);
+        padding-top: 10px;
+        padding-bottom: 10px;
+        margin-left: 0 !important;
     }
 
-    .sub-menu {
-        display: none !important; 
-        padding-left: 0px;
-    }
-
-/* 자바스크립트가 'open' 클래스를 붙이면 보임 */
+    .sub-menu { display: none !important; padding-left: 0px; }
     .sub-menu.open {
         display: grid !important;
         grid-template-columns: 1fr 1fr;
         column-gap: 5px;
-        row-gap: 1px;                   /* 위아래 간격 */
+        row-gap: 1px;
         align-items: center;
+        margin-top: 0;
     }
 
-/* 메뉴 항목 디자인 */
-    .sub-menu li {
-        display: block;
-    }
-
-    .sub-menu li a {
-        margin-left: 10px;
-        font-size: 23px;
-        display: block;
+    .sub-menu li { display: block; margin-bottom: 0; }
+    
+    /* 모바일 메뉴 링크 들여쓰기 조정 */
+    .sub-menu a { 
+        margin-left: 20px; 
+        padding-left: 0; /* PC용 패딩 초기화 */
+        display: block; 
     }
     
     .sub-menu .menu-label {
         grid-column: 1 / -1;
-        margin-top:3px;
-        font-size: 23px;
-        color: #0000ee;
+        margin-top: 3px;
         padding-bottom: 4px;
         width: 100%;
+        padding-left: 0;
     }
 
     .gallery {
+        grid-column: auto;
         column-count: 1;
         width: 100%;
     }
-
-    .work {
-        width: 100%;
-        margin-bottom: 30px;
-    }
+    .work { margin-bottom: 30px; }
 }
+
+

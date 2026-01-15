@@ -1,68 +1,78 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vitra Catalog - Eugene Ahn</title>
-    
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/deatail.css">
-</head>
-<body>
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>egolesign</title> 
+    <link href="../css/style.css" rel="stylesheet"> 
+    <script>
+        if (window.location.hash.includes("info-header")) {
+            document.write('<style>#intro { display: none !important; }</style>');
+        }
+    </script>
+</head> 
 
-    <a href="index.html#info-header" class="logo-link">
-        <img src="../images/elements/logo.png" class="site-logo" alt="My Logo">
-    </a>
+<body> 
+    <header id="info-header"> 
+    <div class="header-left"> 
+        <a href="../html/index.html#info-header" class="logo-link">
+            <img src="../images/elements/logo.png" class="site-logo">
+        </a>
+        <p class="detail-work-name">
+           <span class="blue">vitra Catalog</span>
+        </p>
+    </div>
 
-    <section class="container detail-container">
-        <nav class="side-nav">
-            <h3>
-                <a href="../index.html#info-header">→Works</a>
-            </h3>
+    <div class="description-wrapper">
+        <p class="detail-work-description">
+            For this project, I made a catalog for the furniture
+            company Vitra. Criteria for furniture selection was
+            design principle. For example, Prismatic Table fits
+            with the design principle ‘pattern’. In this rule, I chose
+            7 different furnitures and made different layouts that
+            also fits for their own design principle.
+        </p>
+    </div>
+</header>
 
-            <ul class="sub-menu" style="display: block !important;">
-                <span class="menu-label">type</span>
-                <li class="inactive">→Branding</li>
-                <li class="active-type">→Editorial</li>
-                <li class="inactive">→Computational</li>
-                <li class="inactive">→Typography</li>
-                <li class="inactive">→Other</li>
+    <section id="main" class="container"> 
+    <nav class="side-nav">
+        <div>
+            <a href="../html/index.html#info-header" class="main-link">→Works</a>
+        </div>
 
-                <span class="menu-label">year</span>
-                <li class="inactive">→2026</a></li>
-                <li class="inactive">→2025</a></li>
-                <li class="inactive">→2024</a></li>
-                <li class="active-type">→2023</a></li>
-                <li class="inactive">→2022</a></li>
-                <li class="inactive">→2021</a></li>
+        <ul class="sub-menu">
+            <li class="menu-label">type</li>
+        
+            <li><span class="inactive">Branding</span></li>
+            <li><span class="active">Editorial</span></li>
+            <li><span class="inactive">Coding</span></li>
+            <li><span class="inactive">Typography</span></li>
+            <li><span class="inactive">Other</span></li>
 
-                <span class="menu-label">name</span>
-                <li class="active-type">→vitra catalog</a></li>
-            </ul>
-        </nav> 
+            <li class="menu-label">year</li>
+        
+            <li><span class="inactive">2026</span></li>
+            <li><span class="inactive">2025</span></li>
+            <li><span class="inactive">2024</span></li>
+            <li><span class="inactive">2023</span></li>
+            <li><span class="inactive">2022</span></li>
+            <li><span class="active">2021</span></li>
 
-        <main class="work-detail-content">
-            <h1 class="work-title">vitra Catalog</h1>
-            <p class="work-description">
-                For this project, I made a catalog for the furniture
-                company Vitra. Criteria for furniture selection was
-                design principle. For example, Prismatic Table fits
-                with the design principle ‘pattern’. In this rule, I chose
-                7 different furnitures and made different layouts that
-                also fits for their own design principle.
-            </p>
-            
+        <li class="menu-label">name</li>
+            <li><span class="active">vitra Catalog</span></li>
+        </ul>
+    </nav>
             <div class="project-images">
-                <img src="../images/vitra/vitra_web_upload-01.png" alt="vitra_Catalog_cover">
-                <img src="../images/vitra/vitra_web_upload-02.png" alt="vitra_Catalog_key1">
-                <img src="../images/vitra/vitra_web_upload-03.png" alt="vitra_Catalog_key2">
-                <img src="../images/vitra/vitra_web_upload-04.png" alt="vitra_Catalog_key3">
-                <img src="../images/vitra/vitra_web_upload-05.png" alt="vitra_Catalog_key4">
-                <img src="../images/vitra/vitra_web_upload-06.png" alt="vitra_Catalog_all">
+                <img src="../images/vitra/vitra1.webp">
+                <img src="../images/vitra/vitra2.webp">
+                <img src="../images/vitra/vitra3.webp">
+                <img src="../images/vitra/vitra4.webp">
+                <img src="../images/vitra/vitra5.webp">
+                <img src="../images/vitra/vitra6.webp">
             </div>
         </main>
-
-    </section>
-
-</body>
+    </section> 
+    <script src="../scripts/script.js"></script> 
+</body> 
 </html>
