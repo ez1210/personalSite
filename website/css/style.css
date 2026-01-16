@@ -36,11 +36,12 @@ img {
     color: rgb(238, 238, 238);
     padding: 0 3px;
     display: inline;
-    line-height: 1.15;
 
     -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
 }
+
+
 
 /*ANIMATIONS*/
 @keyframes float-up-down {
@@ -340,7 +341,7 @@ a.label-info:hover {
     object-fit: contain;
 }
 
-.workName { padding: 3px 0; } /* 좌우 패딩 제거하여 라인 맞춤 */
+.workName { padding: 3px 0; line-height: 1.15; } /* 좌우 패딩 제거하여 라인 맞춤 */
 .workName.blue { color: rgb(238, 238, 238); padding: 1px 4px; display: inline-block;}
 
 .workText {
@@ -400,7 +401,7 @@ a.label-info:hover {
     grid-template-columns: 2fr 1fr; 
     
     gap: 20px;
-    margin-bottom: 100px;
+    margin-bottom: 20px;
 }
 
 .image-row-4-2 img {
@@ -487,25 +488,15 @@ a.label-info:hover {
         height: auto;
     }
 
-    .detail-work-description{
-        margin-top: 1px;
+    .header-right {
+        margin-top: 20px;
+        display: block;
     }
 
-    .description-wrapper {
-    column-count: 1;
-    }
-    
-    /* 모바일: Flex로 전환 (줄바꿈 허용) */
     .contact-row { 
-        display: flex; 
-        flex-wrap: wrap; 
-        gap: 10px; 
-        margin-bottom: 5px; 
+        display: flex;
+        margin-top: -2px;
     }
-
-
-    /* 모바일에서는 라벨 너비 자동 */
-    .contact-row .label { width: auto; margin-right: 0; }
 
     .container {
         display: block;
@@ -514,35 +505,61 @@ a.label-info:hover {
     }
 
     .side-nav {
-        grid-column: auto;
         width: 100%;
         position: sticky; 
         top: 0;
         z-index: 100;
         background-color: rgb(238, 238, 238);
-        padding-top: 10px;
-        padding-bottom: 10px;
+        margin-top: 20px;
+        padding-bottom: 20px;
         margin-left: 0 !important;
     }
 
-    .sub-menu { display: none !important; padding-left: 0px; }
-    .sub-menu.open {
-        display: grid !important;
+    .sub-menu { 
+        display: none; /* 기본: 안 보임 */
+        padding-left: 20px;
+        margin-top: 5px;
         grid-template-columns: 1fr 1fr;
         column-gap: 5px;
         row-gap: 1px;
-        align-items: center;
-        margin-top: 0;
+    }
+    
+    .sub-menu.open {
+        display: grid; 
     }
 
-    .sub-menu li { display: block; margin-bottom: 0; }
-    
-    /* 모바일 메뉴 링크 들여쓰기 조정 */
-    .sub-menu a { 
-        margin-left: 20px; 
-        padding-left: 0; /* PC용 패딩 초기화 */
-        display: block; 
+    .sub-menu.detail-view {
+        display: flex !important;
+        flex-wrap: wrap;
+        margin-left: -17px;
+        justify-content: space-between;
     }
+    
+    .sub-menu.detail-view li {
+        display: none;
+    }
+
+    .sub-menu.detail-view li:has(.active) {
+        display: block !important;
+    }
+
+    .sub-menu .active {
+        color: #0000ee;
+        margin-left: 0 !important;
+        display: inline-block;
+    }
+
+    .main-link {
+        cursor: pointer;
+        pointer-events: auto;
+    }
+
+    .home-link {
+    cursor: pointer;
+    /* main-link와 모양이 같아야 하니 필요한 스타일이 있다면 추가 */
+    display: block; 
+    margin-bottom: 10px;
+}
     
     .sub-menu .menu-label {
         grid-column: 1 / -1;
@@ -558,6 +575,13 @@ a.label-info:hover {
         width: 100%;
     }
     .work { margin-bottom: 30px; }
+
+    .description-wrapper {
+        margin-top: 3px !important;
+        display: block;
+        column-count: 1 !important;
+        width: 100% !important;
+    }
 
     .image-row-3 {
         grid-template-columns: 1fr; 
