@@ -74,7 +74,17 @@ if (document.readyState === 'loading') {
 }
 
 /* --- 아래는 기존 이미지 및 날짜 로직 (동일) --- */
-const imageFiles = ['vitra1.webp', 'vitra2.webp', 'vitra3.webp', 'vitra4.webp', 'vitra5.webp'];
+const imageFiles = [
+  'bp1.webp',
+  'bp4.webp',
+  'bp5.webp',
+  'cf1.webp',
+  'cl2.jpg',
+  'cl4.jpg',
+  'gm5.jpg', 
+  'thumb.png',
+  'gm4.jpg'
+];
 const shuffledImages = [...imageFiles].sort(() => 0.5 - Math.random());
 const bgSheets = document.querySelectorAll('.sheet-1, .sheet-2, .sheet-3');
 

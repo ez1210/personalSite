@@ -41,8 +41,8 @@ html, body {
 
 .last-updated {
   position: fixed;
-  top: 50px;
-  right: 30px;
+  bottom: 80px;
+  right: 60px;
   
   font-size: 15px; 
   font-weight: bolder;
@@ -51,8 +51,8 @@ html, body {
   background: #ff65a3;
   padding: 10px; box-sizing: border-box;
   border-radius: 2px;
-  transform: rotate(10deg);
-  box-shadow: 0 1px 5px rgba(0,0,0,0.8);
+  transform: rotate(5deg);
+  box-shadow: 2px 2px 3px 0px rgba(0,0,0,0.6);
 
   z-index: 1;
 }
@@ -74,7 +74,7 @@ html, body {
   position: absolute;
   top: 0; left: 0;
   background: #7aedff;
-  box-shadow: 0 1px 10px rgba(0,0,0,0.8);
+  box-shadow: 0px -3px 7px 2px rgba(0,0,0,0.4);
   border-radius: 2px;
 
   background-size: cover;       
@@ -221,7 +221,7 @@ html, body {
   
   background: #ffffff;
   border-radius: 1.5px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.6); 
+  box-shadow: 0px -3px 7px 2px rgba(0,0,0,0.4);
   transform: translate(20px, -10px) rotate(3deg); 
   
   z-index: 0;
@@ -238,7 +238,7 @@ html, body {
   background: #ffffff;
   border-radius: 1.5px;
   
-  box-shadow: 0 4px 15px rgba(0,0,0,0.6); 
+  box-shadow: 0px -3px 7px 2px rgba(0,0,0,0.4);
 
   padding-top: 30px;
 }
@@ -270,7 +270,9 @@ html, body {
   flex: 1;
   display: flex; flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
 .project-name {
@@ -283,14 +285,19 @@ html, body {
   line-height: 1;
 }
 
+.project-tags {
+  display: flex;
+  gap: 10px; /* 태그들끼리 딱 10px만큼만 떨어지게 고정! */
+}
+
 .project-type {
   color: black;
   font-size: 20px; 
   
-  padding: 10px;
+  padding: 5px 8px;
   background-color: #ff7fb2;
-  transform: rotate(15deg);
-  
+
+  box-shadow: 2px 2px 3px 0px rgba(0,0,0,0.6);
 }
 
 .thumbnail {
@@ -407,7 +414,7 @@ html, body {
 
   background: #fff9a3;
   padding: 12px 16px;
-  box-shadow: 2px 3px 8px rgba(0,0,0,0.3);
+  box-shadow:  2px 2px 3px 0px rgba(0,0,0,0.6);
   width: fit-content;
 }
 
@@ -624,8 +631,6 @@ html, body {
     color: black;
     transform: rotate(2deg);
     padding: 3px 6px;
-
-    box-shadow: 1px 2px 3px rgba(0,0,0,0.6);
   }
 
   /* -----------------------------------------
