@@ -1,0 +1,334 @@
+@font-face {
+    font-family: 'manrope';
+    src: url('../font/manrope/manrope2.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@keyframes scroll-up {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-50%); 
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    color: #000;
+    box-sizing: border-box;
+}
+
+.highlight {
+    color: rgb(55, 237, 70);
+}
+
+body {
+    font-family: helvetica;
+    font-size: 52px;
+
+    background-color: rgb(244, 244, 245);
+    
+}
+
+.mobile-thumb {
+    display: none; 
+}
+
+.mobile-only-info {
+    display: none; 
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+    padding-top: 20px;
+    padding-left: 50px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+
+    background-color: rgb(244, 244, 245);
+    border-bottom: 2px solid #000;
+
+}
+
+.header-inner {
+    font-size: 21px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 20px;
+}
+
+.contact-list {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.contact-list a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.25s ease;
+}
+
+.contact-list a:hover {
+    font-style: italic;
+    color: rgb(55, 237, 70);
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    padding-left: 50px;
+}
+
+.classify {
+    grid-column: 1 / 2;
+    height: 100%;
+    padding-top: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.classify ul {
+    list-style: none;
+}
+
+.classify li {
+    font-size: 21.5px;
+    margin-bottom: 18px;
+    margin-top: 2px;
+}
+
+.classify a {
+    transition: color 0.25s ease; 
+}
+
+.classify li :hover {
+    color:rgb(55, 237, 70);
+    font-style: italic;
+}
+
+.filter-list a:hover,
+.filter-list a.active {
+    color: rgb(55, 237, 70);
+}
+
+.project-list {
+    grid-column: 2 / 5;
+    padding-top: 100px;
+    overflow-y: auto;
+}
+
+.work-name {
+    cursor: pointer;
+    width: fit-content;
+    padding-bottom: 7px;
+}
+
+.work-name a {
+    color: #000;
+    text-decoration: none;
+    transition: color 0.25s ease; 
+}
+
+.work-name :hover {
+    color:rgb(55, 237, 70);
+    font-style: italic;
+}
+
+.right-side {
+    grid-column: 5 / -1;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(244, 244, 245);
+    border-left: 2px solid #000;
+}
+
+.right-preview-img {
+    width: 70%;
+    height: auto;
+    object-fit: contain;
+}
+
+.about-me {
+    position: absolute;
+    top: 100px;
+    left: 0;
+
+    text-align: left;
+    font-size: 22px;
+
+    padding-left: 50px;
+    padding-right: 30px;
+}
+
+.intro-text {
+    margin: 0 auto 50px auto;
+    line-height: 1.2;
+}
+
+.resume-block {
+    margin-bottom: 20px;
+}
+
+.resume-block ul {
+    list-style: none; 
+}
+
+.resume-block li {
+    display: flex; 
+    margin-bottom: 7px;
+}
+
+.year {
+    width: 80px;
+    flex-shrink: 0;
+}
+
+/* 1. 동영상이 들어갈 구역 설정 (왼쪽 4칸 차지) */
+.image-more {
+    grid-column: 1 / 5; /* 1번 라인부터 5번 라인까지 (총 4칸) */
+    height: 100vh; /* 높이는 화면 전체 꽉 차게 */
+    
+    /* 동영상을 화면 정중앙에 예쁘게 놓기 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: -50px;
+    
+    overflow-y: auto;
+    overflow-y: auto; /* 내용이 많아지면 스크롤 생기게 */
+}
+
+.video-container {
+    width: 100%;
+    max-width: 1200px; /* 너무 거대해지는 거 방지 (선택사항) */
+    aspect-ratio: 16 / 9; /* 🚨 유튜브 표준 비율(16:9) 고정! */
+}
+
+.video-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none; 
+}
+
+
+@media (max-width: 768px) {
+    header {
+        padding: 15px 20px; 
+    }
+
+    .header-inner {
+        font-size: 21px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .contact-list {
+        gap: 15px;
+    }
+
+    .container {
+        display: flex; 
+        flex-direction: column;
+        padding-left: 20px;
+        padding-right: 20px;
+        overflow: visible !important;
+    }
+
+    .classify {
+        order: 1;
+        padding-top: 120px;
+    }
+
+    .filter-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .classify li {
+        font-size: 21px;
+        margin-bottom: 0;
+    }
+
+
+    .right-side {
+        order: 2;
+        height: auto;
+        border-left: none;
+        padding-top: 30px; 
+        padding-bottom: 20px;
+    }
+
+    .project-list {
+        order: 3;
+        height: auto;
+        overflow-y: visible;
+        padding-top: 20px;
+    }
+
+    .work-name {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 40px;
+        padding-bottom: 0;
+    }
+
+    .mobile-thumb {
+        display: block;
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+
+    .work-name a {
+        font-size: 21px;
+    }
+
+    .about-me {
+        position: static; 
+        padding: 0;
+    }
+
+    .intro-text,
+    .resume-block {
+        display: none;
+    }
+    
+    .more-btn {
+        display: inline-block;
+        font-size: 22px;
+        margin-top: 10px;
+        padding-top: 0;
+        color: #000;
+        text-decoration: none;
+    }
+
+    .right-preview-img {
+        display: none !important; 
+    }
+
+    .mobile-only-info {
+        display: block; 
+    }
+    
+    .mobile-only-info .intro-text,
+    .mobile-only-info .resume-block {
+        display: block;
+    }
+
+}

@@ -5,31 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <title>egolesign</title> 
     <link href="../css/style.css" rel="stylesheet"> 
-    <script> 
-        if (history.scrollRestoration) { 
-            history.scrollRestoration = "manual"; 
-        } 
-        window.scrollTo(0, 0); 
-    </script> 
 
-    <script>
-        if (window.location.hash.includes("info-header")) {
-            document.write('<style>#intro { display: none !important; }</style>');
-        }
-    </script>
+
 </head> 
 
 <body> 
-    <section id="intro"> 
-        <img src="../images/elements/happy.png" class="intro-img">
-        <h1><span class="blue">egolesign</span> can be reached!</h1> 
-        <p class="intro-info">egolesign.com is open to connecting.</p> 
-        <p class="intro-info">Try:</p>
-        <li class="intro-info-list">Check out the portfolio</li>
-        <p class="intro-warning">NO ERROR FOUND!</p>
-        <a href="#info-header" class="scroll-down-btn">Enter</a> 
-    </section> 
-
     <header id="info-header"> 
         <div class="header-left"> 
             <a href="../html/index.html#info-header" class="logo-link">
@@ -44,8 +24,7 @@
             </p> 
         </div> 
 
-        <div class="header-right"> 
-            <div class="contact">Contact</div> 
+        <div class="header-right">
             
             <div class="contact-row"> 
                 <span class="label">mail</span> 
@@ -61,39 +40,26 @@
             </div> 
         </div> 
     </header> 
-<!--
-    <div class="transition-spacer">
-        <div class="squeezing-circle left"></div>
-        <div class="squeezing-circle right"></div>
-    </div>
--->
     <section id="main" class="container"> 
-        <nav class="side-nav">
-            <div>
-                <a href="#" class="main-link active" data-filter="all">→Works</a>
-            </div>
+        <nav class="side-nav split-layout">
+            <ul class="nav-left-column">
+                <ul class="filter-list">
+                    <li><a href="#" data-filter="branding">↳Branding</a></li>
+                    <li><a href="#" data-filter="editorial">↳Editorial</a></li>
+                    <li><a href="#" data-filter="coding">↳Coding</a></li>
+                    <li><a href="#" data-filter="typography">↳Typography</a></li>
+                    <li><a href="#" data-filter="motion">↳Motion</a></li>
+                    <li><a href="#" data-filter="other">↳Other</a></li>
+                </ul>
+            </ul>
 
-            <ul class="sub-menu">
-                <li class="menu-label">type</li>
-                <li><a href="#" data-filter="branding">→Branding</a></li>
-                <li><a href="#" data-filter="editorial">→Editorial</a></li>
-                <li><a href="#" data-filter="coding">→Coding</a></li>
-                <li><a href="#" data-filter="typography">→Typography</a></li>
-                <li><a href="#" data-filter="motion">→Motion</a></li>
-                <li><a href="#" data-filter="other">→Other</a></li>
-        
-                <li class="menu-label">year</li>
-                <li><a href="#" data-filter="2026">→2026</a></li>
-                <li><a href="#" data-filter="2025">→2025</a></li>
-                <li><a href="#" data-filter="2024">→2024</a></li>
-                <li><a href="#" data-filter="2023">→2023</a></li>
-                <li><a href="#" data-filter="2022">→2022</a></li>
-                <li><a href="#" data-filter="2021">→2021</a></li>
-
-                <li class="menu-label">name</li>
+            <ul class="nav-right-column">
                 <li><a href="../html/self-promo.html">→Self Promotion Motion Graphic</a></li>
                 <li><a href="../html/vitra_Catalog.html">→vitra Catalog</a></li>
                 <li><a href="../html/gego.html">→Gego Exhibition Rebranding</a></li>
+            </ul>
+               
+                
                 
             </ul>
         </nav>
