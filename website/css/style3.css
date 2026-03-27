@@ -485,6 +485,19 @@ html, body {
 }
 
 
+.page.about {
+  padding: 200px; /* 사방에 여백을 줘서 글씨가 종이 끝에 안 붙게 함 */
+  overflow-y: auto; /* 내용이 길어지면 스크롤 생기게 함 */
+  
+}
+
+.about-me {
+  box-sizing: border-box;
+  background-color: #e3e3e3;
+  padding: 25px 20px;
+}
+
+
 
 @media (max-width: 768px) {
   :root {
