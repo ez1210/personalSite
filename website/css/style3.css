@@ -1,19 +1,19 @@
 /*
 @font-face {
   font-family: 'RoboCondensed';
-  src: url('../font/RobotoCon/RobotoCondensed-Medium.ttf') format('woff2');
+  src: url('./font/RobotoCon/RobotoCondensed-Medium.ttf') format('woff2');
   font-weight: 500;
 }
 
 @font-face {
   font-family: 'RoboCondensed';
-  src: url('../font/RobotoCon/RobotoCondensed-Regular.ttf') format('woff2');
+  src: url('./font/RobotoCon/RobotoCondensed-Regular.ttf') format('woff2');
   font-weight: 400;
 }
 
 @font-face {
   font-family: 'RoboCondensed';
-  src: url('../font/RobotoCon/RobotoCondensed-Light.ttf') format('woff2');]
+  src: url('./font/RobotoCon/RobotoCondensed-Light.ttf') format('woff2');]
   font-weight: 300;
 }
 */

@@ -84,7 +84,7 @@ bgSheets.forEach((sheet, index) => {
   sheet.style.transform = `rotate(${randomAngle}deg)`;
   if (shuffledImages[index]) {
     const preloadedImg = new Image();
-    preloadedImg.src = `../images/random/${shuffledImages[index]}`;
+    preloadedImg.src = `./images/random/${shuffledImages[index]}`;
     preloadedImg.onload = () => { sheet.style.backgroundImage = `url('${preloadedImg.src}')`; };
   }
 });
