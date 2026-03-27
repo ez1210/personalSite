@@ -27,7 +27,7 @@ html, body {
   font-weight: 300;
   letter-spacing: -0.5px;
 
-  background-color: rgb(255, 255, 255);
+  background-color: #f3f3f3;
 }
 
 
@@ -48,7 +48,7 @@ html, body {
   font-weight: bolder;
   color: #000000;
 
-  background: #ff65a3;
+  background: #FF80DD;
   padding: 10px; box-sizing: border-box;
   border-radius: 2px;
   transform: rotate(5deg);
@@ -73,7 +73,7 @@ html, body {
 .paper {
   position: absolute;
   top: 0; left: 0;
-  background: #7aedff;
+  background: #2ce5fe;
   box-shadow: 0px -3px 7px 2px rgba(0,0,0,0.4);
   border-radius: 2px;
 
@@ -85,27 +85,21 @@ html, body {
 /* 메인 종이 (맨 앞) */
 .main-sheet {
   z-index: 0;
-  width: 100%; height: 100%; 
-  padding: 1vw; box-sizing: border-box;
-  padding-top: 10vh;
+  transform: rotate(-10deg) translateX(-1%);
+}
 
-  transform: rotate(-10deg);
+.intro-image-container {
+  width: 100%;
+  height: 100%;
 }
 
 /* 실제 이미지 스타일 */
 .intro-text-image {
   width: 100%;
-  
+  height: 100%;
+  object-fit: contain; 
+  display: block; 
 }
-
-/*
-.sheet-1, .sheet-2, .sheet-3 {
-  border: 8px solid #ffffff;
-  
-  
-  box-sizing: border-box; 
-}
-*/
 
 .sheet-1 {
   z-index: -1;
@@ -142,9 +136,9 @@ html, body {
   
   border-radius: 0 15px 15px 0;
 
-  font-size: 68px; color:rgb(255, 255, 255);
-  letter-spacing: -2px;
-  scale: 1.15 1;
+  font-size: 50px; color:rgb(58, 55, 69);
+  letter-spacing: -3px;
+  scale: 1.2 1;
   writing-mode: vertical-rl;
 
   cursor: pointer;
@@ -189,9 +183,21 @@ html, body {
   z-index: 1; pointer-events: auto;
 }
 
-.tab.project, .page.project  { background: rgb(0, 0, 255); }
-.tab.archive, .page.archive { background: rgb(0, 255, 0);  }
-.tab.about, .page.about   { background: rgb(255, 0, 0);  }
+.tab.project {
+  background: #1ED0E8;
+  background: linear-gradient(90deg,rgba(30, 208, 232, 1) 76%, rgba(237, 255, 248, 1) 96%, rgba(142, 224, 245, 1) 99%);
+}
+.page.project {background: #1ED0E8;}
+.tab.archive {
+  background: #1ED0E8;
+  background: linear-gradient(90deg,rgba(30, 208, 232, 1) 76%, rgba(237, 255, 248, 1) 96%, rgba(142, 224, 245, 1) 99%);
+}
+.page.archive {background: #1ED0E8;}
+.tab.about { 
+  background: #1ED0E8;
+  background: linear-gradient(90deg,rgba(30, 208, 232, 1) 76%, rgba(237, 255, 248, 1) 96%, rgba(142, 224, 245, 1) 99%);
+}
+.page.about {background: #1ED0E8;}
 
 .page.project, .detail-sheet {
   display: flex;
@@ -219,7 +225,7 @@ html, body {
   width: 100%;
   height: 100%;
   
-  background: #ffffff;
+  background: #f3f3f3;
   border-radius: 1.5px;
   box-shadow: 0px -3px 7px 2px rgba(0,0,0,0.4);
   transform: translate(20px, -10px) rotate(3deg); 
@@ -235,7 +241,7 @@ html, body {
   width: 100%;
   box-sizing: border-box;
 
-  background: #ffffff;
+  background: #f3f3f3;
   border-radius: 1.5px;
   
   box-shadow: 0px -3px 7px 2px rgba(0,0,0,0.4);
@@ -292,10 +298,11 @@ html, body {
 
 .project-type {
   color: black;
-  font-size: 20px; 
+  font-size: 15px; 
+  font-weight: bolder;
   
   padding: 5px 8px;
-  background-color: #ff7fb2;
+  background-color:#FF80DD;
 
   box-shadow: 2px 2px 3px 0px rgba(0,0,0,0.6);
 }
@@ -552,12 +559,24 @@ html, body {
     top: 0 !important;
     height: var(--mobile-tab-height) !important;
     writing-mode: horizontal-tb; /* 글씨를 가로로 변경 */
-    border-radius: 0 0 0 0; /* 모서리 둥글기를 아래쪽으로 */
+    border-radius: 0 0 10px 10px; /* 모서리 둥글기를 아래쪽으로 */
     scale: 1 !important; /* 스케일 초기화 */
     font-size: 20px; 
     letter-spacing: normal;
     transform: none !important;
     z-index: 10 !important;
+
+    box-shadow: none !important;
+  }
+
+  .folder {
+    /* 기존 2px 2px 이었던 것을 -> X축은 0px, Y축은 4px로 변경 */
+    filter: drop-shadow(0px 3px 1.5px rgba(0, 0, 0, 0.5));
+  }
+
+  .tab.project, .tab.archive, .tab.about {
+
+    background: linear-gradient(180deg,rgba(30, 208, 232, 1) 72%, rgba(216, 240, 237, 1) 90%, rgba(142, 224, 245, 1) 100%);
   }
 
   /* 탭 3개를 가로 3등분으로 배치 (겹치지 않게) */
