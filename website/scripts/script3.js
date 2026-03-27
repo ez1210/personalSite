@@ -115,3 +115,43 @@ projectTags.forEach(tag => {
   // 각 태그마다 랜덤 각도를 개별적으로 적용합니다.
   tag.style.transform = `rotate(${randomAngle}deg)`;
 });
+
+
+
+//archive//
+
+function scatterPhotos() {
+  const pile = document.getElementById('photo-pile');
+  if (!pile) return;
+
+  const photos = pile.querySelectorAll('.pile-photo');
+  
+  // 흩뿌려질 운동장의 넓이
+  const containerWidth = pile.offsetWidth;
+  const containerHeight = pile.offsetHeight;
+
+  photos.forEach((photo, index) => {
+    // 💡 1. 랜덤 좌표 계산 (사진 크기를 고려해 가장자리 마진 줌)
+    const margin = 100; // 사진이 밖으로 안 나가게 하는 여백
+    const randomX = Math.floor(Math.random() * 80) + 10;
+    const randomY = Math.floor(Math.random() * 80) + 10; 
+
+    // 💡 3. 랜덤 Stacking order (겹치는 순서)
+    const randomZ = Math.floor(Math.random() * photos.length);
+
+    // 💡 4. CSS 속성 적용
+    photo.style.left = `${randomX}%`;
+    photo.style.top = `${randomY}%`;
+    photo.style.transform = `translate(-50%, -50%)`;
+    photo.style.zIndex = randomZ;
+    
+    // 처음엔 투명했다가 서서히 나타나게 하면 더 멋집니다
+    photo.style.opacity = 0;
+    setTimeout(() => {
+        photo.style.opacity = 1;
+    }, index * 50); // 순차적으로 나타나는 효과
+  });
+}
+
+// 🚀 실행 방법 1: 페이지 로드 시 흩뿌리기
+window.addEventListener('load', scatterPhotos);

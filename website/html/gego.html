@@ -1,82 +1,56 @@
-<!DOCTYPE html> 
-<html lang="en"> 
-<head> 
-    <meta charset="UTF-8"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <title>egolesign</title> 
-    <link href="./css/style.css" rel="stylesheet"> 
-    <script>
-        if (window.location.hash.includes("info-header")) {
-            document.write('<style>#intro { display: none !important; }</style>');
-        }
-    </script>
-</head> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>egolesign</title>
+  <link rel="stylesheet" href="../css/style3.css"> 
+</head>
 
-<body> 
-    <header id="info-header"> 
-    <div class="header-left"> 
-        <a href="./html/index.html#info-header" class="logo-link">
-            <img src="./images/elements/logo.png" class="site-logo">
-        </a>
-        <p class="detail-work-name">
-           <span class="blue">Gego Exhibition Rebranding</span>
-        </p>
-    </div>
+<body>
+    <div class="folder detail-mode" id="folder-archive" data-target="archive">
 
-    <div class="description-wrapper">
-        <p class="detail-work-description">
-            This project involved rebranding the exhibition Gego: Measuring Infinity, which was held at the Guggenheim Museum. The overall visual identity was developed from the woven patterns found in selected works by Gego. These weaving served as a key reference, informing the graphic language and unifying the design elements across the project.
-        </p>
-    </div>
-</header>
+        <div class="tab project go-back">
+            <a href="../index.html?open=archive" class="label"> ARCHIVE</a>
+        </div>
 
-    <section id="main" class="container"> 
-        <nav class="side-nav">
-            <div>
-                <a href="./html/index.html#info-header" class="home-link">→Works</a>
-            </div>
+        <div class="page project">
+            <div class="project-paper-stack">
+                <div class="project-paper-sheet detail-sheet">
+                    
+                    <div class="detail-container">
+                        <div class="detail-title-group">
+                             <p class="detail-name">Gego: Measuring Infinity</p>
+                        </div>
+                       
+                        <div class="detail-meta">
+                            <span>Visual Identity, Branding</span>
+                            <span>2023</span>
+                            <span>Instructor: Debra Drodvillo</span>
+                        </div>
+                        <div class="detail-description">
+                        </div>
 
-            <ul class="sub-menu detail-view">
-                <li class="menu-label">type</li>
-            
-                <li><span class="active">Branding</span></li>
-                <li><span class="inactive">Editorial</span></li>
-                <li><span class="inactive">Coding</span></li>
-                <li><span class="inactive">Typography</span></li>
-                <li><span class="inactive">Other</span></li>
-
-                <li class="menu-label">year</li>
-            
-                <li><span class="inactive">2026</span></li>
-                <li><span class="inactive">2025</span></li>
-                <li><span class="inactive">2024</span></li>
-                <li><span class="active">2023</span></li>
-                <li><span class="inactive">2022</span></li>
-                <li><span class="inactive">2021</span></li>
-
-            <li class="menu-label">name</li>
-                <li><span class="inactive">vitra Catalog</span></li>
-                <li><span class="active">Gego Exhibition Rebranding</span></li>
-
-            </ul>
-        </nav>
-            <div class="project-images">
-                <img src="./images/gego/gego4.webp">
-            </div>    
-                <div class="image-row-3">
-                    <img src="./images/gego/gego3.png">
-                    <img src="./images/gego/gego2.png">
-                    <img src="./images/gego/gego1.png">
+                        <div class="photo-section">
+                            <!--
+                            <div class="photo-row">
+                                <div class="photo"><img src="./images/blockparty/haebang.webp"></div>
+                                <div class="photo"><img src="./images/blockparty/rubixcube.webp"></div>
+                            </div>
+                            -->
+                            <div class="photo"><img src="../images/gego/gego1.png"></div>
+                            <div class="photo"><img src="../images/gego/gego2.png"></div>
+                            <div class="photo"><img src="../images/gego/gego3.png"></div>
+                            <div class="photo"><img src="../images/gego/gego4.webp"></div>
+                            <div class="photo"><img src="../images/gego/gego5.png"></div>
+                            <div class="photo"><img src="../images/gego/gego7.webp"></div>
+                            <div class="photo"><img src="../images/gego/gego8.webp"></div>
+                        </div>
+                    </div>
                 </div>
-            <div class="image-row-4-2">
-                <img src="./images/gego/gego5.png">
-                <img src="./images/gego/gego6.png">
-            </div>    
-            <div class="project-images">
-                <img src="./images/gego/gego7.webp">
-                <img src="./images/gego/gego8.webp">
-            </div> 
-    </section> 
-    <script src="./scripts/script.js"></script> 
-</body> 
+            </div>
+        </div>
+    </div>
+    <script src="./scripts/script3.js"></script>
+</body>
 </html>
