@@ -523,10 +523,30 @@ html, body {
   
 }
 
+.resume-button {
+  display: inline-block; 
+  width: fit-content;
+  padding: 10px 20px;
+  margin-bottom:30px;
+  
+  background-color: #f3f3f3; 
+  color: black;
+  text-decoration: none;
+  font-size: 18px;
+  
+  border-radius: 3px;
+  box-shadow: 2px 2px 3px 0px rgba(0,0,0,0.6);
+  
+  /* 마우스 올렸을 때 애니메이션 준비 */
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
 .about-me {
+  max-width: 500px;
   box-sizing: border-box;
   background-color: #e3e3e3;
   padding: 25px 20px;
+  box-shadow: 0px -3px 7px 2px rgba(0,0,0,0.4);;
 }
 
 
