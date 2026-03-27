@@ -573,6 +573,10 @@ html, body {
   transition: transform 0.2s ease-out;
   
   cursor: pointer;
+
+  will-change: top, left, transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 .pile-photo:hover {
