@@ -586,6 +586,22 @@ html, body {
     --mobile-tab-height: 40px;
   }
 
+  .contact {
+    /* 💡 핵심: 부모가 늘려도 무시하고 내 글자 크기만큼만 쪼그라들어라! */
+    width: fit-content;
+    height: fit-content;
+    
+    /* 기존에 넣으셨던 설정들 (폰트 크기, 위치 등) */
+    right: 40%;
+    font-size: 14px; 
+    line-height: 1.25; 
+    white-space: nowrap;
+    
+    /* (선택) 핑크색 박스니까 포스트잇처럼 안쪽 여백을 주면 훨씬 예쁩니다 */
+    padding: 15px;
+    box-sizing: border-box;
+  }
+
   /* 1. 폴더 자체의 좌우 이동 애니메이션을 끕니다 */
   .folder {
     transform: none !important; 
