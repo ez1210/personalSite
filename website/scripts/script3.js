@@ -169,7 +169,7 @@ const img = document.getElementById('stopmotion-img');
 const container = document.getElementById('click-zone');
 const clickZone = document.getElementById('click-zone');
 
-const INTERVAL = [130, 130]; // 각 이미지 사이 딜레이 (ms), 취향에 맞게 조절
+const INTERVAL = [100, 130]; // 각 이미지 사이 딜레이 (ms), 취향에 맞게 조절
 
 container.onclick = () => {
   if (isAnimating) return; // 애니메이션 중엔 클릭 무시
