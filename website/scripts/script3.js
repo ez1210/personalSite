@@ -1,4 +1,36 @@
-// 1. [핵심] 페이지 로드 상태와 상관없이 즉시 실행되는 함수
+document.addEventListener('DOMContentLoaded', () => { //배경 작업사진 랜덤, 클릭
+  
+  const bgImages = [
+    './images/vitra/vitra1.webp',
+    './images/gego/gego1.png',
+    './images/goodmolecules/gm1.jpg',
+    './images/blockparty/title.webp'
+  ];
+
+  
+
+  const bgPhoto = document.getElementById('bg-photo');
+  
+  const bgContainer = document.getElementById('bg-photo-container');
+
+  if (bgPhoto && bgContainer && bgImages.length > 0) {
+    
+    let currentIndex = Math.floor(Math.random() * bgImages.length);
+    bgPhoto.src = bgImages[currentIndex];
+
+    bgContainer.addEventListener('click', () => {
+      
+      currentIndex = (currentIndex + 1) % bgImages.length;
+      
+      bgPhoto.src = bgImages[currentIndex];
+      
+    });
+  }
+});
+
+
+
+// 탭 펼치기 닫기
 const setupFolders = () => {
   const folders = document.querySelectorAll('.folder');
   if (folders.length === 0) return; 
@@ -73,49 +105,6 @@ if (document.readyState === 'loading') {
   setupFolders();
 }
 
-/* --- 아래는 기존 이미지 및 날짜 로직 (동일) --- */
-const imageFiles = [
-  'bp1.webp',
-  'bp4.webp',
-  'bp5.webp',
-  'cf1.webp',
-  'cl2.jpg',
-  'cl4.jpg',
-  'gm5.jpg', 
-  'thumb.png',
-  'gm4.jpg'
-];
-const shuffledImages = [...imageFiles].sort(() => 0.5 - Math.random());
-const bgSheets = document.querySelectorAll('.sheet-1, .sheet-2, .sheet-3');
-
-bgSheets.forEach((sheet, index) => {
-  let randomAngle = Math.floor(Math.random() * 21) + 15; 
-  if (index % 2 === 0) randomAngle = -randomAngle; 
-  sheet.style.transform = `rotate(${randomAngle}deg)`;
-  if (shuffledImages[index]) {
-    const preloadedImg = new Image();
-    preloadedImg.src = `./images/random/${shuffledImages[index]}`;
-    preloadedImg.onload = () => { sheet.style.backgroundImage = `url('${preloadedImg.src}')`; };
-  }
-});
-
-const updateDateElement = document.getElementById('update-date');
-if (updateDateElement) {
-  const lastMod = new Date(document.lastModified);
-  updateDateElement.textContent = `${lastMod.getFullYear()}. ${String(lastMod.getMonth() + 1).padStart(2, '0')}. ${String(lastMod.getDate()).padStart(2, '0')}.`;
-}
-
-/* --- 프로젝트 태그(project-type) 랜덤 기울기 --- */
-const projectTags = document.querySelectorAll('.project-type');
-
-projectTags.forEach(tag => {
-  // -6도에서 6도 사이의 랜덤한 각도를 만듭니다. (각도가 너무 크면 글씨 읽기 힘듦)
-  const randomAngle = Math.floor(Math.random() * 13) - 6; 
-  
-  // 각 태그마다 랜덤 각도를 개별적으로 적용합니다.
-  tag.style.transform = `rotate(${randomAngle}deg)`;
-});
-
 
 
 //archive//
@@ -153,5 +142,59 @@ function scatterPhotos() {
   });
 }
 
-// 🚀 실행 방법 1: 페이지 로드 시 흩뿌리기
-window.addEventListener('load', scatterPhotos);
+
+const images = [
+  './images/종이1.png',
+  './images/종이2.png',
+  './images/종이3.png'
+];
+
+let loadedCount = 0;
+let currentIndex = 0;
+let isAnimating = false;
+
+const imageObjects = images.map(src => {
+  const image = new Image();
+  image.onload = () => {
+    loadedCount++;
+    if (loadedCount === images.length) {
+      container.onclick = handleClick;
+    }
+  };
+  image.src = src;
+  return image;
+});
+
+const img = document.getElementById('stopmotion-img');
+const container = document.getElementById('click-zone');
+const clickZone = document.getElementById('click-zone');
+
+const INTERVAL = [150, 150]; // 각 이미지 사이 딜레이 (ms), 취향에 맞게 조절
+
+container.onclick = () => {
+  if (isAnimating) return; // 애니메이션 중엔 클릭 무시
+  isAnimating = true;
+
+  const isForward = currentIndex < images.length - 1;
+  const step = isForward ? 1 : -1;
+  const target = isForward ? images.length - 1 : 0;
+  let stepCount = 0;
+
+  const animate = () => {
+    currentIndex += step;
+    img.src = images[currentIndex];
+    stepCount++;
+
+    if (currentIndex !== target) {
+      setTimeout(animate, INTERVAL[stepCount]);
+    } else {
+      isAnimating = false;
+      if (currentIndex === images.length - 1) {
+      clickZone.classList.add('expanded');
+      } else {
+        clickZone.classList.remove('expanded');
+      }
+    }
+  };
+  setTimeout(animate, INTERVAL[0]);
+};

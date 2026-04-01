@@ -13,7 +13,7 @@
 
 @font-face {
   font-family: 'RoboCondensed';
-  src: url('./font/RobotoCon/RobotoCondensed-Light.ttf') format('woff2');]
+  src: url('./font/RobotoCon/RobotoCondensed-Light.ttf') format('woff2');
   font-weight: 300;
 }
 */
@@ -23,95 +23,82 @@ html, body {
   width: 100%; height: 100%;
   overflow: hidden;
   
-  font-family: Helvetica, sans-serif;
-  font-weight: 300;
-  letter-spacing: -0.5px;
-
-  background-color: #f3f3f3;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  letter-spacing: -0.3px;
 }
 
 
 
 :root {
   /*인덱스 가로길이랑 페이지 노출 정도*/
-  --tab-width: 100px; 
-  --peek-width: 15px;
+  --tab-width: 45px; 
+  --peek-width: 0px;
 }
 
 
-.contact {
+#bg-wrapper {
   position: fixed;
-  top: 10%;
-  right: 70%;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   
-  font-size: 20px; 
-  font-weight: bolder;
-  color: #000000;
-
-  background: #FF80DD;
-  padding: 10px; box-sizing: border-box;
-  border-radius: 2px;
-  transform: rotate(-13deg);
-  box-shadow: 2px 2px 3px 0px rgba(0,0,0,0.6);
-
-  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  z-index: 0;
 }
 
-.last-updated {
-  position: fixed;
-  bottom: 80px;
-  right: 60px;
-  
-  font-size: 15px; 
-  font-weight: bolder;
-  color: #000000;
-
-  background: #FF80DD;
-  padding: 10px; box-sizing: border-box;
-  border-radius: 2px;
-  transform: rotate(5deg);
-  box-shadow: 2px 2px 3px 0px rgba(0,0,0,0.6);
-
-  z-index: 1;
+#bg-photo-container {
+  display: inline-flex;
+  position: relative;
+  cursor: pointer;
 }
 
+#bg-photo {
+  max-width: 60vw;
+  max-height: 80vh;
 
-.bg-paper-stack {
+  display: block; 
+}
+
+.tape-upper {
   position: absolute;
-  top: 50%; left: 50%;
-  margin-left: calc((var(--tab-width) + var(--peek-width)) / 2 + 40px);
-  
-  height: 80vh; 
-  aspect-ratio: 1 / 1.2; 
+  top: -1.5vw; 
+  left: -2vw;
+  width: 10vw;
+  transform: rotate(-30deg);
+  z-index: 10;
+  pointer-events: none;
 
-  transform: translate(-50%, -50%);
-  z-index: 0; pointer-events: none; user-select: none;
+  
+}
+
+.tape-bottom {
+  position: absolute;
+  bottom: -1.5vw; 
+  right: -2vw;
+  width: 10vw;
+  transform: rotate(-30deg);
+  z-index: 10;
+  pointer-events: none;
 }
 
 .paper {
   position: absolute;
-  top: 0; left: 0;
-  background: #2ce5fe;
-  box-shadow: 0px -3px 7px 2px rgba(0,0,0,0.4);
-  border-radius: 2px;
-
-  background-size: cover;       
-  background-position: center;  
-  background-repeat: no-repeat;
+  top: 50px; right: 90px;
+  background: none;
+  width: 500px;
+  pointer-events: none;
+  
 }
-
-/* 메인 종이 (맨 앞) */
-.main-sheet {
-  z-index: 0;
-  transform: rotate(-10deg) translateX(-1%);
-}
-
 .intro-image-container {
+  position: relative;
   width: 100%;
   height: 100%;
 }
-
-/* 실제 이미지 스타일 */
 .intro-text-image {
   width: 100%;
   height: 100%;
@@ -119,50 +106,53 @@ html, body {
   display: block; 
 }
 
-.sheet-1 {
-  z-index: -1;
-  width: 110%; height: 125%; 
-  top: -10%; left: -2.5%; 
+#click-zone {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
+  cursor:pointer;
+
+  pointer-events: auto;
 }
 
-.sheet-2 {
-  z-index: -2;
-  width: 105%; height: 120%; 
-  top: -10%; left: -20%;
+#click-zone.expanded {
+  width: 340px;
+  height: 420px;
 }
-
-.sheet-3 {
-  z-index: -3;
-  
-  width: 120%; height: 135%; 
-  top: -15%; left: -10%;
-}
-
-
-
 
 
 .tab {
   position: absolute;
-  right: 0; left: auto;
+  right: -3px; left: auto;
   width: var(--tab-width);
-  height: 37vh;
+  height:  14vh;
   display: flex; align-items: center; justify-content: center;
   
-  
   z-index: 999; pointer-events: auto;
+  border-radius: 0px 5px 5px 0px;
   
-  border-radius: 0 15px 15px 0;
-
-  font-size: 60px; color:rgb(36, 35, 43);
-  letter-spacing: -3px;
-  scale: 1.2 1;
+  font-size: 18px; color:rgb(36, 35, 43);
+  scale: 1.15 1;
+  letter-spacing: 0.02em;
+  font-weight: 500;
   writing-mode: vertical-rl;
 
   cursor: pointer;
 
+  transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+  
+  transform-origin: right center;
+
   transform: translateZ(0);/*브라우저 속도 개선*/
   will-change: transform;
+}
+
+.tab:hover {
+ 
+  transform: translateX(20px) translateZ(0);
 }
 
 .folder {
@@ -173,22 +163,22 @@ html, body {
   transition: transform 0.65s cubic-bezier(0.77, 0, 0.175, 1);
   pointer-events: none; 
 
-  filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.7));
+  filter: drop-shadow(4px 0px 2px rgba(0, 0, 0, 0.4));
 }
 
 .folder.open { transform: translateX(0); }
 
 
 #folder-projects .tab { 
-  top: 2vh; 
+  top: 0vh; 
 }
 
 #folder-archive .tab { 
-  top: calc(2vh + 30vh);
+  top: 14.1vh;
 }
 
 #folder-about .tab { 
-  top: calc(2vh + 60vh);
+  top: 28.2vh;
 }
 
 .page {
@@ -197,151 +187,145 @@ html, body {
   height: 100%;
   padding: 40px 40px 40px 100px;
   box-sizing: border-box;
-  display: flex; flex-direction: column; justify-content: center;
+  display: flex; flex-direction: column; justify-content: flex-start;
   z-index: 1; pointer-events: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
-.tab.project {
-  background: #1ED0E8;
-  background: linear-gradient(90deg,rgba(30, 208, 232, 1) 76%, rgba(237, 255, 248, 1) 96%, rgba(142, 224, 245, 1) 99%);
-}
-.page.project {background: #1ED0E8;}
-.tab.archive {
-  background: #1ED0E8;
-  background: linear-gradient(90deg,rgba(30, 208, 232, 1) 76%, rgba(237, 255, 248, 1) 96%, rgba(142, 224, 245, 1) 99%);
-}
-.page.archive {background: #1ED0E8;}
-.tab.about { 
-  background: #1ED0E8;
-  background: linear-gradient(90deg,rgba(30, 208, 232, 1) 76%, rgba(237, 255, 248, 1) 96%, rgba(142, 224, 245, 1) 99%);
-}
-.page.about {background: #1ED0E8;}
-
-.page.project, .detail-sheet {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start; 
-  align-items: center;
-  
-  padding-top: 100px; 
-  padding-right: 100px;
-  
-  overflow-y: auto; 
-  scrollbar-width: none; 
-  -ms-overflow-style: none;
+.tab.project {background-color: #E9F0E9;}
+.page.project {
+  background: #c2c2c2;
+  background: linear-gradient(90deg,#c2c2c2 12%, #E9F0E9 100%);
 }
 
-.project-paper-stack {
-  position: relative;
+.tab.archive {background-color: #E9F0F0;}
+.page.archive {
+  background: #c2c2c2;
+  background: linear-gradient(90deg, #c2c2c2 12%, #E9F0F0 100%);
+}
+
+.tab.about {background-color: #EEE9F0;}
+.page.about {
+  background: #c2c2c2;
+  background: linear-gradient(90deg, #c2c2c2 12%, #EEE9F0 100%);
+}
+
+.page.project {
+  padding-top: 0px; 
+}
+
+
+/*트랜지션*/
+.tab, .page {
+  transition: transform 0.3s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.folder:not(.open):has(.tab:hover) .tab,
+.folder:not(.open):has(.tab:hover) .page {
+  transform: translateX(20px);
+}
+
+.folder.open .tab,
+.folder.open .page {
+  transform: translateX(0) !important; /* !important가 호버의 움직임을 힘으로 찍어 누릅니다. */
+}
+
+
+
+
+/*프로젝트*/
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); /* 4열 */
+  column-gap: 20px;
+  row-gap: 50px;
   width: 100%;
+  align-items: start;
+  padding-top: 6.9vw;
 }
 
-.project-paper-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  
-  background: #f3f3f3;
-  border-radius: 1.5px;
-  box-shadow: 0px -3px 7px 2px rgba(0,0,0,0.4);
-  transform: translate(20px, -10px) rotate(3deg); 
-  
-  z-index: 0;
-}
-
-.project-paper-sheet {
-  position: relative;
-  z-index: 1;
-  margin-top: 0;
-
-  width: 100%;
-  box-sizing: border-box;
-
-  background: #f3f3f3;
-  border-radius: 1.5px;
-  
-  box-shadow: 0px -3px 7px 2px rgba(0,0,0,0.4);
-
-  padding-top: 30px;
+.page.project::-webkit-scrollbar {
+  display: none;
 }
 
 .project-item {
-  display: flex;
-  flex-direction: row; 
-  align-items: center;
-  
+  display: grid; 
+  grid-template-columns: 1fr auto; 
+
   text-decoration: none;
+  color: inherit;
   
-  width: 100%;
-
-  border-bottom: 1.5px solid rgb(197, 204, 227);
-
-  padding-bottom: 10px; /* (위쪽 여백) */
-  margin-bottom: 10px;  /* (아래쪽 여백) */
+  z-index: 1;
 }
 
-.project-item:last-child {
-  border-bottom: none;
-  margin-bottom: 0;
-}
-
-.project-info {
-  padding-left: 40px;
-  padding-right: 40px;
-
-  flex: 1;
-  display: flex; flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.project-name {
-  font-weight: 400;
-  scale: 1 1.05;
-  color: rgb(29, 30, 34);
-  font-size: 60px; 
-
-  margin: 0;
-  line-height: 1;
-}
-
-.project-tags {
-  display: flex;
-  gap: 10px; /* 태그들끼리 딱 10px만큼만 떨어지게 고정! */
-}
-
-.project-type {
-  color: black;
-  font-size: 15px; 
-  font-weight: bolder;
-  
-  padding: 5px 8px;
-  background-color:#FF80DD;
-
-  box-shadow: 2px 2px 3px 0px rgba(0,0,0,0.6);
+.project-item:hover {
+  z-index: 10;
 }
 
 .thumbnail {
-  width: 100px; 
-  max-height: 100px;
-  aspect-ratio: 1/1;
-  flex-shrink: 0;
-  
-  margin-bottom: 0; 
-  margin-left: 30px;
-
-  background-color: #e3e3e3;
-}
-
-.thumbnail img, .thumbnail video {
   width: 100%;
-  height: 100%;
-  object-fit: contain;
+  margin-bottom: 5px; 
+
+  z-index: 2;
 }
+
+.thumbnail img,
+.thumbnail video {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+
+.project-info {
+  font-size: 16px;
+  color: #000000;
+  line-height: 1.15;
+  scale: 1.15 1;
+  transform-origin: left top;
+  align-self: start;
+  writing-mode: vertical-rl;
+
+  padding: 10px 5px 10px 5px ;
+  margin-right: 10px;
+  margin-left: -2.5px;
+  background-color: #f8f9f8f9;
+  box-shadow: 2px 0px 2px rgb(0, 0, 0, 0.2);
+  border-radius: 0 5px 5px 0;
+
+  z-index: 1;
+}
+
+.project-info p {
+  margin: 0 0 1px 0;
+}
+
+.project-name {
+  grid-column: 1 / -1; 
+  
+  font-size: 32px;
+  scale: 1 1.15;
+  margin: 0;
+}
+
+.thumbnail img,
+.thumbnail video,
+.project-info {
+  transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.project-item:has(.thumbnail:hover) {
+  z-index: 10;
+}
+
+.project-item:has(.thumbnail:hover) .thumbnail img,
+.project-item:has(.thumbnail:hover) .thumbnail video,
+.project-item:has(.thumbnail:hover) .project-info {
+  transform: translateX(15px);
+}
+
+
 
 /*상세 페이지*/
 
@@ -373,8 +357,9 @@ html, body {
 
 .detail-container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  padding: 60px;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 10px;
+  padding-top: 6.9vw;
   box-sizing: border-box;
   width: 100%;
 
@@ -395,29 +380,28 @@ html, body {
   margin: 0;
   
   font-weight: 400;
-  scale: 1 1.05;
+  scale: 1 1.15 ;
   color: rgb(29, 30, 34);
-  font-size: 60px;
+  font-size: 32px;
   line-height: 1.1;
   word-break: keep-all;
 }
 
 .detail-description {
-  grid-column: 1 / 3;
+  grid-column: 3/4;
   grid-row: 2;
-  
-  font-size: 16.5px;
-  line-height: 1.3;
-  font-weight: 400;
-
-  column-count: 2;
-  column-gap: 30px;
-
   margin-top: 30px;
 }
 
 .detail-description p {
   margin: 0 0 1em 0;
+  text-align: justify;
+  text-justify: distribute;
+
+
+  font-size: 16px;
+  line-height: 1.2;
+  font-weight: 400;
 }
 
 .detail-description p:last-child {
@@ -425,22 +409,16 @@ html, body {
 }
 
 .detail-meta {
-  grid-column: 2 / 3;
+  grid-column: 2/3;
   grid-row: 1;
   
   display: flex;
   flex-direction: column;
-  margin-left: auto;
 
   
   font-size: 20px;
-  color: black;
   font-weight: 400;
 
-  background: #f5ee8a;
-  padding: 12px 16px;
-  box-shadow:  2px 2px 3px 0px rgba(0,0,0,0.6);
-  width: fit-content;
 }
 
 .photo-section {
@@ -452,12 +430,6 @@ html, body {
   display: flex;
   flex-direction: column;
   gap: 20px;
-
-  border-top: 1.5px solid rgb(197, 204, 227); /* 추가 */
-  padding-top: 30px; /* 선과 사진 사이 간격 */
-
-  
-
 }
 
 .photo-section > video {
@@ -500,7 +472,6 @@ html, body {
   
   /* 테두리나 기본 스타일 제거 */
   border: none;
-  border-radius: 0; /* 종이 컨셉에 맞춰 직각으로 (원하면 조절 가능) */
   
   display: block;
   margin: 0;
@@ -559,6 +530,7 @@ html, body {
   position: relative;
   width: 100%;
   height: 100%;
+  flex: 1;
 
 }
 
@@ -590,51 +562,70 @@ html, body {
     --mobile-tab-height: 40px;
   }
 
-  .contact {
-    /* 💡 핵심: 부모가 늘려도 무시하고 내 글자 크기만큼만 쪼그라들어라! */
-    width: fit-content;
-    height: fit-content;
-    
-    /* 기존에 넣으셨던 설정들 (폰트 크기, 위치 등) */
-    right: 40%;
-    font-size: 14px; 
-    line-height: 1.25; 
-    white-space: nowrap;
-    
-    /* (선택) 핑크색 박스니까 포스트잇처럼 안쪽 여백을 주면 훨씬 예쁩니다 */
-    padding: 15px;
-    box-sizing: border-box;
+  #bg-photo {
+    max-width: 85vw;
+    max-height: 95vh;
+    display: block; 
   }
 
-  /* 1. 폴더 자체의 좌우 이동 애니메이션을 끕니다 */
+  .tape-upper {
+    scale: 1.8;
+    position: absolute;
+    top: -1.5vw; 
+    left: -2vw;
+    width: 10vw;
+    transform: rotate(-30deg);
+    z-index: 10;
+    pointer-events: none;
+  }
+
+  .tape-bottom {
+    scale: 1.8;
+    position: absolute;
+    bottom: -1.5vw; 
+    right: -2vw;
+    width: 10vw;
+    transform: rotate(-30deg);
+    z-index: 10;
+    pointer-events: none;
+  }
+
+  .paper {
+    position: absolute;
+    top: 500px; right: -35px;
+    background: none;
+    width: 400px;
+    pointer-events: none;
+  }
+
   .folder {
     transform: none !important; 
     transition: none !important;
   }
 
-  /* 2. 탭(인덱스)을 화면 상단에 가로로 나란히 고정합니다 */
   .tab {
     top: 0 !important;
-    height: var(--mobile-tab-height) !important;
+    height: 5vw !important;
     writing-mode: horizontal-tb; /* 글씨를 가로로 변경 */
-    border-radius: 0 0 10px 10px; /* 모서리 둥글기를 아래쪽으로 */
-    scale: 1 !important; /* 스케일 초기화 */
-    font-size: 20px; 
+    border-radius: 0 0 8px 8px; /* 모서리 둥글기를 아래쪽으로 */
+    font-size: 20px;
+    scale: 1 1.15;
+    font-weight: 500;
+    padding-top: 5px;
+
     letter-spacing: normal;
     transform: none !important;
     z-index: 10 !important;
-
-    box-shadow: none !important;
   }
 
-  .folder {
-    /* 기존 2px 2px 이었던 것을 -> X축은 0px, Y축은 4px로 변경 */
-    filter: drop-shadow(0px 3px 1.5px rgba(0, 0, 0, 0.5));
+  .page.project {
+    background: linear-gradient(0deg,#c2c2c2 12%, rgba(233, 240, 233, 1) 100%);
   }
-
-  .tab.project, .tab.archive, .tab.about {
-
-    background: linear-gradient(180deg,rgba(30, 208, 232, 1) 72%, rgba(216, 240, 237, 1) 90%, rgba(142, 224, 245, 1) 100%);
+  .page.archive {
+    background: linear-gradient(0deg, #c2c2c2 12%, #E9F0F0 100%);
+  }
+  .page.about {
+    background: linear-gradient(0deg, #c2c2c2 12%, #EEE9F0 100%);
   }
 
   /* 탭 3개를 가로 3등분으로 배치 (겹치지 않게) */
@@ -670,7 +661,7 @@ html, body {
   /* 텍스트 크기 모바일화 */
   .project-name, .detail-name {
     font-size: 36px;
-    scale: 1 1.05;
+    scale: 1 1.15;
   }
 
   /* 종이의 너비를 100%로 펴고 꽉 차게 만들기 */
