@@ -163,7 +163,7 @@ html, body {
   transition: transform 0.65s cubic-bezier(0.77, 0, 0.175, 1);
   pointer-events: none; 
 
-  filter: drop-shadow(4px 0px 2px rgba(0, 0, 0, 0.4));
+  filter: drop-shadow(2px 0px 2px rgba(0, 0, 0, 0.35));
 }
 
 .folder.open { transform: translateX(0); }

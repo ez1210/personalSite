@@ -144,9 +144,9 @@ function scatterPhotos() {
 
 
 const images = [
-  './images/종이1.png',
-  './images/종이2.png',
-  './images/종이3.png'
+  './images/종이1.webp',
+  './images/종이2.webp',
+  './images/종이3.webp'
 ];
 
 let loadedCount = 0;
