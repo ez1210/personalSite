@@ -26,16 +26,15 @@ html, body {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 500;
   letter-spacing: -0.3px;
+
+  color:rgb(36, 36, 36)
 }
-
-
 
 :root {
   /*인덱스 가로길이랑 페이지 노출 정도*/
   --tab-width: 45px; 
   --peek-width: 0px;
 }
-
 
 #bg-wrapper {
   position: fixed;
@@ -126,7 +125,7 @@ html, body {
 
 .tab {
   position: absolute;
-  right: -3px; left: auto;
+  right: 0px; left: auto;
   width: var(--tab-width);
   height:  14vh;
   display: flex; align-items: center; justify-content: center;
@@ -134,9 +133,7 @@ html, body {
   z-index: 999; pointer-events: auto;
   border-radius: 0px 5px 5px 0px;
   
-  font-size: 18px; color:rgb(36, 35, 43);
-  scale: 1.15 1;
-  letter-spacing: 0.02em;
+  font-size: 21px;
   font-weight: 500;
   writing-mode: vertical-rl;
 
@@ -151,7 +148,6 @@ html, body {
 }
 
 .tab:hover {
- 
   transform: translateX(20px) translateZ(0);
 }
 
@@ -174,11 +170,11 @@ html, body {
 }
 
 #folder-archive .tab { 
-  top: 14.1vh;
+  top: 14vh;
 }
 
 #folder-about .tab { 
-  top: 28.2vh;
+  top: 28vh;
 }
 
 .page {
@@ -193,22 +189,22 @@ html, body {
   overflow-x: hidden;
 }
 
-.tab.project {background-color: #E9F0E9;}
+.tab.project {background-color: #f1f1f1;}
 .page.project {
-  background: #c2c2c2;
-  background: linear-gradient(90deg,#c2c2c2 12%, #E9F0E9 100%);
+  background: #d4d4d4;
+  background: linear-gradient(90deg,#d4d4d4 12%, #f1f1f1 100%);
 }
 
-.tab.archive {background-color: #E9F0F0;}
+.tab.archive {background-color: #f1f1f1;}
 .page.archive {
-  background: #c2c2c2;
-  background: linear-gradient(90deg, #c2c2c2 12%, #E9F0F0 100%);
+  background: #d4d4d4;
+  background: linear-gradient(90deg, #d4d4d4 12%, #f1f1f1 100%);
 }
 
-.tab.about {background-color: #EEE9F0;}
+.tab.about {background-color: #f1f1f1;}
 .page.about {
-  background: #c2c2c2;
-  background: linear-gradient(90deg, #c2c2c2 12%, #EEE9F0 100%);
+  background: #d4d4d4;
+  background: linear-gradient(90deg, #d4d4d4 12%, #f1f1f1 100%);
 }
 
 .page.project {
@@ -228,21 +224,36 @@ html, body {
 
 .folder.open .tab,
 .folder.open .page {
-  transform: translateX(0) !important; /* !important가 호버의 움직임을 힘으로 찍어 누릅니다. */
+  transform: translateX(0) !important;
 }
 
 
+.landing-info {
+  position: fixed;
+  bottom: 50px;
+  left: 50px;
+
+  background-image: url('../images/torn.webp');
+  background-size: cover; 
+  background-position: center;
+  padding: 10px 30px;
+}
+
+.landing-info p {
+  font-size: 14px;
+  color:rgb(53, 53, 53);
+}
 
 
 /*프로젝트*/
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); /* 4열 */
-  column-gap: 20px;
-  row-gap: 50px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 4열 */
+  column-gap: 40px;
+  row-gap: 80px;
   width: 100%;
   align-items: start;
-  padding-top: 6.9vw;
+  padding-top: 5vw;
 }
 
 .page.project::-webkit-scrollbar {
@@ -250,24 +261,17 @@ html, body {
 }
 
 .project-item {
-  display: grid; 
-  grid-template-columns: 1fr auto; 
+  display: flex; 
+  flex-direction: column;
 
   text-decoration: none;
   color: inherit;
-  
-  z-index: 1;
-}
-
-.project-item:hover {
-  z-index: 10;
 }
 
 .thumbnail {
   width: 100%;
-  margin-bottom: 5px; 
 
-  z-index: 2;
+  margin-bottom: 10px;
 }
 
 .thumbnail img,
@@ -277,53 +281,38 @@ html, body {
   display: block;
 }
 
-
-.project-info {
-  font-size: 16px;
-  color: #000000;
-  line-height: 1.15;
-  scale: 1.15 1;
-  transform-origin: left top;
-  align-self: start;
-  writing-mode: vertical-rl;
-
-  padding: 10px 5px 10px 5px ;
-  margin-right: 10px;
-  margin-left: -2.5px;
-  background-color: #f8f9f8f9;
-  box-shadow: 2px 0px 2px rgb(0, 0, 0, 0.2);
-  border-radius: 0 5px 5px 0;
-
-  z-index: 1;
-}
-
-.project-info p {
-  margin: 0 0 1px 0;
+.project-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items:start;
 }
 
 .project-name {
   grid-column: 1 / -1; 
   
-  font-size: 32px;
-  scale: 1 1.15;
+  font-size: 24px;
   margin: 0;
+  font-weight: 500;
 }
 
-.thumbnail img,
-.thumbnail video,
 .project-info {
-  transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+  display: flex;
+  flex-direction: column;
+
+  padding: 5px 7px;
+  color: rgb(53, 53, 53);
+  gap: 0; 
+  margin-bottom: 0;
+
 }
 
-.project-item:has(.thumbnail:hover) {
-  z-index: 10;
+.project-info p {
+  font-size: 15px;
+  margin: 0; 
+  line-height: 1.05;
 }
 
-.project-item:has(.thumbnail:hover) .thumbnail img,
-.project-item:has(.thumbnail:hover) .thumbnail video,
-.project-item:has(.thumbnail:hover) .project-info {
-  transform: translateX(15px);
-}
+
 
 
 
@@ -347,31 +336,15 @@ html, body {
   padding-bottom: 100px; 
 }
 
-.detail-sheet {
-  align-items: flex-start; 
-  min-height: 80vh;
-  padding: 0;
-  overflow: visible;
-}
-
-
 .detail-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   padding: 10px;
-  padding-top: 6.9vw;
+  padding-top: 5vw;
   box-sizing: border-box;
   width: 100%;
 
   align-items: start;
-}
-
-.detail-title-group {
-  grid-column: 1 / 2;
-  grid-row: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
 }
 
 .detail-name {
@@ -380,28 +353,22 @@ html, body {
   margin: 0;
   
   font-weight: 400;
-  scale: 1 1.15 ;
   color: rgb(29, 30, 34);
-  font-size: 32px;
+  font-size: 24px;
   line-height: 1.1;
   word-break: keep-all;
 }
 
 .detail-description {
   grid-column: 3/4;
-  grid-row: 2;
-  margin-top: 30px;
+  grid-row: 1;
 }
 
 .detail-description p {
-  margin: 0 0 1em 0;
-  text-align: justify;
-  text-justify: distribute;
-
-
-  font-size: 16px;
+  font-size: 15px;
+  margin: 0; 
   line-height: 1.2;
-  font-weight: 400;
+  margin-top: 0;
 }
 
 .detail-description p:last-child {
@@ -416,14 +383,14 @@ html, body {
   flex-direction: column;
 
   
-  font-size: 20px;
+  font-size: 15px;
   font-weight: 400;
-
+  line-height: 1.2;
 }
 
 .photo-section {
-  grid-column: 1 / 3;
-  grid-row: 3;
+  grid-column: 1 / 4;
+  grid-row: 2;
   margin-top: 20px;
   
   width: 100%;
@@ -470,7 +437,6 @@ html, body {
   aspect-ratio: 16 / 9; 
   height: auto;
   
-  /* 테두리나 기본 스타일 제거 */
   border: none;
   
   display: block;
@@ -479,15 +445,21 @@ html, body {
 
 .video-shorts {
     width: 100%;
-    aspect-ratio: 9 / 16 !important; /* 💡 세로형 비율로 강제 변경 */
+    aspect-ratio: 9 / 16 !important;
     
-    /* 모바일 화면에서 세로로 너무 길어질 수 있으니 최대 높이를 제한하는 것이 좋습니다 */
     max-height: 80vh; 
     margin: 0 auto;
     display: block;
 }
 
+.folder.detail-mode:has(.tab:hover) .tab,
+.folder.detail-mode:has(.tab:hover) .page {
+  transform: translateX(0) !important; 
+}
 
+
+
+/*about page*/
 .page.about {
   padding: 200px; /* 사방에 여백을 줘서 글씨가 종이 끝에 안 붙게 함 */
   overflow-y: auto; /* 내용이 길어지면 스크롤 생기게 함 */
@@ -503,7 +475,7 @@ html, body {
   background-color: #f3f3f3; 
   color: black;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 15px;
   
   border-radius: 3px;
   box-shadow: 2px 2px 3px 0px rgba(0,0,0,0.6);
@@ -521,9 +493,12 @@ html, body {
 }
 
 
+
+
+
 /*archive*/
 .page.archive {
-  overflow: hidden; /* 사진이 종이 밖으로 탈출하지 못하게 함 */
+  overflow: hidden;
 }
 
 .chaotic-photo-pile {
@@ -535,12 +510,10 @@ html, body {
 }
 
 .pile-photo {
-  position: absolute; /*자바스크립트*/
+  position: absolute;
   max-width: 200px;
   max-height: 210px;
   object-fit: contain;
-  
-  box-shadow:  2px 2px 3px 0px rgba(0,0,0,0.6);
   
   transition: transform 0.2s ease-out;
   
@@ -553,7 +526,7 @@ html, body {
 
 .pile-photo:hover {
   z-index: 999 !important;
-  transform: translate(-50%, -50%) scale(1.05) !important;
+  transform: translate(-50%, -50%) scale(1.03) !important;
 }
 
 
@@ -609,7 +582,6 @@ html, body {
     writing-mode: horizontal-tb; /* 글씨를 가로로 변경 */
     border-radius: 0 0 8px 8px; /* 모서리 둥글기를 아래쪽으로 */
     font-size: 20px;
-    scale: 1 1.15;
     font-weight: 500;
     padding-top: 5px;
 
@@ -661,7 +633,6 @@ html, body {
   /* 텍스트 크기 모바일화 */
   .project-name, .detail-name {
     font-size: 36px;
-    scale: 1 1.15;
   }
 
   /* 종이의 너비를 100%로 펴고 꽉 차게 만들기 */
