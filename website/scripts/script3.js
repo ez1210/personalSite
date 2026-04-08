@@ -1,10 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => { //배경 작업사진 랜덤, 클릭
   
   const bgImages = [
-    { src: './images/vitra/vitra1.webp', title: 'vitra catalog'},
-    { src: './images/gego/gego1.png', title: 'gego exhibition'},
-    { src: './images/goodmolecules/gm1.jpg', title: 'exhibition'},
-    { src: './images/blockparty/title.webp', title: 'exhibition'}
+    { src: './images/random/4.5.webp', title: 'Johnny Rockets'},
+    { src: './images/random/bp1.webp', title: 'Block Party Festival'},
+    { src: './images/random/bp5.webp', title: 'Block Party Festival'},
+    { src: './images/random/08.webp', title: 'Sunrise Express'},
+    { src: './images/random/poster series.png', title: 'Chocolate Factory'},
   ];
 
   
