@@ -3,14 +3,9 @@ document.addEventListener('DOMContentLoaded', () => { //배경 작업사진 랜�
   const bgImages = [
     { src: './images/random/4.5.webp', title: 'Johnny Rockets'},
     { src: './images/random/02-1.webp', title: 'Sunrise Express'},
-    { src: './images/random/7-2.webp', title: 'Johnny Rockets'},
-    { src: './images/random/08.webp', title: 'Sunrise Express'},
-    { src: './images/random/lineupposter.webp', title: 'Block Party Festival'},
-    { src: './images/random/outdoor main stage.webp', title: 'Block Party Festival'},
     { src: './images/random/poster series.webp', title: 'Chocolate Factory'},
     { src: './images/random/thumbnail.webp', title: 'Block Party Festival'},
-    { src: './images/random/vitra3.webp', title: 'vitra'},
-    { src: './images/random/motion_steel.webp', title: 'Skillscape'},
+    { src: './images/random/motion_steel.webp', title: 'Skillscape'}
   ];
 
   
