@@ -18,7 +18,7 @@ body {
 
 :root {
   --tab-height: 50px;
-  --header-gap: calc(45px + 1vh);
+  --header-gap: 45px;
   --text-color: white;
 }
 
@@ -58,7 +58,6 @@ body {
 }
 
 .about-me {
-  padding-top: 0.6vh;
   display: grid;
   position: relative;
   width: 40vw;
@@ -71,7 +70,7 @@ body {
   margin: 0px;
   color: var(--text-color);
   padding-top: 10px;
-  padding-left: 80px;
+  padding-left: 50px;
   transition: color 0.8s ease;
 }
 
@@ -162,8 +161,8 @@ body {
 
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  padding-left: 80px;
-  padding-right: 80px;
+  padding-left: 50px;
+  padding-right: 50px;
   align-items: center;
   cursor: pointer;
   pointer-events: auto;
@@ -290,29 +289,45 @@ body {
 
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); /* 4열 */
-  box-sizing: border-box;
-
-  column-gap: 3vw;
-  row-gap: 80px;
+  grid-template-columns: repeat(5, 1fr);
+  row-gap: 60px;
   width: 100%;
+  padding:50px;
+  padding-top: 50px;
   align-items: start;
-  padding: 80px;
-  padding-top: 40px;
-  
+  box-sizing: border-box;
+}
+
+.project-list {
+  grid-column: 1 / 2;
+  grid-row: 1 / span 4;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+
+  font-size: 19.5px;
+}
+
+.project-list a {
+  text-decoration: none; /* 밑줄 제거 */
+  color: rgb(142, 142, 156);
+
+  display: block;
+  transition: color 0.2s ease;
+
+  padding-bottom: 10px;
 }
 
 .project-item {
-  display: flex; 
-  flex-direction: column;
-
+  display: block;
   text-decoration: none;
-  color: inherit;
-}
+  padding-right: 50px;
+  grid-column: span 2;
 
-.thumbnail {
-  width: 100%;
-  margin-bottom: 10px;
+  transition: opacity 0.2s ease;
 }
 
 .thumbnail img,
@@ -323,16 +338,35 @@ body {
   display: block;
 }
 
-.project-meta {
-  display: flex;
-  align-items:start;
+/* ─── 4. 하이라이트 호버 로직 (서로 연동) ─── */
+
+.project-grid:has(a:hover){
+  color: rgb(142, 142, 156)/* 요청하신 연한 회색 */
 }
 
-.project-name {
-  margin: 0;
-  font-size: 19.5px;
+.project-grid:has(a:hover) .project-item {
+  opacity: 0.7; /* 🚨 선택되지 않은 썸네일들이 흐려짐 */
 }
 
+
+/* 마우스를 올린 대상과, 같은 data-project를 가진 짝꿍만 선명하게 */
+.project-grid:has(a[data-project="chocolate"]:hover) a[data-project="chocolate"],
+.project-grid:has(a[data-project="blockparty"]:hover) a[data-project="blockparty"],
+.project-grid:has(a[data-project="johnny"]:hover) a[data-project="johnny"],
+.project-grid:has(a[data-project="sunrise"]:hover) a[data-project="sunrise"],
+.project-grid:has(a[data-project="skillscape"]:hover) a[data-project="skillscape"],
+.project-grid:has(a[data-project="kaleidoscope"]:hover) a[data-project="kaleidoscope"] {
+  color: rgb(64, 64, 66) !important; /* 요청하신 진한 색 */
+}
+
+.project-grid:has(a[data-project="chocolate"]:hover) .project-item[data-project="chocolate"],
+.project-grid:has(a[data-project="blockparty"]:hover) .project-item[data-project="blockparty"],
+.project-grid:has(a[data-project="johnny"]:hover) .project-item[data-project="johnny"],
+.project-grid:has(a[data-project="sunrise"]:hover) .project-item[data-project="sunrise"],
+.project-grid:has(a[data-project="skillscape"]:hover) .project-item[data-project="skillscape"],
+.project-grid:has(a[data-project="kaleidoscope"]:hover) .project-item[data-project="kaleidoscope"] {
+  opacity: 1 !important;
+}
 
 /*상세 페이지*/
 
@@ -340,9 +374,9 @@ body {
 .detail-container {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  padding-top: 40px;
-  padding-left: 80px;
-  padding-right: 80px;
+  padding-top: 50px;
+  padding-left: 50px;
+  padding-right: 50px;
   box-sizing: border-box;
   width: 100%;
 
@@ -394,10 +428,10 @@ body {
 .detail-description {
   grid-column: 2/6;
   grid-row: 1;
-  column-count: 2;
+  column-count: 3;
   column-gap: 20px;
   column-fill: auto; 
-  height: calc(16px * 1.25 * 6);
+  height: calc(16px * 1.25 * 7);
   overflow: hidden;
   font-size: 16px;
   line-height: 1.25;
