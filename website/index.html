@@ -10,35 +10,43 @@
 <body>
   <div id="bg-wrapper">
     <div id="bg-photo-container">
-      
       <img id="bg-photo" src="">
-      
+      <img id="bg-photo-next" src="">
+    </div>
+      <!--
       <img src="./images/tapetest1.webp" class="tape-upper">
       <img src="./images/tapetest2.webp" class="tape-bottom">
-      
-     
+      -->
+    
+  </div>
+
+  <!--
+  <div class="landing-info" id="landing-info-box">
+        <p id="landing-title" class="project-name"></p>
+   </div>
+  -->
+  <div class="about-me">
+    <p class="my-name">
+      <a href="h.html">Eugene Ahn</a>
+    </p>
+    <p class="my bio">
+      is a graphic designer based in New York and Seoul.
+      She is studying in School of Visual Arts.
+      She designs printed matter, brand identity, codes interactive graphics, and experiments with motion.
+      Valuing both structure and play, Eugene focuses on building visual systems that are logical and engaging.
+    </p>
+    <div class="contact">
+      <p>
+        <a href="mailto:eugeneak1210@gmail.com">eugeneak1210@gmail.com</a><br>
+        <a href="https://www.linkedin.com/in/eugeneak1210">www.linkedin.com/in/eugeneak1210</a><br>
+        <a href="https://www.instagram.com/egolesign">@egolesign</a>
+      </p>
     </div>
   </div>
 
-   <div class="landing-info" id="landing-info-box">
-        <p id="landing-title" class="project-name"></p>
-   </div>
-
-
   <main>
-    <!--
-    <div class="contact">
-      Instagram: @egolesign<br>
-      Linkedin: @eugeneak1210<br>
-      Mail: eugeneak1210@gmail.com
-    </div>
-
-    <div class="last-updated">
-      LAST UPDATED: <span id="update-date"></span>
-    </div>
-
-    -->
     
+    <!--
     <div class="paper main-sheet">
 
       <div class="intro-image-container" id="stopmotion-container">
@@ -47,9 +55,16 @@
       </div>
     </div>
 
-    <div class="folder" id="folder-projects" data-target="projects">
+    -->
+    
+    <div class="folder" id="folder-projects">
 
-      <div class="tab project">Projects</div>
+      <div class="tab project">
+        <button class="label-btn" data-action="restore-projects">Projects</button>
+        <div class="tab-toggle">
+          <span class="tab-detail-name"></span>
+        </div>
+      </div>
       <div class="page project">
 
         <div class="project-grid">
@@ -60,25 +75,16 @@
             </div>
             <div class="project-meta">
               <p class="project-name">Chocolate Factory</p>
-              
-              <div class="project-info">
-                <p>brand identity</p>
-              </div>
             </div>
             
           </a>
 
           <a href="./html/blockParty.html" class="project-item">
             <div class="thumbnail">
-              <img src="./images/blockparty/posterset.webp">
+              <img src="./images/blockparty/thumbnail.webp">
             </div>
             <div class="project-meta">
               <p class="project-name">Block Party Festival</p>
-              <div class="project-info">
-                  <p>brand identity</p>
-                  <p>type design</p>
-                  <p>generative art</p>
-              </div>
             </div>
             
           </a>
@@ -89,9 +95,6 @@
             </div>
             <div class="project-meta">
               <p class="project-name">Johnny Rockets</p>
-              <div class="project-info">
-                  <p>brand identity</p>
-              </div>
             </div>
             
           </a>
@@ -102,10 +105,6 @@
             </div>
             <div class="project-meta">
               <p class="project-name">Sunrise Express</p>
-              <div class="project-info">
-                  <p>brand identity</p>
-                  <p>type design</p>
-              </div>
             </div>
             
           </a>
@@ -117,9 +116,6 @@
             </div>
             <div class="project-meta">
               <p class="project-name">Skillscape</p>
-              <div class="project-info">
-                <p>motion</p>
-              </div>
             </div>
           </a>
           <!--
@@ -157,9 +153,6 @@
             </div>
             <div class="project-meta">
               <p class="project-name">Interactive Kaleidoscope</p>
-              <div class="project-info">
-                <p>generative art</p>
-              </div>
             </div>
            
           </a>
@@ -169,7 +162,12 @@
     </div>
 
     <div class="folder" id="folder-archive" data-target="archive">
-      <div class="tab archive">Archive</div>
+      <div class="tab archive">
+        <button class="label-btn" data-action="restore-archive">Archive</button>
+        <div class="tab-toggle">
+          <span class="tab-detail-name"></span>
+        </div>
+      </div>
       <div class="page archive">
         <div class="chaotic-photo-pile" id="photo-pile">
 
@@ -196,29 +194,6 @@
         </div>
       </div>
     </div>
-
-    <div class="folder" id="folder-about" data-target="about">
-      <div class="tab about">About</div>
-      <div class="page about">
-
-        <div class="paper-container">
-          <img src="./images/paper.png" class="paper-image">
-          <div class="paper-text">
-            <a href="./images/pdf/resume.jpg" target="_blank" class="resume-button">Resume</a>
-            <p>
-              Eugene Ahn is a senior art school student studying graphic design, based in New York and Seoul. Eugene works across different areas of design, 
-              focusing on clear ideas and thoughtful visual decisions while remaining open to learning and experimentation</span>.
-              Eugene Ahn was born in Seoul, South Korea. During high school, she attended a foreign language specialized school, where she strengthened her English and Japanese skills and developed an interest in becoming a globally minded creative.
-              She initially studied Design Innovation at Sejong University in Korea, before deciding to transfer to the School of Visual Arts in New York to further pursue her interest in design.
-              At SVA, she is studying Graphic Design and has become deeply drawn to the possibilities of creating visually compelling work by combining technical skills
-              with imagination. As she continues to reflect on what she can create through her own abilities, she actively seeks to explore a wider range of design practices. 
-              Her interests extend beyond traditional typography and image making to include coding, motion, and other contemporary forms of visual expression.
-              Now a senior at SVA and approaching graduation, Eugene Ahn is motivated to continue expanding her practice and applying her skills to create thoughtful 
-              and engaging graphic work.
-            </p>
-          </div>
-        </div>
-      </div>
   </main>
 
   <script src="./scripts/script3.js"></script>

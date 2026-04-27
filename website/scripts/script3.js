@@ -1,205 +1,330 @@
-document.addEventListener('DOMContentLoaded', () => { //배경 작업사진 랜덤, 클릭
-  
+document.addEventListener('DOMContentLoaded', () => {
+
+  // ── 절대경로
+  const getBasePath = () => {
+    const path = window.location.pathname;
+    if (path.includes('/html/')) return path.split('/html/')[0] + '/';
+    return path.substring(0, path.lastIndexOf('/') + 1);
+  };
+  const BASE_PATH = getBasePath();
+  const INDEX_URL = window.location.origin + BASE_PATH + 'index.html';
+
+  // 상세 페이지 직접 새로고침 → 인덱스로 리다이렉트
+  if (!document.getElementById('bg-photo-container')) {
+    window.location.replace(INDEX_URL + '?page=' + encodeURIComponent(window.location.href));
+    return;
+  }
+
+  // ── BG 이미지
   const bgImages = [
-    { src: './images/random/4.5.webp', title: 'Johnny Rockets'},
-    { src: './images/random/02-1.webp', title: 'Sunrise Express'},
-    { src: './images/random/poster series.webp', title: 'Chocolate Factory'},
-    { src: './images/random/thumbnail.webp', title: 'Block Party Festival'},
-    { src: './images/random/motion_steel.webp', title: 'Skillscape'}
+    BASE_PATH + 'images/random/4.5.webp',
+    BASE_PATH + 'images/random/02-1.webp',
+    BASE_PATH + 'images/random/poster series.webp',
+    BASE_PATH + 'images/random/thumbnail.webp',
+    BASE_PATH + 'images/random/motion_steel.webp'
   ];
-
-  
-
   const bgPhoto = document.getElementById('bg-photo');
-  
   const bgContainer = document.getElementById('bg-photo-container');
+  let bgIndex = Math.floor(Math.random() * bgImages.length);
+  bgPhoto.src = bgImages[bgIndex];
 
-  if (bgPhoto && bgContainer && bgImages.length > 0) {
-    
-    let currentIndex = Math.floor(Math.random() * bgImages.length);
-    bgPhoto.src = bgImages[currentIndex].src;
-    document.getElementById('landing-title').textContent = bgImages[currentIndex].title;
+  // ── 폴더 요소
+  const folderProjects = document.getElementById('folder-projects');
+  const folderArchive = document.getElementById('folder-archive');
+  const pageProject = folderProjects.querySelector('.page.project');
+  const pageArchive = folderArchive.querySelector('.page.archive');
+  const projectGrid = pageProject.querySelector('.project-grid');
+  const archivePile = pageArchive.querySelector('.chaotic-photo-pile');
 
-    bgContainer.addEventListener('click', () => {
-      
-      currentIndex = (currentIndex + 1) % bgImages.length;
-      
-      bgPhoto.src = bgImages[currentIndex].src;
-      document.getElementById('landing-title').textContent = bgImages[currentIndex].title;
-      
+  // ── 상태 (단일 진실원)
+  // 'closed' | 'open' | 'detail'
+  const state = { projects: 'open', archive: 'closed' };
+
+  // ── 상대경로 → 절대경로
+  const fixPaths = (root, baseUrl) => {
+    if (!root) return;
+    root.querySelectorAll('[src], [href]').forEach(el => {
+      ['src', 'href'].forEach(attr => {
+        const val = el.getAttribute(attr);
+        if (!val) return;
+        if (/^(https?:|blob:|data:|#|mailto:)/.test(val)) return;
+        el.setAttribute(attr, new URL(val, baseUrl).href);
+      });
+    });
+  };
+  fixPaths(pageProject, INDEX_URL);
+  fixPaths(pageArchive, INDEX_URL);
+
+  // ── 렌더링: 상태 → 클래스만 토글 (위치는 CSS가 결정)
+  function render() {
+  folderProjects.classList.toggle('open', state.projects === 'open');
+  folderProjects.classList.toggle('detail-mode', state.projects === 'detail');
+  folderArchive.classList.toggle('open', state.archive === 'open');
+  folderArchive.classList.toggle('detail-mode', state.archive === 'detail');
+
+  // 프로젝트 콘텐츠: detail/open 전환만 처리, closed는 마지막 상태 유지
+  const projDetail = pageProject.querySelector('.detail-wrapper');
+  if (state.projects === 'detail') {
+    projectGrid.style.display = 'none';
+    if (projDetail) projDetail.style.display = '';
+  } else if (state.projects === 'open') {
+    projectGrid.style.display = '';
+    if (projDetail) projDetail.style.display = 'none';
+  }
+  // closed일 때는 콘텐츠 안 건드림 → transition 부드러움 + 마지막 상태 유지
+
+  // 아카이브 콘텐츠: 동일
+  const archDetail = pageArchive.querySelector('.detail-wrapper');
+  if (state.archive === 'detail') {
+    archivePile.style.display = 'none';
+    if (archDetail) archDetail.style.display = '';
+  } else if (state.archive === 'open') {
+    archivePile.style.display = '';
+    if (archDetail) archDetail.style.display = 'none';
+  }
+}
+
+  // ── 상세 콘텐츠 삽입
+  function insertDetail(page, html) {
+    page.querySelector('.detail-wrapper')?.remove();
+    const wrapper = document.createElement('div');
+    wrapper.className = 'detail-wrapper';
+    wrapper.innerHTML = html;
+    page.appendChild(wrapper);
+  }
+
+  function playAllVideos() {
+    document.querySelectorAll('video').forEach(v => {
+      v.load();
+      v.play().catch(() => {});
     });
   }
-});
 
+  const bgPhotoNext = document.getElementById('bg-photo-next');
+  let activeBg = bgPhoto;
+  let inactiveBg = bgPhotoNext;
 
+  // 초기 상태 명확히
+  activeBg.style.opacity = '1';
+  inactiveBg.style.opacity = '0';
 
-// 탭 펼치기 닫기
-  const setupFolders = () => {
-  const folders = document.querySelectorAll('.folder');
-  if (folders.length === 0) return; 
+  function crossfadeTo(src) {
+    const preload = new Image();
+    preload.onload = () => {
+      inactiveBg.src = src;
 
-  const urlParams = new URLSearchParams(window.location.search);
-  const targetId = urlParams.get('open');
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          inactiveBg.style.transition = 'opacity 2s ease';
+          activeBg.style.transition = 'opacity 2s ease';
+          inactiveBg.style.opacity = '1';
+          activeBg.style.opacity = '0';
 
-  // [원리 1] 닫혀있는 폴더들의 층수 (항상 열린 폴더들보다 높아야 왼쪽 탭이 안 가려짐)
-  const getBaseZ = (index) => 1000 - index; // Projects: 1000, Archive: 999, About: 998
-  
-  // [원리 2] 열리는 폴더들을 쌓아올릴 카운터 (닫힌 탭보단 낮게 시작)
-  let currentOpenZ = 10; 
-
-  folders.forEach((folder, index) => {
-    const baseZ = getBaseZ(index);
-
-    // 초기 상태 층수 할당
-    if (!folder.classList.contains('open')) {
-      folder.style.zIndex = baseZ;
-    }
-
-    // Go Back으로 돌아왔을 때 즉시 열기
-    if (targetId && folder.id === `folder-${targetId}`) {
-      folder.classList.add('open', 'instant');
-      folder.style.zIndex = ++currentOpenZ; // 열리는 즉시 카운터 증가
-
-      setTimeout(() => {
-        folder.classList.remove('instant');
-        window.history.replaceState({}, document.title, window.location.pathname);
-      }, 50);
-    }
-
-    // 탭 클릭 이벤트
-    const tab = folder.querySelector('.tab');
-    if (tab) {
-      tab.onclick = () => {
-        const isOpen = folder.classList.contains('open');
-
-        if (isOpen) {
-          // 현재 열려있는 폴더들 중 가장 높은 z-index 찾기
-          const openedFolders = Array.from(folders).filter(f => f.classList.contains('open'));
-          const maxZ = Math.max(...openedFolders.map(f => parseInt(f.style.zIndex) || 0));
-
-          if (parseInt(folder.style.zIndex) === maxZ) {
-            // 내가 열린 폴더들 중 맨 위에 있으면 -> '닫기'
-            folder.classList.remove('open');
-          } else {
-            // 다른 열린 폴더에 가려져 있으면 -> '맨 앞으로 꺼내오기'
-            folder.style.zIndex = ++currentOpenZ;
-          }
-        } else {
-          // 새로 열 때 -> 무조건 기존 열린 폴더들을 덮으면서 나오도록 층수 증가!
-          folder.style.zIndex = ++currentOpenZ;
-          folder.classList.add('open');
-        }
-      };
-    }
-
-    // 애니메이션이 완전히 끝난 후 층수 복구 (닫힐 때 끊김 방지)
-    folder.ontransitionend = (e) => {
-      if (e.propertyName === 'transform' && !folder.classList.contains('open')) {
-        folder.style.zIndex = baseZ;
-      }
+          // 페이드 끝난 다음에 역할 swap
+          const oldActive = activeBg;
+          const newActive = inactiveBg;
+          activeBg = newActive;
+          inactiveBg = oldActive;
+        });
+      });
     };
-  });
-};
+    preload.src = src;
+  }
 
-// 2. 브라우저가 요소를 읽자마자 실행 시도 (깜빡임 방지)
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', setupFolders);
-} else {
-  setupFolders();
-}
+  // ── BG 자동 전환
+  setInterval(() => {
+    if (state.projects !== 'closed' || state.archive !== 'closed') return;
+    bgIndex = (bgIndex + 1) % bgImages.length;
+    crossfadeTo(bgImages[bgIndex]);
+  }, 5000);
 
-
-
-//archive//
-
-function scatterPhotos() {
-  const pile = document.getElementById('photo-pile');
-  if (!pile) return;
-
-  const photos = pile.querySelectorAll('.pile-photo');
-  
-  // 흩뿌려질 운동장의 넓이
-  const containerWidth = pile.offsetWidth;
-  const containerHeight = pile.offsetHeight;
-
-  photos.forEach((photo, index) => {
-    const margin = 100;
-    const randomX = Math.floor(Math.random() * 80) + 10;
-    const randomY = Math.floor(Math.random() * 80) + 10; 
-
-    const randomZ = Math.floor(Math.random() * photos.length);
-
-    photo.style.left = `${randomX}%`;
-    photo.style.top = `${randomY}%`;
-    photo.style.transform = `translate(-50%, -50%)`;
-    photo.style.zIndex = randomZ;
-    
-    photo.style.opacity = 0;
-    setTimeout(() => {
-        photo.style.opacity = 1;
-    }, index * 50);
-  });
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  scatterPhotos();
-});
-
-
-
-
-const images = [
-  './images/종이1.webp',
-  './images/종이2.webp',
-  './images/종이3.webp'
-];
-
-let loadedCount = 0;
-let currentIndex = 0;
-let isAnimating = false;
-
-const imageObjects = images.map(src => {
-  const image = new Image();
-  image.onload = () => {
-    loadedCount++;
-    if (loadedCount === images.length) {
-      container.onclick = handleClick;
+  // BG 클릭: 모두 닫기
+  bgContainer.addEventListener('click', () => {
+    if (state.projects !== 'closed' || state.archive !== 'closed') {
+      state.projects = 'closed';
+      state.archive = 'closed';
+      render();
     }
-  };
-  image.src = src;
-  return image;
-});
+  });
 
-const img = document.getElementById('stopmotion-img');
-const container = document.getElementById('click-zone');
-const clickZone = document.getElementById('click-zone');
+  // ── label 클릭: 해당 폴더의 인덱스로 (다른 폴더 보존)
+folderProjects.querySelector('.label-btn').addEventListener('click', (e) => {
+    e.stopPropagation();
+    state.projects = 'open';
+    history.pushState(null, '', INDEX_URL);
+    folderProjects.querySelector('.tab-detail-name').textContent = ''; // ✅ 추가
+    render();
+  });
 
-const INTERVAL = [100, 130]; // 각 이미지 사이 딜레이 (ms), 취향에 맞게 조절
+  folderArchive.querySelector('.label-btn').addEventListener('click', (e) => {
+    e.stopPropagation();
+    state.archive = 'open';
+    if (state.projects === 'closed') state.projects = 'open';
+    history.pushState(null, '', INDEX_URL + '?open=archive');
+    folderArchive.querySelector('.tab-detail-name').textContent = ''; // ✅ 추가
+    render();
+    setTimeout(scatterPhotos, 100);
+  });
 
-container.onclick = () => {
-  if (isAnimating || loadedCount < images.length) return; // 애니메이션 중엔 클릭 무시
-  isAnimating = true;
+  // ── projects tab 빈공간 클릭
+  folderProjects.querySelector('.tab-toggle').addEventListener('click', () => {
+    if (state.archive === 'detail') {
+      state.archive = 'closed';
+      state.projects = 'open';
+      render();
+      return;
+    }
+    if (state.archive === 'open') {
+      state.archive = 'closed';
+      render();
+      return;
+    }
 
-  const isForward = currentIndex < images.length - 1;
-  const step = isForward ? 1 : -1;
-  const target = isForward ? images.length - 1 : 0;
-  let stepCount = 0;
-
-  const animate = () => {
-    currentIndex += step;
-    img.src = images[currentIndex];
-    stepCount++;
-
-    if (currentIndex !== target) {
-      setTimeout(animate, INTERVAL[stepCount]);
+    // archive closed → projects 토글
+    if (state.projects === 'detail' || state.projects === 'open') {
+      state.projects = 'closed';
     } else {
-      isAnimating = false;
-      if (currentIndex === images.length - 1) {
-      clickZone.classList.add('expanded');
-      } else {
-        clickZone.classList.remove('expanded');
-      }
+      // ✅ 닫혀있다가 열 때: 마지막 상태(detail이 있으면 detail, 없으면 open)
+      const hasDetail = pageProject.querySelector('.detail-wrapper');
+      state.projects = hasDetail ? 'detail' : 'open';
     }
-  };
-  setTimeout(animate, INTERVAL[0]);
-};
+    render();
+  });
+
+  // ── archive tab 빈공간 클릭
+  folderArchive.querySelector('.tab-toggle').addEventListener('click', () => {
+    if (state.archive === 'detail' || state.archive === 'open') {
+      state.archive = 'closed';
+    } else {
+      // ✅ 마지막 상태 복원
+      const hasDetail = pageArchive.querySelector('.detail-wrapper');
+      state.archive = hasDetail ? 'detail' : 'open';
+      if (state.projects === 'closed') state.projects = 'open';
+      if (state.archive === 'open') setTimeout(scatterPhotos, 100);
+    }
+    render();
+  });
+
+  // ── SPA loadPage
+  function loadPage(url) {
+    fetch(url)
+      .then(res => res.text())
+      .then(html => {
+        const baseUrl = new URL(url, window.location.href).href;
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+
+        const sourcePage = doc.querySelector('.page.project, .page.archive');
+        if (!sourcePage) return;
+        fixPaths(sourcePage, baseUrl);
+
+        const isArchivePage = !!doc.getElementById('folder-archive')?.classList.contains('detail-mode');
+        const newContent = sourcePage.innerHTML;
+        const newBg = doc.body.dataset.bg
+          ? new URL(doc.body.dataset.bg, baseUrl).href
+          : null;
+
+        if (isArchivePage) {
+          insertDetail(pageArchive, newContent);
+          state.archive = 'detail';
+          if (state.projects === 'closed') state.projects = 'open';
+        } else {
+          insertDetail(pageProject, newContent);
+          state.projects = 'detail';
+          state.archive = 'closed';
+        }
+
+        const detailName = doc.querySelector('.detail-name')?.textContent?.trim();
+        if (isArchivePage) {
+          folderArchive.querySelector('.tab-detail-name').textContent = detailName || '';
+        } else {
+          folderProjects.querySelector('.tab-detail-name').textContent = detailName || '';
+        }
+
+        if (newBg) crossfadeTo(newBg);
+
+        history.pushState({ url, isArchivePage }, '', url);
+        render();
+        playAllVideos();
+      })
+      .catch(err => console.error('loadPage error:', err));
+  }
+
+  // ── 초기 렌더링 (transition 없이)
+  folderProjects.style.transition = 'none';
+  folderArchive.style.transition = 'none';
+
+  const params = new URLSearchParams(window.location.search);
+  const targetPage = params.get('page');
+  const targetOpen = params.get('open');
+
+  if (targetPage) {
+    loadPage(targetPage);
+  } else if (targetOpen === 'archive') {
+    state.projects = 'open';
+    state.archive = 'open';
+  } else {
+    state.projects = 'closed';
+    state.archive = 'closed';
+  }
+
+  render();
+  void document.body.offsetHeight;
+  requestAnimationFrame(() => {
+    folderProjects.style.transition = '';
+    folderArchive.style.transition = '';
+  });
+
+  // ── SPA 라우팅
+  document.addEventListener('click', (e) => {
+    if (e.target.closest('.tab')) return;
+    const link = e.target.closest('a');
+    if (!link) return;
+    const href = link.getAttribute('href');
+    if (!href || href.startsWith('#') || href.startsWith('mailto')) return;
+    if (link.hostname && link.hostname !== window.location.hostname) return;
+    if (link.target === '_blank' || link.hasAttribute('download')) return;
+
+    e.preventDefault();
+    loadPage(link.href);
+  });
+
+  window.addEventListener('popstate', (e) => {
+    if (e.state?.url) {
+      loadPage(e.state.url);
+    } else {
+      const p = new URLSearchParams(window.location.search);
+      if (p.get('open') === 'archive') {
+        state.projects = 'open';
+        state.archive = 'open';
+      } else {
+        state.projects = 'open';
+        state.archive = 'closed';
+      }
+      render();
+    }
+  });
+
+  // ── 아카이브 사진 흩뿌리기
+  const savedPos = [];
+  function scatterPhotos() {
+    const photos = pageArchive.querySelectorAll('#photo-pile .pile-photo');
+    photos.forEach((photo, i) => {
+      if (!savedPos[i]) {
+        savedPos[i] = {
+          left: Math.random() * 65 + 15,
+          top: Math.random() * 60 + 20,
+          z: Math.floor(Math.random() * photos.length)
+        };
+      }
+      photo.style.left = `${savedPos[i].left}%`;
+      photo.style.top = `${savedPos[i].top}%`;
+      photo.style.transform = 'translate(-50%, -50%)';
+      photo.style.zIndex = savedPos[i].z;
+      requestAnimationFrame(() => { photo.style.opacity = '1'; });
+    });
+  }
+  setTimeout(scatterPhotos, 50);
+
+});
+
