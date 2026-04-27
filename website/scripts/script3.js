@@ -21,7 +21,8 @@ document.addEventListener('DOMContentLoaded', () => {
     BASE_PATH + 'images/random/02-1.webp',
     BASE_PATH + 'images/random/poster series.webp',
     BASE_PATH + 'images/random/thumbnail.webp',
-    BASE_PATH + 'images/random/motion_steel.webp'
+    BASE_PATH + 'images/random/motion_steel.webp',
+    BASE_PATH + 'images/mutter/poster1.webp'
   ];
   const bgPhoto = document.getElementById('bg-photo');
   const bgContainer = document.getElementById('bg-photo-container');
