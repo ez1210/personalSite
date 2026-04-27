@@ -394,6 +394,7 @@ body {
 
 
 /* 마우스를 올린 대상과, 같은 data-project를 가진 짝꿍만 선명하게 */
+.project-grid:has(a[data-project="mutter"]:hover) a[data-project="mutter"],
 .project-grid:has(a[data-project="chocolate"]:hover) a[data-project="chocolate"],
 .project-grid:has(a[data-project="blockparty"]:hover) a[data-project="blockparty"],
 .project-grid:has(a[data-project="johnny"]:hover) a[data-project="johnny"],
@@ -403,11 +404,12 @@ body {
   color: rgb(64, 64, 66) !important; /* 요청하신 진한 색 */
 }
 
-.project-grid:has(a[data-project="chocolate"]:hover) .project-item[data-project="chocolate"],
-.project-grid:has(a[data-project="blockparty"]:hover) .project-item[data-project="blockparty"],
-.project-grid:has(a[data-project="johnny"]:hover) .project-item[data-project="johnny"],
-.project-grid:has(a[data-project="sunrise"]:hover) .project-item[data-project="sunrise"],
-.project-grid:has(a[data-project="skillscape"]:hover) .project-item[data-project="skillscape"],
+.project-grid:has(a[data-project="mutter"]:hover) a[data-project="mutter"],
+.project-grid:has(a[data-project="chocolate"]:hover) a[data-project="chocolate"],
+.project-grid:has(a[data-project="blockparty"]:hover) a[data-project="blockparty"],
+.project-grid:has(a[data-project="johnny"]:hover) a[data-project="johnny"],
+.project-grid:has(a[data-project="sunrise"]:hover) a[data-project="sunrise"],
+.project-grid:has(a[data-project="skillscape"]:hover) a[data-project="skillscape"],
 .project-grid:has(a[data-project="kaleidoscope"]:hover) .project-item[data-project="kaleidoscope"] {
   opacity: 1 !important;
 }
