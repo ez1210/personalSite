@@ -58,7 +58,7 @@ body {
 }
 
 .about-me {
-  padding-top: 0.7vh;
+  padding-top: 0.6vh;
   display: grid;
   position: relative;
   width: 40vw;
@@ -70,8 +70,8 @@ body {
 .about-me p, .contact p {
   margin: 0px;
   color: var(--text-color);
-  padding: 10px;
-  padding-left: 1vw;
+  padding-top: 10px;
+  padding-left: 80px;
   transition: color 0.8s ease;
 }
 
@@ -159,29 +159,23 @@ body {
   height: var(--tab-height);
   width: 100%;
   box-sizing: border-box;
+
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  padding-left: 1vw;
-  padding-right: 3vw;
+  padding-left: 80px;
+  padding-right: 80px;
   align-items: center;
   cursor: pointer;
   pointer-events: auto;
-  border-radius: 15px 15px 0 0;
-}
 
-.tab {
-  border-top: 2px solid #fff;
-  border-left: 2px solid #fff;
-  background: #c0c0c0;
+/*
+  border-radius: 15px 15px 0 0;
+*/
 }
 
 .label-btn {
-  position: absolute;
-  left: -0.5vw;
-  top: 50%;
-  transform: translateY(-50%);
   z-index: 1;
-
+  
   grid-column: 1;
   background: none;
   border: none;
@@ -192,6 +186,8 @@ body {
   cursor: pointer;
   text-align: left;
   width: fit-content;
+
+  padding: 0;
 }
 
 .label-btn:hover {
@@ -201,15 +197,15 @@ body {
 
 
 .tab-toggle {
-  grid-column: 1 / 6;
+  grid-column: 2 / 6;
   height: 100%;
   cursor: pointer;
-  display: grid;
+  display: flex;
   align-items: center;
 }
 
 .tab-detail-name {
-  grid-column: 2 / 6;  /* toggle 안에서 column 2 위치에 */
+  grid-column: 2 / 6;
   pointer-events: none;
 }
 
@@ -301,8 +297,8 @@ body {
   row-gap: 80px;
   width: 100%;
   align-items: start;
-  padding: 1vw;
-  padding-top: 5vh;
+  padding: 80px;
+  padding-top: 40px;
   
 }
 
@@ -344,9 +340,9 @@ body {
 .detail-container {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  padding-top: 3vw;
-  padding-left: 1vw;
-  padding-right: 3vw;
+  padding-top: 40px;
+  padding-left: 80px;
+  padding-right: 80px;
   box-sizing: border-box;
   width: 100%;
 
@@ -361,21 +357,48 @@ body {
   word-break: keep-all;
   display: none;
 }
+
 .detail-meta {
   grid-column: 1/2;
-  
+  grid-row: 1 / span 2;
+
   display: flex;
   flex-direction: column;
-  line-height: 1.4;
+  line-height: 1.25;
   font-size: 14.5px;
-  color: rgb(105, 105, 122);
+  color: rgb(142, 142, 156);
+
+  gap: 20px;
+}
+
+.detail-credits {
+  grid-column: 1 / 2;
+  display: grid;
+  
+  word-break: keep-all;
+  pointer-events: none;
+  
+}
+
+.credit-label {
+  padding: 0; margin: 0;
+  color: rgb(64, 64, 66);
+}
+
+.credit-item {
+  display: flex;
+  flex-direction: column;
+  
 }
 
 .detail-description {
   grid-column: 2/6;
+  grid-row: 1;
   column-count: 2;
-  column-gap: 2vw;
-  column-fill: auto;
+  column-gap: 20px;
+  column-fill: auto; 
+  height: calc(16px * 1.25 * 6);
+  overflow: hidden;
   font-size: 16px;
   line-height: 1.25;
 }
@@ -391,7 +414,6 @@ body {
 .photo-section {
   grid-column: 2/6;
   grid-row: 2;
-  margin-top: 20px;
   
   width: 100%;
   display: flex;

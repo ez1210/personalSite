@@ -149,22 +149,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ── label 클릭: 해당 폴더의 인덱스로 (다른 폴더 보존)
 folderProjects.querySelector('.label-btn').addEventListener('click', (e) => {
-    e.stopPropagation();
-    state.projects = 'open';
-    history.pushState(null, '', INDEX_URL);
-    folderProjects.querySelector('.tab-detail-name').textContent = ''; // ✅ 추가
-    render();
-  });
+  e.stopPropagation();
+  state.projects = 'open';
+  history.pushState(null, '', INDEX_URL);
+  const tabName = folderProjects.querySelector('.tab-detail-name');
+  tabName.textContent = '';
+  tabName.style.color = ''; // ✅ 추가
+  render();
+});
 
-  folderArchive.querySelector('.label-btn').addEventListener('click', (e) => {
-    e.stopPropagation();
-    state.archive = 'open';
-    if (state.projects === 'closed') state.projects = 'open';
-    history.pushState(null, '', INDEX_URL + '?open=archive');
-    folderArchive.querySelector('.tab-detail-name').textContent = ''; // ✅ 추가
-    render();
-    setTimeout(scatterPhotos, 100);
-  });
+folderArchive.querySelector('.label-btn').addEventListener('click', (e) => {
+  e.stopPropagation();
+  state.archive = 'open';
+  if (state.projects === 'closed') state.projects = 'open';
+  history.pushState(null, '', INDEX_URL + '?open=archive');
+  const tabName = folderArchive.querySelector('.tab-detail-name');
+  tabName.textContent = '';
+  tabName.style.color = ''; // ✅ 추가
+  render();
+  setTimeout(scatterPhotos, 100);
+});
 
   // ── projects tab 빈공간 클릭
   folderProjects.querySelector('.tab-toggle').addEventListener('click', () => {
@@ -235,10 +239,16 @@ folderProjects.querySelector('.label-btn').addEventListener('click', (e) => {
         }
 
         const detailName = doc.querySelector('.detail-name')?.textContent?.trim();
+        const detailColor = doc.body.dataset.color;
+
         if (isArchivePage) {
-          folderArchive.querySelector('.tab-detail-name').textContent = detailName || '';
+          const tabName = folderArchive.querySelector('.tab-detail-name');
+          tabName.textContent = detailName || '';
+          tabName.style.color = detailColor || '';
         } else {
-          folderProjects.querySelector('.tab-detail-name').textContent = detailName || '';
+          const tabName = folderProjects.querySelector('.tab-detail-name');
+          tabName.textContent = detailName || '';
+          tabName.style.color = detailColor || '';
         }
 
         if (newBg) crossfadeTo(newBg);
