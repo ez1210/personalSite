@@ -359,7 +359,7 @@ body {
 
   display: inline-block; 
   width: fit-content;
-  padding-bottom: 30px;
+  padding-bottom: 15px;
 
   transition: color 0.2s ease;
 }
@@ -399,6 +399,7 @@ body {
 .project-grid:has(a[data-project="johnny"]:hover) a[data-project="johnny"],
 .project-grid:has(a[data-project="sunrise"]:hover) a[data-project="sunrise"],
 .project-grid:has(a[data-project="skillscape"]:hover) a[data-project="skillscape"],
+.project-grid:has(a[data-project="crookedlane"]:hover) a[data-project="crookedlane"],
 .project-grid:has(a[data-project="kaleidoscope"]:hover) a[data-project="kaleidoscope"] {
   color: rgb(64, 64, 66) !important; /* 요청하신 진한 색 */
 }
@@ -409,7 +410,8 @@ body {
 .project-grid:has(a[data-project="johnny"]:hover) a[data-project="johnny"],
 .project-grid:has(a[data-project="sunrise"]:hover) a[data-project="sunrise"],
 .project-grid:has(a[data-project="skillscape"]:hover) a[data-project="skillscape"],
-.project-grid:has(a[data-project="kaleidoscope"]:hover) .project-item[data-project="kaleidoscope"] {
+.project-grid:has(a[data-project="crookedlane"]:hover) a[data-project="crookedlane"],
+.project-grid:has(a[data-project="kaleidoscope"]:hover) a[data-project="kaleidoscope"] {
   opacity: 1 !important;
 }
 
@@ -579,7 +581,7 @@ body {
 
 /*archive*/
 .page.archive {
-  overflow: hidden;
+  overflow: auto;
 }
 
 .chaotic-photo-pile {
