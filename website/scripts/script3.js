@@ -40,6 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // ── 상태 (단일 진실원)
   // 'closed' | 'open' | 'detail'
   const state = { projects: 'open', archive: 'closed' };
+  
 
   // ── 상대경로 → 절대경로
   const fixPaths = (root, baseUrl) => {
@@ -82,6 +83,13 @@ document.addEventListener('DOMContentLoaded', () => {
   } else if (state.archive === 'open') {
     archivePile.style.display = '';
     if (archDetail) archDetail.style.display = 'none';
+  }
+
+  const isAnyTabOpen = state.projects !== 'closed' || state.archive !== 'closed';
+  document.body.classList.toggle('tab-open', isAnyTabOpen);
+
+  if (!isAnyTabOpen) {
+    document.documentElement.style.setProperty('--bg-gradient-color', 'rgba(0, 0, 255, 1)');
   }
 }
 
@@ -148,21 +156,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // ── About Me (Eugene Ahn) 클릭 로직
-  const myNameLink = document.querySelector('.my-name a');
-  if (myNameLink) {
-    myNameLink.addEventListener('click', (e) => {
-      // 프로젝트나 아카이브가 하나라도 열려있다면
+  const contactLinks = document.querySelectorAll('.contact p a');
+  
+  contactLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      // 탭(프로젝트나 아카이브)이 하나라도 열려있을 때 발동!
       if (state.projects !== 'closed' || state.archive !== 'closed') {
-        e.preventDefault(); // h.html 로 넘어가는 것을 막음
+        e.preventDefault(); // 링크(메일 등)로 날아가는 걸 멱살 잡고 막음
         state.projects = 'closed';
         state.archive = 'closed';
-        history.pushState(null, '', INDEX_URL); // URL도 인덱스로 깔끔하게 복구
-        render();
+        render(); // 탭 닫기 실행! (배경을 클릭한 것과 똑같은 효과)
       }
-      // 모두 닫혀있는 상태라면 막지 않으므로 정상적으로 h.html 로 이동합니다.
     });
-  }
+  });
 
  // ── Projects 탭 클릭 로직 (라벨 + 빈공간 통합)
   folderProjects.querySelector('.tab').addEventListener('click', (e) => {
@@ -188,6 +194,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // 3-A. 라벨 클릭: 폴더 목록으로 돌아가기 (제자리 거나 상세에서 나오기)
       state.projects = 'open';
       history.pushState(null, '', INDEX_URL);
+      pageProject.querySelector('.detail-wrapper')?.remove();
       const tabName = folderProjects.querySelector('.tab-detail-name');
       tabName.textContent = '';
       tabName.style.color = '';
@@ -207,6 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (state.archive === 'closed') {
       const hasDetail = pageArchive.querySelector('.detail-wrapper');
       state.archive = hasDetail ? 'detail' : 'open';
+      pageArchive.querySelector('.detail-wrapper')?.remove();
       if (state.projects === 'closed') state.projects = 'open'; // 프로젝트도 배경으로 열어줌
       history.pushState(null, '', INDEX_URL + '?open=archive');
       if (state.archive === 'open') setTimeout(scatterPhotos, 100);
@@ -262,6 +270,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const detailName = doc.querySelector('.detail-name')?.textContent?.trim();
         const detailColor = doc.body.dataset.color;
+
+        if (detailColor) {
+          let finalColor = detailColor;
+          if (detailColor.length === 7) { 
+          }
+          document.documentElement.style.setProperty('--bg-gradient-color', finalColor);
+        }
 
         if (isArchivePage) {
           const tabName = folderArchive.querySelector('.tab-detail-name');
