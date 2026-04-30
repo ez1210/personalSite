@@ -148,66 +148,87 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // ── label 클릭: 해당 폴더의 인덱스로 (다른 폴더 보존)
-folderProjects.querySelector('.label-btn').addEventListener('click', (e) => {
-  e.stopPropagation();
-  state.projects = 'open';
-  history.pushState(null, '', INDEX_URL);
-  const tabName = folderProjects.querySelector('.tab-detail-name');
-  tabName.textContent = '';
-  tabName.style.color = ''; // ✅ 추가
-  render();
-});
+  // ── About Me (Eugene Ahn) 클릭 로직
+  const myNameLink = document.querySelector('.my-name a');
+  if (myNameLink) {
+    myNameLink.addEventListener('click', (e) => {
+      // 프로젝트나 아카이브가 하나라도 열려있다면
+      if (state.projects !== 'closed' || state.archive !== 'closed') {
+        e.preventDefault(); // h.html 로 넘어가는 것을 막음
+        state.projects = 'closed';
+        state.archive = 'closed';
+        history.pushState(null, '', INDEX_URL); // URL도 인덱스로 깔끔하게 복구
+        render();
+      }
+      // 모두 닫혀있는 상태라면 막지 않으므로 정상적으로 h.html 로 이동합니다.
+    });
+  }
 
-folderArchive.querySelector('.label-btn').addEventListener('click', (e) => {
-  e.stopPropagation();
-  state.archive = 'open';
-  if (state.projects === 'closed') state.projects = 'open';
-  history.pushState(null, '', INDEX_URL + '?open=archive');
-  const tabName = folderArchive.querySelector('.tab-detail-name');
-  tabName.textContent = '';
-  tabName.style.color = ''; // ✅ 추가
-  render();
-  setTimeout(scatterPhotos, 100);
-});
+ // ── Projects 탭 클릭 로직 (라벨 + 빈공간 통합)
+  folderProjects.querySelector('.tab').addEventListener('click', (e) => {
+    const isLabelClick = e.target.closest('.label-btn');
 
-  // ── projects tab 빈공간 클릭
-  folderProjects.querySelector('.tab-toggle').addEventListener('click', () => {
-    if (state.archive === 'detail') {
-      state.archive = 'closed';
-      state.projects = 'open';
-      render();
-      return;
-    }
-    if (state.archive === 'open') {
-      state.archive = 'closed';
+    // 상황 1: 아카이브가 열려 있어서 프로젝트가 메인이 아닐 때 (아카이브에 덮여있을 때)
+    if (state.archive !== 'closed') {
+      state.archive = 'closed'; // 라벨이든 빈공간이든 무조건 아카이브를 닫아서 프로젝트를 메인으로 꺼냄
       render();
       return;
     }
 
-    // archive closed → projects 토글
-    if (state.projects === 'detail' || state.projects === 'open') {
-      state.projects = 'closed';
-    } else {
-      // ✅ 닫혀있다가 열 때: 마지막 상태(detail이 있으면 detail, 없으면 open)
+    // 상황 2: 프로젝트가 완전히 닫혀있을 때
+    if (state.projects === 'closed') {
       const hasDetail = pageProject.querySelector('.detail-wrapper');
-      state.projects = hasDetail ? 'detail' : 'open';
+      state.projects = hasDetail ? 'detail' : 'open'; // 마지막 상태 복원
+      render();
+      return;
     }
-    render();
+
+    // 상황 3: 프로젝트가 메인으로 열려있을 때
+    if (isLabelClick) {
+      // 3-A. 라벨 클릭: 폴더 목록으로 돌아가기 (제자리 거나 상세에서 나오기)
+      state.projects = 'open';
+      history.pushState(null, '', INDEX_URL);
+      const tabName = folderProjects.querySelector('.tab-detail-name');
+      tabName.textContent = '';
+      tabName.style.color = '';
+      render();
+    } else {
+      // 3-B. 빈 공간 클릭: 탭 닫기
+      state.projects = 'closed';
+      render();
+    }
   });
 
-  // ── archive tab 빈공간 클릭
-  folderArchive.querySelector('.tab-toggle').addEventListener('click', () => {
-    if (state.archive === 'detail' || state.archive === 'open') {
-      state.archive = 'closed';
-    } else {
-      // ✅ 마지막 상태 복원
+  // ── Archive 탭 클릭 로직 (라벨 + 빈공간 통합)
+  folderArchive.querySelector('.tab').addEventListener('click', (e) => {
+    const isLabelClick = e.target.closest('.label-btn');
+
+    // 상황 1: 아카이브가 닫혀있을 때
+    if (state.archive === 'closed') {
       const hasDetail = pageArchive.querySelector('.detail-wrapper');
       state.archive = hasDetail ? 'detail' : 'open';
-      if (state.projects === 'closed') state.projects = 'open';
+      if (state.projects === 'closed') state.projects = 'open'; // 프로젝트도 배경으로 열어줌
+      history.pushState(null, '', INDEX_URL + '?open=archive');
       if (state.archive === 'open') setTimeout(scatterPhotos, 100);
+      render();
+      return;
     }
-    render();
+
+    // 상황 2: 아카이브가 메인으로 열려있을 때 (아카이브는 항상 최상단이므로 덮일 일이 없음)
+    if (isLabelClick) {
+      // 2-A. 라벨 클릭: 사진 더미(폴더)로 돌아가기
+      state.archive = 'open';
+      history.pushState(null, '', INDEX_URL + '?open=archive');
+      const tabName = folderArchive.querySelector('.tab-detail-name');
+      tabName.textContent = '';
+      tabName.style.color = '';
+      render();
+      setTimeout(scatterPhotos, 100);
+    } else {
+      // 2-B. 빈 공간 클릭: 탭 닫기
+      state.archive = 'closed';
+      render();
+    }
   });
 
   // ── SPA loadPage
@@ -257,6 +278,12 @@ folderArchive.querySelector('.label-btn').addEventListener('click', (e) => {
         history.pushState({ url, isArchivePage }, '', url);
         render();
         playAllVideos();
+
+        if (isArchivePage) {
+          pageArchive.scrollTop = 0;
+        } else {
+          pageProject.scrollTop = 0;
+        }
       })
       .catch(err => console.error('loadPage error:', err));
   }

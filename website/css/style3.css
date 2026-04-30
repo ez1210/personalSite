@@ -101,6 +101,8 @@ body {
   margin: 0;
   text-decoration: none;
   mix-blend-mode: difference;
+  z-index: 50;          /* ✅ 추가 */
+  pointer-events: auto;
 }
 
 .about-me p, .contact p {
@@ -225,6 +227,7 @@ body {
   width: fit-content;
 
   padding: 0;
+  padding-right: 5px;
 }
 
 .label-btn:hover {
