@@ -86,7 +86,7 @@ img {
 }
 
 :root {
-  --tab-height: 50px;
+  --tab-height: 55px;
   --header-gap: 49px;
   --text-color: white;
 }
@@ -312,6 +312,7 @@ body.tab-open .contact a {
   grid-template-columns: repeat(4, minmax(0, 1fr));
   padding-left: 30px;
   padding-right: 30px;
+  padding-bottom: 2px;
   align-items: center;
   cursor: pointer;
   pointer-events: auto;
@@ -807,6 +808,11 @@ body.tab-open .contact a {
 
   .page.archive .photo-section {
     margin: 0px;
+  }
+
+  .page.archive .detail-meta {
+    padding-left: 10px;
+    margin-top: -2px;
   }
 }
 
