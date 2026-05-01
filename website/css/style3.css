@@ -166,7 +166,7 @@ img {
 body.tab-open .my-name a, 
 body.tab-open .contact p a, 
 body.tab-open .my-bio {
-  opacity: 0.7 !important; 
+  opacity: 0.4 !important; 
 }
 
 body.tab-open .contact p a {
@@ -226,12 +226,12 @@ body.tab-open .contact a {
   left: 0;
   width: 100%;
 
-  height: 120%; 
+  height: 150%; 
   background: linear-gradient(to bottom, var(--bg-gradient-color) 0%, transparent 100%);
   z-index: -1; 
   pointer-events: none;
 
-  transition: --bg-gradient-color 0.8s ease;
+  transition: --bg-gradient-color 0.4s ease-out;
 }
 
 /*

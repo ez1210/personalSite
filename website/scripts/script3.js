@@ -87,11 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const isAnyTabOpen = state.projects !== 'closed' || state.archive !== 'closed';
   document.body.classList.toggle('tab-open', isAnyTabOpen);
-
-  if (!isAnyTabOpen) {
-    document.documentElement.style.setProperty('--bg-gradient-color', 'rgba(0, 0, 255, 1)');
   }
-}
 
   // ── 상세 콘텐츠 삽입
   function insertDetail(page, html) {
@@ -152,6 +148,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (state.projects !== 'closed' || state.archive !== 'closed') {
       state.projects = 'closed';
       state.archive = 'closed';
+
+      document.documentElement.style.setProperty('--bg-gradient-color', 'rgba(0, 0, 255, 1)');
       render();
     }
   });
@@ -165,9 +163,22 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault(); // 링크(메일 등)로 날아가는 걸 멱살 잡고 막음
         state.projects = 'closed';
         state.archive = 'closed';
+
+        document.documentElement.style.setProperty('--bg-gradient-color', 'rgba(0, 0, 255, 1)');
         render(); // 탭 닫기 실행! (배경을 클릭한 것과 똑같은 효과)
       }
     });
+  });
+
+  document.querySelector('.about-me').addEventListener('click', (e) => {
+    if (e.target.closest('a')) return;
+
+    if (state.projects !== 'closed' || state.archive !== 'closed') {
+      state.projects = 'closed';
+      state.archive = 'closed';
+      document.documentElement.style.setProperty('--bg-gradient-color', 'rgba(0, 0, 255, 1)');
+      render();
+    }
   });
 
  // ── Projects 탭 클릭 로직 (라벨 + 빈공간 통합)
@@ -202,6 +213,9 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
       // 3-B. 빈 공간 클릭: 탭 닫기
       state.projects = 'closed';
+      if (state.archive === 'closed') {
+        document.documentElement.style.setProperty('--bg-gradient-color', 'rgba(0, 0, 255, 1)');
+      }
       render();
     }
   });
@@ -235,6 +249,9 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
       // 2-B. 빈 공간 클릭: 탭 닫기
       state.archive = 'closed';
+      if (state.projects === 'closed') {
+        document.documentElement.style.setProperty('--bg-gradient-color', 'rgba(0, 0, 255, 1)');
+      }
       render();
     }
   });
@@ -272,10 +289,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const detailColor = doc.body.dataset.color;
 
         if (detailColor) {
-          let finalColor = detailColor;
-          if (detailColor.length === 7) { 
-          }
-          document.documentElement.style.setProperty('--bg-gradient-color', finalColor);
+          document.documentElement.style.setProperty('--bg-gradient-color', detailColor);
         }
 
         if (isArchivePage) {
