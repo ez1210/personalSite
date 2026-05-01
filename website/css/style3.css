@@ -605,14 +605,7 @@ body.tab-open .contact a {
   color: rgb(142, 142, 156);
 }
 
-.page.archive .detail-description {
-  grid-column: 1 / 5;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-}
 
-.page.archive .description-text {
-  grid-column: 2 / 5; 
-}
 
 /*사진*/
 .photo-section {
@@ -625,10 +618,7 @@ body.tab-open .contact a {
   gap: 15px;
 }
 
-.page.archive .photo-section {
-  grid-column: 2 / 5;
-  grid-row: 1;
-}
+
 
 .photo-section > video {
   width: 100%;
@@ -729,6 +719,21 @@ body.tab-open .contact a {
   z-index: 1000 !important; 
 }
 
+.page.archive .detail-description {
+  grid-column: 1 / 5;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.page.archive .description-text {
+  grid-column: 2 / 5; 
+}
+
+.page.archive .photo-section {
+  grid-column: 2 / 5;
+  grid-row: 1;
+  margin-top: 10px;
+}
+
 
 
 
@@ -798,6 +803,10 @@ body.tab-open .contact a {
     padding-left: 10px;
     padding-top: 10px;
     top: 0;
+  }
+
+  .page.archive .photo-section {
+    margin: 0px;
   }
 }
 
@@ -886,6 +895,10 @@ body.tab-open .contact a {
     margin-top: 80px;
   }
 
+  .page.archive .detail-meta {
+    margin-top: 0px;
+  }
+
   .credit-item {
     position: relative;
   }
@@ -897,11 +910,15 @@ body.tab-open .contact a {
     margin-top: 0;
     gap: 10px;
   }
-  
+
+  .page.archive .photo-section {
+    grid-row: 2;
+  }
+
   /* Archive pile 축소 */
   .pile-photo {
-    max-width: 130px;
-    max-height: 130px;
+    max-width: 150px;
+    max-height: 150px;
   }
   .pile-photo:hover {
     transform: translate(-50%, -50%) scale(1.1);

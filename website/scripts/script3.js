@@ -240,6 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // 2-A. 라벨 클릭: 사진 더미(폴더)로 돌아가기
       state.archive = 'open';
       history.pushState(null, '', INDEX_URL + '?open=archive');
+      pageArchive.querySelector('.detail-wrapper')?.remove();
       const tabName = folderArchive.querySelector('.tab-detail-name');
       tabName.textContent = '';
       tabName.style.color = '';
