@@ -377,7 +377,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // ── 아카이브 사진 흩뿌리기
   // ── 아카이브 사진 흩뿌리기 (안 겹치게)
   const savedPos = [];
   function scatterPhotos() {
@@ -415,7 +414,7 @@ document.addEventListener('DOMContentLoaded', () => {
       
       photo.style.left = `${savedPos[i].left}%`;
       photo.style.top = `${savedPos[i].top}%`;
-      photo.style.transform = 'translate(-50%, -50%)';
+      //photo.style.transform = 'translate(-50%, -50%)';
       photo.style.zIndex = savedPos[i].z;
       requestAnimationFrame(() => { photo.style.opacity = '1'; });
     });
