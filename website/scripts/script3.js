@@ -59,80 +59,80 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ── 렌더링: 상태 → 클래스만 토글 (위치는 CSS가 결정)
   function render() {
-  folderProjects.classList.toggle('open', state.projects === 'open');
-  folderProjects.classList.toggle('detail-mode', state.projects === 'detail');
-  folderArchive.classList.toggle('open', state.archive === 'open');
-  folderArchive.classList.toggle('detail-mode', state.archive === 'detail');
+    folderProjects.classList.toggle('open', state.projects === 'open');
+    folderProjects.classList.toggle('detail-mode', state.projects === 'detail');
+    folderArchive.classList.toggle('open', state.archive === 'open');
+    folderArchive.classList.toggle('detail-mode', state.archive === 'detail');
 
-  // 프로젝트 콘텐츠: detail/open 전환만 처리, closed는 마지막 상태 유지
-  const projDetail = pageProject.querySelector('.detail-wrapper');
-  if (state.projects === 'detail') {
-    projectGrid.style.display = 'none';
-    if (projDetail) projDetail.style.display = '';
-  } else if (state.projects === 'open') {
-    projectGrid.style.display = '';
-    if (projDetail) projDetail.style.display = 'none';
-  }
-  // closed일 때는 콘텐츠 안 건드림 → transition 부드러움 + 마지막 상태 유지
+    // 프로젝트 콘텐츠: detail/open 전환만 처리, closed는 마지막 상태 유지
+    const projDetail = pageProject.querySelector('.detail-wrapper');
+    if (state.projects === 'detail') {
+      projectGrid.style.display = 'none';
+      if (projDetail) projDetail.style.display = '';
+    } else if (state.projects === 'open') {
+      projectGrid.style.display = '';
+      if (projDetail) projDetail.style.display = 'none';
+    }
+    // closed일 때는 콘텐츠 안 건드림 → transition 부드러움 + 마지막 상태 유지
 
-  // 아카이브 콘텐츠: 동일
-  const archDetail = pageArchive.querySelector('.detail-wrapper');
-  if (state.archive === 'detail') {
-    archivePile.style.display = 'none';
-    if (archDetail) archDetail.style.display = '';
-  } else if (state.archive === 'open') {
-    archivePile.style.display = '';
-    if (archDetail) archDetail.style.display = 'none';
-  }
+    // 아카이브 콘텐츠: 동일
+    const archDetail = pageArchive.querySelector('.detail-wrapper');
+    if (state.archive === 'detail') {
+      archivePile.style.display = 'none';
+      if (archDetail) archDetail.style.display = '';
+    } else if (state.archive === 'open') {
+      archivePile.style.display = '';
+      if (archDetail) archDetail.style.display = 'none';
+    }
 
-  const isAnyTabOpen = state.projects !== 'closed' || state.archive !== 'closed';
-  document.body.classList.toggle('tab-open', isAnyTabOpen);
-  }
+    const isAnyTabOpen = state.projects !== 'closed' || state.archive !== 'closed';
+    document.body.classList.toggle('tab-open', isAnyTabOpen);
+    }
 
-  // ── 상세 콘텐츠 삽입
-  function insertDetail(page, html) {
-    page.querySelector('.detail-wrapper')?.remove();
-    const wrapper = document.createElement('div');
-    wrapper.className = 'detail-wrapper';
-    wrapper.innerHTML = html;
-    page.appendChild(wrapper);
-  }
+    // ── 상세 콘텐츠 삽입
+    function insertDetail(page, html) {
+      page.querySelector('.detail-wrapper')?.remove();
+      const wrapper = document.createElement('div');
+      wrapper.className = 'detail-wrapper';
+      wrapper.innerHTML = html;
+      page.appendChild(wrapper);
+    }
 
-  function playAllVideos() {
-    document.querySelectorAll('video').forEach(v => {
-      v.load();
-      v.play().catch(() => {});
-    });
-  }
-
-  const bgPhotoNext = document.getElementById('bg-photo-next');
-  let activeBg = bgPhoto;
-  let inactiveBg = bgPhotoNext;
-
-  // 초기 상태 명확히
-  activeBg.style.opacity = '1';
-  inactiveBg.style.opacity = '0';
-
-  function crossfadeTo(src) {
-    const preload = new Image();
-    preload.onload = () => {
-      inactiveBg.src = src;
-
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          inactiveBg.style.transition = 'opacity 2s ease';
-          activeBg.style.transition = 'opacity 2s ease';
-          inactiveBg.style.opacity = '1';
-          activeBg.style.opacity = '0';
-
-          // 페이드 끝난 다음에 역할 swap
-          const oldActive = activeBg;
-          const newActive = inactiveBg;
-          activeBg = newActive;
-          inactiveBg = oldActive;
-        });
+    function playAllVideos() {
+      document.querySelectorAll('video').forEach(v => {
+        v.load();
+        v.play().catch(() => {});
       });
-    };
+    }
+
+    const bgPhotoNext = document.getElementById('bg-photo-next');
+    let activeBg = bgPhoto;
+    let inactiveBg = bgPhotoNext;
+
+    // 초기 상태 명확히
+    activeBg.style.opacity = '1';
+    inactiveBg.style.opacity = '0';
+
+    function crossfadeTo(src) {
+      const preload = new Image();
+      preload.onload = () => {
+        inactiveBg.src = src;
+
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            inactiveBg.style.transition = 'opacity 2s ease';
+            activeBg.style.transition = 'opacity 2s ease';
+            inactiveBg.style.opacity = '1';
+            activeBg.style.opacity = '0';
+
+            // 페이드 끝난 다음에 역할 swap
+            const oldActive = activeBg;
+            const newActive = inactiveBg;
+            activeBg = newActive;
+            inactiveBg = oldActive;
+          });
+        });
+      };
     preload.src = src;
   }
 
@@ -149,37 +149,25 @@ document.addEventListener('DOMContentLoaded', () => {
       state.projects = 'closed';
       state.archive = 'closed';
 
-      document.documentElement.style.setProperty('--bg-gradient-color', 'rgba(0, 0, 255, 1)');
+      document.documentElement.style.setProperty('--bg-gradient-color', 'rgba(18, 18, 18, 1)');
       render();
     }
   });
 
-  const contactLinks = document.querySelectorAll('.contact p a');
-  
-  contactLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
+  const aboutMeArea = document.querySelector('.about-me');
+  if (aboutMeArea) {
+    aboutMeArea.addEventListener('click', (e) => {
       // 탭(프로젝트나 아카이브)이 하나라도 열려있을 때 발동!
       if (state.projects !== 'closed' || state.archive !== 'closed') {
-        e.preventDefault(); // 링크(메일 등)로 날아가는 걸 멱살 잡고 막음
+        e.preventDefault(); // Eugene Ahn이나 메일 링크를 눌러도 페이지 이동 안 하게 멱살 꽉 잡음!
+        
         state.projects = 'closed';
         state.archive = 'closed';
-
-        document.documentElement.style.setProperty('--bg-gradient-color', 'rgba(0, 0, 255, 1)');
-        render(); // 탭 닫기 실행! (배경을 클릭한 것과 똑같은 효과)
+        document.documentElement.style.setProperty('--bg-gradient-color', 'rgba(18, 18, 18, 1)');
+        render(); // 탭 닫기 실행!
       }
     });
-  });
-
-  document.querySelector('.about-me').addEventListener('click', (e) => {
-    if (e.target.closest('a')) return;
-
-    if (state.projects !== 'closed' || state.archive !== 'closed') {
-      state.projects = 'closed';
-      state.archive = 'closed';
-      document.documentElement.style.setProperty('--bg-gradient-color', 'rgba(0, 0, 255, 1)');
-      render();
-    }
-  });
+  }
 
  // ── Projects 탭 클릭 로직 (라벨 + 빈공간 통합)
   folderProjects.querySelector('.tab').addEventListener('click', (e) => {
@@ -194,8 +182,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 상황 2: 프로젝트가 완전히 닫혀있을 때
     if (state.projects === 'closed') {
-      const hasDetail = pageProject.querySelector('.detail-wrapper');
-      state.projects = hasDetail ? 'detail' : 'open'; // 마지막 상태 복원
+      const detail = pageProject.querySelector('.detail-wrapper');
+      state.projects = detail ? 'detail' : 'open';
+      
+      // ✅ detail이면 저장된 색 복원
+      if (detail && detail.dataset.color) {
+        document.documentElement.style.setProperty('--bg-gradient-color', detail.dataset.color);
+      }
+      
       render();
       return;
     }
@@ -214,7 +208,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // 3-B. 빈 공간 클릭: 탭 닫기
       state.projects = 'closed';
       if (state.archive === 'closed') {
-        document.documentElement.style.setProperty('--bg-gradient-color', 'rgba(0, 0, 255, 1)');
+        document.documentElement.style.setProperty('--bg-gradient-color', 'rgba(18, 18, 18, 1)');
       }
       render();
     }
@@ -226,10 +220,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 상황 1: 아카이브가 닫혀있을 때
     if (state.archive === 'closed') {
-      const hasDetail = pageArchive.querySelector('.detail-wrapper');
-      state.archive = hasDetail ? 'detail' : 'open';
-      pageArchive.querySelector('.detail-wrapper')?.remove();
-      if (state.projects === 'closed') state.projects = 'open'; // 프로젝트도 배경으로 열어줌
+      const detail = pageArchive.querySelector('.detail-wrapper');
+      state.archive = detail ? 'detail' : 'open';
+      
+      // ✅ detail이면 저장된 색 복원
+      if (detail && detail.dataset.color) {
+        document.documentElement.style.setProperty('--bg-gradient-color', detail.dataset.color);
+      }
+      
+      if (state.projects === 'closed') state.projects = 'open';
       history.pushState(null, '', INDEX_URL + '?open=archive');
       if (state.archive === 'open') setTimeout(scatterPhotos, 100);
       render();
@@ -250,7 +249,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // 2-B. 빈 공간 클릭: 탭 닫기
       state.archive = 'closed';
       if (state.projects === 'closed') {
-        document.documentElement.style.setProperty('--bg-gradient-color', 'rgba(0, 0, 255, 1)');
+        document.documentElement.style.setProperty('--bg-gradient-color', 'rgb(18, 18, 18)');
       }
       render();
     }
@@ -290,6 +289,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (detailColor) {
           document.documentElement.style.setProperty('--bg-gradient-color', detailColor);
+
+          const wrapper = isArchivePage 
+            ? pageArchive.querySelector('.detail-wrapper')
+            : pageProject.querySelector('.detail-wrapper');
+          if (wrapper) wrapper.dataset.color = detailColor;
         }
 
         if (isArchivePage) {

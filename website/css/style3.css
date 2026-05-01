@@ -53,7 +53,7 @@
 @property --bg-gradient-color {
   syntax: "<color>";
   inherits: true;
-  initial-value: rgba(0, 0, 255, 1);
+  initial-value: rgb(18, 18, 18);
 }
 
 html, body {
@@ -63,14 +63,11 @@ html, body {
 }
 
 body {
-  /*
   font-family: 'poppins';
-  */
-  font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
 
-  font-size: 19.75px;
-  font-weight: 600;
+  font-size: 20px;
+  font-weight: 500;
   letter-spacing: -0.25px;
 }
 
@@ -102,6 +99,7 @@ img {
   justify-content: center;
   align-items: center;
   z-index: 0;
+  pointer-events: none;
 }
 
 #bg-photo-container {
@@ -118,6 +116,7 @@ img {
   object-fit: cover;
   object-position: center;
   transition: opacity 0.8s ease;
+  
 }
 
 #bg-photo-next {
@@ -136,6 +135,10 @@ img {
   padding-left: 30px;
   padding-right: 30px;
   gap: 0px;
+}
+
+.about-me {
+  pointer-events: auto !important; 
 }
 
 .my-name, .contact p a, .my-bio {
@@ -161,6 +164,7 @@ img {
   grid-row: 1;
   z-index: 20;
   pointer-events: auto;
+  width: fit-content;
 }
 
 body.tab-open .my-name a, 
@@ -324,7 +328,7 @@ body.tab-open .contact a {
   font-size: inherit;
   font-weight: inherit;
   letter-spacing: inherit;
-  color: black;
+  color: rgb(18, 18, 18);
   cursor: pointer;
   width: fit-content;
 
@@ -333,8 +337,7 @@ body.tab-open .contact a {
 }
 
 .label-btn:hover {
-  color: blue;
-  font-style:italic;
+  font-weight: 600;
 }
 
 
@@ -432,7 +435,6 @@ body.tab-open .contact a {
 .project-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  row-gap: 30px;
   width: 100%;
   padding:30px;
   align-items: start;
@@ -443,13 +445,13 @@ body.tab-open .contact a {
   grid-column: 2 / 5;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+  row-gap: 15px;
 }
 
 .project-item {
   display: flex;
   text-decoration: none;
-  margin-right: 30px;
+  margin-right: 15px;
   
   transition: opacity 0.2s ease;
 }
@@ -511,7 +513,7 @@ body.tab-open .contact a {
 .project-list:has(a[data-project="skillscape"]:hover) a[data-project="skillscape"],
 .project-list:has(a[data-project="crookedlane"]:hover) a[data-project="crookedlane"],
 .project-list:has(a[data-project="kaleidoscope"]:hover) a[data-project="kaleidoscope"] {
-  color: rgb(64, 64, 66) !important;
+  color: rgb(18, 18, 18) !important;
 }
 
 .project-grid:has(a[data-project="mutter"]:hover) a[data-project="mutter"],
@@ -550,11 +552,6 @@ body.tab-open .contact a {
   display: none;
 }
 
-.detail-meta {
-  display: flex;
-  flex-direction: column;
-  color: rgb(142, 142, 156);
-}
 
 .detail-description {
   grid-column: 2/5;
@@ -564,7 +561,7 @@ body.tab-open .contact a {
 
   column-gap: 15px;
   overflow: hidden;
-  font-size: 15px;
+  font-size: 17px;
   line-height: 1.32;
 }
 
@@ -573,12 +570,12 @@ body.tab-open .contact a {
 }
 
 .detail-description p {
-  column-count: 2;
   margin: 0; 
   margin-top: 0;
 }
 
 .detail-credits {
+  
   grid-column: 1/2;
   display: grid;
   
@@ -587,14 +584,21 @@ body.tab-open .contact a {
 }
 
 .credit-label {
+  
   padding: 0; margin: 0;
-  color: rgb(64, 64, 66);
+  color: rgb(18, 18, 18);
 }
 
 .credit-item {
   display: flex;
   flex-direction: column;
-  
+  padding-bottom: 15px;
+}
+
+.detail-meta {
+  display: flex;
+  flex-direction: column;
+  color: rgb(142, 142, 156);
 }
 
 
@@ -603,11 +607,11 @@ body.tab-open .contact a {
 .photo-section {
   grid-column: 2/5;
   grid-row: 2;
-  margin-top: 40px;
+  margin-top: 30px;
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 15px;
 }
 
 .photo-section > video {
@@ -633,7 +637,7 @@ body.tab-open .contact a {
 .photo-row {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 10px;
+  gap: 15px;
   width: 100%;
   
   align-items: start;
@@ -661,7 +665,7 @@ body.tab-open .contact a {
 
 .photo-row-left, .photo-row-right, .photo-row-half, .photo-row-3 {
   display: grid; width: 100%;
-  aspect-ratio: 16 / 9; gap: 10px; overflow: hidden;
+  aspect-ratio: 16 / 9; gap: 15px; overflow: hidden;
 }
 
 .photo-row-left img, .photo-row-left video,
