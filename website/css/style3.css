@@ -926,6 +926,10 @@ body.tab-open .contact a {
     grid-row: 2;
   }
 
+  .page.archive .credit-item {
+    margin-left: -10px;
+  }
+
   /* Archive pile 축소 */
   .pile-photo {
     max-width: 150px;
