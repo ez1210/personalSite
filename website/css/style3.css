@@ -840,6 +840,11 @@ body.tab-open .contact a {
     grid-column: 1;
     grid-row: auto;
   }
+
+  .contact p a:nth-child(1) {
+    margin-left: 0px;
+  }
+
   
   .my-bio { margin-top: 5px; }
 
