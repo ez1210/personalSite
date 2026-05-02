@@ -391,8 +391,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 안 겹치는 위치 찾을 때까지 시도
         while (attempts < maxAttempts) {
-          left = Math.random() * 65 + 15;
-          top = Math.random() * 60 + 20;
+          left = Math.random() * 80 + 10;
+          top = Math.random() * 50 + 10;
 
           const tooClose = savedPos.some(pos => {
             if (!pos) return false;
