@@ -272,6 +272,7 @@ body.tab-open .contact a {
   pointer-events: none;
 }
 
+/*
 .tape-bottom {
   position: absolute;
   bottom: -1.5vw; 
@@ -281,7 +282,6 @@ body.tab-open .contact a {
   z-index: 10;
   pointer-events: none;
 }
-
 */
 /*
 .paper {
@@ -337,9 +337,6 @@ body.tab-open .contact a {
   cursor: pointer;
   pointer-events: auto;
 
-/*
-  border-radius: 15px 15px 0 0;
-*/
 }
 
 .label-btn {
