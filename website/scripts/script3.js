@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function playAllVideos() {
       document.querySelectorAll('video').forEach(v => {
-        v.load();
+        //v.load();
         v.play().catch(() => {});
       });
     }
