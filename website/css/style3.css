@@ -647,7 +647,6 @@ body.tab-open .contact a {
 .photo-section > video {
   width: 100%;
   height: auto;
-  max-height: 900px;
   object-fit: contain;
 }
 
