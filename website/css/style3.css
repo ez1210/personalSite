@@ -486,7 +486,7 @@ body.tab-open .contact a {
 
 .project-list {
   grid-column: 1 / 2;
-  grid-row: 1 / span 4;
+  grid-row: 1 / span 5;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -525,14 +525,15 @@ body.tab-open .contact a {
 
 
 /* 마우스를 올린 대상과, 같은 data-project를 가진 짝꿍만 선명하게 */
-.project-list:has(a[data-project="mutter"]:hover) a[data-project="mutter"],
-.project-list:has(a[data-project="chocolate"]:hover) a[data-project="chocolate"],
-.project-list:has(a[data-project="blockparty"]:hover) a[data-project="blockparty"],
-.project-list:has(a[data-project="johnny"]:hover) a[data-project="johnny"],
-.project-list:has(a[data-project="sunrise"]:hover) a[data-project="sunrise"],
-.project-list:has(a[data-project="skillscape"]:hover) a[data-project="skillscape"],
-.project-list:has(a[data-project="crookedlane"]:hover) a[data-project="crookedlane"],
-.project-list:has(a[data-project="kaleidoscope"]:hover) a[data-project="kaleidoscope"] {
+.project-grid:has(a[data-project="mutter"]:hover) .project-list a[data-project="mutter"],
+.project-grid:has(a[data-project="chocolate"]:hover) .project-list a[data-project="chocolate"],
+.project-grid:has(a[data-project="blockparty"]:hover) .project-list a[data-project="blockparty"],
+.project-grid:has(a[data-project="johnny"]:hover) .project-list a[data-project="johnny"],
+.project-grid:has(a[data-project="sunrise"]:hover) .project-list a[data-project="sunrise"],
+.project-grid:has(a[data-project="skillscape"]:hover) .project-list a[data-project="skillscape"],
+.project-grid:has(a[data-project="crookedlane"]:hover) .project-list a[data-project="crookedlane"],
+.project-grid:has(a[data-project="bodoni"]:hover) .project-list a[data-project="bodoni"],
+.project-grid:has(a[data-project="kaleidoscope"]:hover) .project-list a[data-project="kaleidoscope"] {
   color: rgb(18, 18, 18) !important;
   font-weight: 600;
 }
@@ -544,6 +545,7 @@ body.tab-open .contact a {
 .project-grid:has(a[data-project="sunrise"]:hover) a[data-project="sunrise"],
 .project-grid:has(a[data-project="skillscape"]:hover) a[data-project="skillscape"],
 .project-grid:has(a[data-project="crookedlane"]:hover) a[data-project="crookedlane"],
+.project-grid:has(a[data-project="bodoni"]:hover) a[data-project="bodoni"],
 .project-grid:has(a[data-project="kaleidoscope"]:hover) a[data-project="kaleidoscope"] {
   opacity: 1 !important;
 }
@@ -589,6 +591,10 @@ body.tab-open .contact a {
 
 .description-text {
   grid-column: 2/4;
+  column-count: 2;
+
+  orphans: 4;
+  widows: 3;
 }
 
 .detail-description p {
@@ -815,7 +821,7 @@ body.tab-open .contact a {
     font-size: 15px;
   }
 
-  .description-text { grid-column: 1; }
+  .description-text { grid-column: 1; column-count:1;}
   .photo-section { grid-column: 1 / 3; }
 
 
@@ -824,6 +830,7 @@ body.tab-open .contact a {
     padding-left: 10px;
     padding-top: 10px;
     top: 0;
+    grid-row:1;
   }
 
   .page.archive .photo-section {
