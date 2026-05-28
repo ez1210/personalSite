@@ -66,7 +66,7 @@ body {
   font-family: 'poppins';
   -webkit-font-smoothing: antialiased;
 
-  font-size: 18px;
+  font-size: 16.5px;
   font-weight: 500;
   letter-spacing: -0.25px;
 }
@@ -98,7 +98,7 @@ img {
   top: calc(100vh - 140px);
   right: 30px;
   
-  font-size: 16px;
+  font-size: 14.5px;
   color: #ffffff;
   opacity: 1;
   
@@ -232,7 +232,7 @@ body.tab-open .contact a {
   color: var(--text-color);
   grid-column: 1/2; 
   grid-row: 2; 
-  font-size: 16px;
+  font-size: 14.5px;
   margin-top: 15px;
 }
 
@@ -426,29 +426,6 @@ body.tab-open .contact a {
   padding-bottom: calc(var(--tab-height) + 55px);
   box-sizing: border-box; 
 }
-/*
-.tab, .page {
-  transition: transform 0.3s cubic-bezier(0.77, 0, 0.175, 1);
-}
-*/
-
-/*
-.landing-info {
-  position: fixed;
-  bottom: 50px;
-  left: 50px;
-
-  background-image: url('../images/torn.webp');
-  background-size: cover; 
-  background-position: center;
-  padding: 10px 30px;
-}
-
-.landing-info p {
-  font-size: 14px;
-  color:rgb(53, 53, 53);
-}
-*/
 
 /*프로젝트*/
 
@@ -506,7 +483,7 @@ body.tab-open .contact a {
 
   display: inline-block; 
   width: fit-content;
-  padding-bottom: 12.5px;
+  padding-bottom: 10px;
 
   transition: color 0.2s ease;
 }
@@ -583,10 +560,10 @@ body.tab-open .contact a {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   grid-row: 1;
 
-  column-gap: 15px;
+  column-gap: 17px;
   overflow: hidden;
-  font-size: 16px;
-  line-height: 1.4;
+  font-size: 14.5px;
+  line-height: 1.45;
 }
 
 .description-text {
@@ -773,7 +750,7 @@ body.tab-open .contact a {
   --header-gap: 45px;
   } 
 
-  body { font-size: 17px; }
+  body { font-size: 16px; }
 
   /* About-me: 4col → 2col */
   .about-me {
@@ -817,7 +794,7 @@ body.tab-open .contact a {
     grid-column: 2 / 3;
     grid-template-columns: 1fr;
     gap: 20px;
-    font-size: 15px;
+    font-size: 14.5px;
   }
 
   .description-text { grid-column: 1; column-count:1;}
@@ -851,7 +828,7 @@ body.tab-open .contact a {
     --header-gap: 39px;
   }
 
-  body { font-size: 15px; font-weight: 600; }
+  body { font-size: 14.5px; font-weight: 500; }
 
   .about-me {
     grid-template-columns: 1fr;
