@@ -643,7 +643,6 @@ body.tab-open .contact a {
 .photo-row {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 15px;
   width: 100%;
   
   align-items: start;
