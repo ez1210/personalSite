@@ -385,23 +385,23 @@ document.addEventListener('DOMContentLoaded', () => {
   const savedPos = [];
   function scatterPhotos() {
     const photos = pageArchive.querySelectorAll('#photo-pile .pile-photo');
-    const minDistance = 30; // 사진 간 최소 거리 (% 단위, 조절)
-    
+    const minDistance = 15; 
+    const maxAttempts = 200; 
+    const aspectRatio = window.innerWidth / window.innerHeight; 
+
     photos.forEach((photo, i) => {
       if (!savedPos[i]) {
         let left, top;
         let attempts = 0;
-        const maxAttempts = 100;
 
-        // 안 겹치는 위치 찾을 때까지 시도
         while (attempts < maxAttempts) {
           left = Math.random() * 80 + 10;
-          top = Math.random() * 50 + 10;
+          top = Math.random() * 80 + 10; 
 
           const tooClose = savedPos.some(pos => {
             if (!pos) return false;
             const dx = pos.left - left;
-            const dy = pos.top - top;
+            const dy = (pos.top - top) * aspectRatio; 
             return Math.sqrt(dx * dx + dy * dy) < minDistance;
           });
 
@@ -418,8 +418,11 @@ document.addEventListener('DOMContentLoaded', () => {
       
       photo.style.left = `${savedPos[i].left}%`;
       photo.style.top = `${savedPos[i].top}%`;
-      //photo.style.transform = 'translate(-50%, -50%)';
       photo.style.zIndex = savedPos[i].z;
+      
+      /* 회전값 제거, 중앙 기준점만 유지 */
+      photo.style.transform = 'translate(-50%, -50%)';
+      
       requestAnimationFrame(() => { photo.style.opacity = '1'; });
     });
   }
