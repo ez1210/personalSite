@@ -17,12 +17,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ── BG 이미지
   const bgImages = [
-    BASE_PATH + 'images/random/4.5.webp',
+    BASE_PATH + 'images/random/book_mockup.webp',
     BASE_PATH + 'images/random/02-1.webp',
-    BASE_PATH + 'images/random/poster series.webp',
-    BASE_PATH + 'images/random/thumbnail.webp',
-    BASE_PATH + 'images/random/motion_steel.webp',
-    BASE_PATH + 'images/mutter/poster1.webp'
+    BASE_PATH + 'images/random/ill.webp',
+    BASE_PATH + 'images/random/lineupposter.webp',
+    BASE_PATH + 'images/random/outdoor_wall.webp',
+    BASE_PATH + 'images/random/sstationary.webp',
+    BASE_PATH + 'images/random/truck.webp',
+    BASE_PATH + 'images/random/poster_series.webp',
+    BASE_PATH + 'images/random/pamCube.webp',
+    BASE_PATH + 'images/random/last.webp'
   ];
   const bgPhoto = document.getElementById('bg-photo');
   const bgContainer = document.getElementById('bg-photo-container');
@@ -381,7 +385,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const savedPos = [];
   function scatterPhotos() {
     const photos = pageArchive.querySelectorAll('#photo-pile .pile-photo');
-    const minDistance = 25; // 사진 간 최소 거리 (% 단위, 조절)
+    const minDistance = 30; // 사진 간 최소 거리 (% 단위, 조절)
     
     photos.forEach((photo, i) => {
       if (!savedPos[i]) {

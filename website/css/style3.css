@@ -86,7 +86,7 @@ img {
 
 :root {
   --tab-height: 50px;
-  --header-gap: 49px;
+  --header-gap: 50px;
   --text-color: white;
 }
 
@@ -96,8 +96,6 @@ img {
   position: fixed;
   top: calc(100vh - 140px);
   right: 30px;
-  
-  font-size: 14.5px;
   color: #ffffff;
   opacity: 1;
   
@@ -231,7 +229,6 @@ body.tab-open .contact a {
   color: var(--text-color);
   grid-column: 1/2; 
   grid-row: 2; 
-  font-size: 14.5px;
   margin-top: 15px;
 }
 
@@ -261,65 +258,6 @@ body.tab-open .contact a {
   transition: --bg-gradient-color 0.4s ease-out;
 }
 
-.tape-upper {
-  position: absolute;
-  top: -1.5vw; 
-  left: -2vw;
-  width: 10vw;
-  transform: rotate(-30deg);
-  z-index: 10;
-  pointer-events: none;
-}
-
-/*
-.tape-bottom {
-  position: absolute;
-  bottom: -1.5vw; 
-  right: -2vw;
-  width: 10vw;
-  transform: rotate(-30deg);
-  z-index: 10;
-  pointer-events: none;
-}
-*/
-/*
-.paper {
-  position: absolute;
-  top: 50px; right: 90px;
-  background: none;
-  width: 500px;
-  pointer-events: none;
-  
-}
-.intro-image-container {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-.intro-text-image {
-  width: 100%;
-  height: 100%;
-  object-fit: contain; 
-  display: block; 
-}
-
-#click-zone {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 200px;
-  height: 200px;
-  cursor:pointer;
-
-  pointer-events: auto;
-}
-
-#click-zone.expanded {
-  width: 340px;
-  height: 420px;
-}
-*/
 
 .tab {
   position: relative;
@@ -441,7 +379,7 @@ body.tab-open .contact a {
   grid-column: 2 / 5;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  row-gap: 15px;
+  row-gap: 20px;
 }
 
 .project-item {
@@ -478,7 +416,7 @@ body.tab-open .contact a {
 
 .project-list a {
   text-decoration: none;
-  color: rgb(142, 142, 156);
+  color: rgb(145, 145, 145);
 
   display: inline-block; 
   width: fit-content;
@@ -496,7 +434,7 @@ body.tab-open .contact a {
 }
 
 .project-grid:has(a:hover) .project-item {
-  opacity: 0.7;
+  opacity: 0.6;
 }
 
 
@@ -557,8 +495,6 @@ body.tab-open .contact a {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   grid-row: 1;
-
-  column-gap: 17px;
   overflow: hidden;
 }
 
@@ -580,7 +516,6 @@ body.tab-open .contact a {
 }
 
 .credit-label {
-  
   padding: 0; margin: 0;
   color: rgb(18, 18, 18);
 }
@@ -588,7 +523,7 @@ body.tab-open .contact a {
 .credit-item {
   display: flex;
   flex-direction: column;
-  padding-bottom: 15px;
+  padding-bottom: 20px;
 }
 
 .detail-meta {
@@ -602,7 +537,6 @@ body.tab-open .contact a {
   width: 100%;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  column-gap: 17px;
 }
 
 .inline-description p {
@@ -618,11 +552,11 @@ body.tab-open .contact a {
 .photo-section {
   grid-column: 2/5;
   grid-row: 2;
-  margin-top: 30px;
+  margin-top: 20px;
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 20px;
 }
 
 
@@ -676,7 +610,7 @@ body.tab-open .contact a {
 
 .photo-row-left, .photo-row-right, .photo-row-half, .photo-row-3 {
   display: grid; width: 100%;
-  aspect-ratio: 16 / 9; gap: 15px; overflow: hidden;
+  aspect-ratio: 16 / 9; gap: 20px; overflow: hidden;
 }
 
 .photo-row-left img, .photo-row-left video,
