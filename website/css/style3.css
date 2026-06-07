@@ -644,6 +644,20 @@ video {
   grid-template-columns: 1fr 1fr; 
 }
 
+.photo-row-half.original-ratio {
+  aspect-ratio: auto !important;
+  overflow: visible !important;
+  align-items: start !important;
+}
+
+/* 2. 이미지의 크롭(자르기)과 숨겨진 강제 비율 파괴 */
+.photo-row-half.original-ratio img, 
+.photo-row-half.original-ratio video {
+  aspect-ratio: auto !important; /* 이미지 자체에 걸린 16:9 무력화 */
+  height: auto !important;       /* 세로 길이를 원본에 맞게 해제 */
+  object-fit: unset !important;  /* 꽉 채우려고 이미지를 확대해서 자르는 현상(cover) 완전 해제 */
+}
+
 
 /*archive*/
 .page.archive {
