@@ -314,6 +314,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (newBg) crossfadeTo(newBg);
 
         history.pushState({ url, isArchivePage }, '', url);
+        
         render();
         playAllVideos();
 

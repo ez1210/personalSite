@@ -425,6 +425,12 @@ body.tab-open .contact a {
   transition: color 0.2s ease;
 }
 
+.project-list a:hover {
+  color: rgb(18, 18, 18) !important;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
 
 
 /* ─── 4. 하이라이트 호버 로직 (서로 연동) ─── */
