@@ -66,7 +66,7 @@ body {
   font-family: 'poppins';
   -webkit-font-smoothing: antialiased;
 
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 500;
   letter-spacing: -0.25px;
   line-height: 1.4;
@@ -420,7 +420,7 @@ body.tab-open .contact a {
 
   display: inline-block; 
   width: fit-content;
-  padding-bottom: 8.5px;
+  padding-bottom: 10px;
 
   transition: color 0.2s ease;
 }
