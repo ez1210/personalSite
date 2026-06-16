@@ -381,7 +381,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // ── 아카이브 사진 흩뿌리기 (안 겹치게)
+  
   const savedPos = [];
   function scatterPhotos() {
     const photos = pageArchive.querySelectorAll('#photo-pile .pile-photo');
